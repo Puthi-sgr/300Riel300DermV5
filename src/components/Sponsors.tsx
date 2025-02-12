@@ -1,8 +1,18 @@
-import React from 'react';
-import { Users, ArrowRight, Handshake, TreePine, Leaf, Sprout, Trees, Plane as Plant2, Flower2 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useLanguage } from '../context/LanguageContext';
+import React from "react";
+import {
+  Users,
+  ArrowRight,
+  Handshake,
+  TreePine,
+  Leaf,
+  Sprout,
+  Trees,
+  Plane as Plant2,
+  Flower2,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../context/LanguageContext";
 
 const Sponsors = () => {
   const [ref, inView] = useInView({
@@ -14,37 +24,36 @@ const Sponsors = () => {
 
   const partners = [
     {
-      name: 'Green Earth Foundation',
+      name: "N/A1",
       icon: TreePine,
-      description: 'Leading environmental conservation organization',
+      description: "Ot mean2",
     },
     {
-      name: 'EcoTech Innovations',
+      name: "N/A2",
       icon: Leaf,
-      description: 'Sustainable technology solutions',
+      description: "Ot mean2",
     },
     {
-      name: 'Nature First Alliance',
+      name: "N/A3",
       icon: Trees,
-      description: 'Biodiversity conservation network',
+      description: "Ot mean3",
     },
     {
-      name: 'Green Tech Solutions',
+      name: "N/A4",
       icon: Plant2,
-      description: 'Environmental technology innovator',
+      description: "Ot mean4",
     },
     {
-      name: 'Eco Education Institute',
+      name: "N/A5",
       icon: Flower2,
-      description: 'Environmental education leader',
+      description: "Ot mean5",
     },
     {
-      name: 'Sustainable Future Corp',
+      name: "N/A6",
       icon: Sprout,
-      description: 'Renewable energy solutions provider',
+      description: "Ot mean6",
     },
   ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,9 +74,9 @@ const Sponsors = () => {
   };
 
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
+    const contactSection = document.getElementById("contact");
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -84,25 +93,24 @@ const Sponsors = () => {
         <motion.div variants={itemVariants} className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+            animate={
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }
+            }
             transition={{ duration: 0.5 }}
             className="flex items-center justify-center mb-4"
           >
             <Users className="w-12 h-12 text-eco-600" />
           </motion.div>
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
-            Our Partners
+            {t("sponsors.title")}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Together with our valued partners, we're making a lasting impact on environmental conservation
+            {t("sponsors.subtitle")}
           </p>
         </motion.div>
 
         {/* Partners Grid - Horizontal Scrolling on Mobile */}
-        <motion.div
-          variants={containerVariants}
-          className="relative mb-16"
-        >
+        <motion.div variants={containerVariants} className="relative mb-16">
           <div className="overflow-x-auto pb-6 -mx-4 px-4 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex flex-nowrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 min-w-max sm:min-w-0">
               {partners.map((partner) => (
@@ -118,8 +126,12 @@ const Sponsors = () => {
                         <partner.icon className="w-full h-full text-white" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-900">{partner.name}</h4>
-                        <p className="text-sm text-gray-600">{partner.description}</p>
+                        <h4 className="text-lg font-semibold text-gray-900">
+                          {partner.name}
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          {partner.description}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -127,7 +139,7 @@ const Sponsors = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Mobile Scroll Indicator */}
           <div className="sm:hidden mt-4 flex justify-center">
             <div className="space-x-1">
@@ -142,16 +154,13 @@ const Sponsors = () => {
         </motion.div>
 
         {/* Partnership CTA */}
-        <motion.div
-          variants={itemVariants}
-          className="text-center"
-        >
+        <motion.div variants={itemVariants} className="text-center">
           <div className="bg-gradient-to-br from-eco-50 to-earth-50 rounded-2xl p-8 shadow-lg border border-eco-100">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Become a Partner
+              {t("sponsors.partnerWithUs")}
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Join our network of environmental champions and help us create lasting positive change for our planet
+              {t("sponsors.subtitle")}
             </p>
             <motion.button
               onClick={scrollToContact}
@@ -160,7 +169,7 @@ const Sponsors = () => {
               className="inline-flex items-center px-6 py-3 bg-eco-600 text-white rounded-lg font-semibold shadow-lg hover:bg-eco-700 transition-all duration-300"
             >
               <Handshake className="mr-2 w-5 h-5" />
-              Partner With Us
+              {t("sponsors.becomePartner")}
             </motion.button>
           </div>
         </motion.div>

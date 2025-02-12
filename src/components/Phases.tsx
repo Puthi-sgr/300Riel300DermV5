@@ -1,8 +1,8 @@
-import React from 'react';
-import { ClipboardList, Coins, Sprout, LineChart } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useLanguage } from '../context/LanguageContext';
+import React from "react";
+import { ClipboardList, Coins, Sprout, LineChart } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../context/LanguageContext";
 
 const Phases = () => {
   const [ref, inView] = useInView({
@@ -15,31 +15,31 @@ const Phases = () => {
   const phases = [
     {
       number: "01",
-      title: t('phases.planning.title'),
+      title: t("phases.planning.title"),
       icon: ClipboardList,
-      description: t('phases.planning.description'),
-      color: 'from-eco-400 to-eco-600',
+      description: t("phases.planning.description"),
+      color: "from-eco-400 to-eco-600",
     },
     {
       number: "02",
-      title: t('phases.fundraising.title'),
+      title: t("phases.fundraising.title"),
       icon: Coins,
-      description: t('phases.fundraising.description'),
-      color: 'from-eco-500 to-eco-700',
+      description: t("phases.fundraising.description"),
+      color: "from-eco-500 to-eco-700",
     },
     {
       number: "03",
-      title: t('phases.implementation.title'),
+      title: t("phases.implementation.title"),
       icon: Sprout,
-      description: t('phases.implementation.description'),
-      color: 'from-eco-600 to-eco-800',
+      description: t("phases.implementation.description"),
+      color: "from-eco-600 to-eco-800",
     },
     {
       number: "04",
-      title: t('phases.monitoring.title'),
+      title: t("phases.monitoring.title"),
       icon: LineChart,
-      description: t('phases.monitoring.description'),
-      color: 'from-eco-700 to-eco-900',
+      description: t("phases.monitoring.description"),
+      color: "from-eco-700 to-eco-900",
     },
   ];
 
@@ -83,35 +83,40 @@ const Phases = () => {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">{t('phases.title')}</h2>
-          <p className="mt-4 text-xl text-gray-600">{t('phases.subtitle')}</p>
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            {t("phases.title")}
+          </h2>
+          <p className="mt-4 text-xl text-gray-600">{t("phases.subtitle")}</p>
         </motion.div>
 
         {/* Desktop Timeline */}
         <div className="relative py-20 hidden md:block">
           {/* Timeline Line */}
-          <motion.div 
+          <motion.div
             variants={lineVariants}
-            className="absolute top-1/2 left-0 right-0 h-3 bg-gradient-to-r from-eco-400 to-eco-600 transform -translate-y-1/2 rounded-full shadow-lg origin-left"
+            className="absolute top-1/3 left-0 right-0 h-3 bg-gradient-to-r from-eco-400 to-eco-600 transform -translate-y-1/2 rounded-full shadow-lg origin-left"
             style={{
-              boxShadow: '0 0 20px rgba(0, 89, 0, 0.2)',
+              boxShadow: "0 0 20px rgba(0, 89, 0, 0.2)",
             }}
           />
-          
+
           {/* Connector Lines */}
           <div className="absolute top-1/2 left-0 right-0 h-32 transform -translate-y-1/2">
             {[...Array(4)].map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ height: 0 }}
-                animate={inView ? { height: '8rem' } : { height: 0 }}
+                animate={inView ? { height: "8rem" } : { height: 0 }}
                 transition={{ delay: 0.5 + i * 0.2, duration: 0.5 }}
                 className="absolute h-32 w-0.5 bg-eco-300"
-                style={{ left: `${25 + i * 25}%`, transform: 'translateX(-50%)' }}
+                style={{
+                  left: `${25 + i * 25}%`,
+                  transform: "translateX(-50%)",
+                }}
               />
             ))}
           </div>
-          
+
           {/* Phases */}
           <div className="relative grid grid-cols-4 gap-4">
             {phases.map((phase, index) => (
@@ -125,7 +130,9 @@ const Phases = () => {
                 {/* Phase Number */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                  animate={
+                    inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
+                  }
                   transition={{ delay: 0.3 + index * 0.2, duration: 0.5 }}
                   className="absolute -top-16 text-4xl font-bold text-eco-200"
                 >
@@ -140,7 +147,7 @@ const Phases = () => {
                     flex items-center justify-center mb-6 border-4 border-white shadow-xl
                     transform hover:shadow-2xl transition-shadow duration-300`}
                   style={{
-                    boxShadow: '0 4px 20px rgba(0, 89, 0, 0.2)',
+                    boxShadow: "0 4px 20px rgba(0, 89, 0, 0.2)",
                   }}
                 >
                   <phase.icon className="w-10 h-10 text-white" />
@@ -157,14 +164,15 @@ const Phases = () => {
                   <p className="text-gray-600 mb-4 leading-relaxed">
                     {phase.description}
                   </p>
-                  
+
                   {/* Placeholder Card */}
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="mt-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-eco-100"
                   >
                     <p className="text-sm text-gray-600">
-                      Additional information about {phase.title.toLowerCase()} phase will be added here.
+                      Additional information about {phase.title.toLowerCase()}{" "}
+                      phase will be added here.
                     </p>
                   </motion.div>
                 </motion.div>
@@ -186,7 +194,7 @@ const Phases = () => {
                 <div className="text-3xl font-bold text-eco-200">
                   {phase.number}
                 </div>
-                
+
                 {/* Icon Circle */}
                 <motion.div
                   whileHover={{ scale: 1.1 }}
@@ -202,17 +210,16 @@ const Phases = () => {
               </div>
 
               <div className="pl-20">
-                <p className="text-gray-600 mb-4">
-                  {phase.description}
-                </p>
-                
+                <p className="text-gray-600 mb-4">{phase.description}</p>
+
                 {/* Placeholder Card */}
                 <motion.div
                   whileHover={{ scale: 1.01 }}
                   className="p-4 bg-eco-50 rounded-lg border border-eco-100"
                 >
                   <p className="text-sm text-gray-600">
-                    Additional information about {phase.title.toLowerCase()} phase will be added here.
+                    Additional information about {phase.title.toLowerCase()}{" "}
+                    phase will be added here.
                   </p>
                 </motion.div>
               </div>

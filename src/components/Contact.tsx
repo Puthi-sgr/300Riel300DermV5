@@ -1,7 +1,8 @@
-import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../context/LanguageContext";
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -9,6 +10,7 @@ const Contact = () => {
     threshold: 0.1,
   });
 
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -40,18 +42,24 @@ const Contact = () => {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Get in Touch</h2>
-          <p className="mt-4 text-xl text-gray-600">
-            Have questions or want to get involved? We'd love to hear from you!
-          </p>
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            {t("contact.title")}
+          </h2>
+          <p className="mt-4 text-xl text-gray-600">{t("contact.subtitle")}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <motion.div variants={itemVariants} className="bg-gray-50 p-8 rounded-lg">
+          <motion.div
+            variants={itemVariants}
+            className="bg-gray-50 p-8 rounded-lg"
+          >
             <form className="space-y-6">
               <motion.div variants={itemVariants}>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Name
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  {t("contact.name")}
                 </label>
                 <motion.input
                   whileFocus={{ scale: 1.01 }}
@@ -62,8 +70,11 @@ const Contact = () => {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  {t("contact.email")}
                 </label>
                 <motion.input
                   whileFocus={{ scale: 1.01 }}
@@ -74,8 +85,11 @@ const Contact = () => {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                  Message
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  {t("contact.message")}
                 </label>
                 <motion.textarea
                   whileFocus={{ scale: 1.01 }}
@@ -92,23 +106,29 @@ const Contact = () => {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-eco-600 hover:bg-eco-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-eco-500"
               >
-                Send Message
+                {t("contact.send")}
               </motion.button>
             </form>
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-8">
             <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-6">Contact Information</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-6">
+                {t("contact.info")}
+              </h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="mt-1">
                     <Mail className="h-6 w-6 text-eco-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Email</h4>
-                    <p className="text-gray-600">contact@example.com</p>
-                    <p className="text-gray-500 text-sm mt-1">We aim to respond within 24 hours</p>
+                    <h4 className="font-medium text-gray-900">
+                      {t("contact.email.label")}
+                    </h4>
+                    <p className="text-gray-600">{t("contact.email.value")}</p>
+                    <p className="text-gray-500 text-sm mt-1">
+                      We aim to respond within 24 hours
+                    </p>
                   </div>
                 </div>
 
@@ -117,9 +137,10 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-eco-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Phone</h4>
-                    <p className="text-gray-600">+855 12 345 678</p>
-                    <p className="text-gray-500 text-sm mt-1">Mon-Fri from 9am to 5pm</p>
+                    <h4 className="font-medium text-gray-900">
+                      {t("contact.phone.label")}
+                    </h4>
+                    <p className="text-gray-600">{t("contact.phone.value")}</p>
                   </div>
                 </div>
 
@@ -128,10 +149,12 @@ const Contact = () => {
                     <MapPin className="h-6 w-6 text-eco-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Location</h4>
-                    <p className="text-gray-600">123 Street Name, City</p>
-                    <p className="text-gray-600">Province, Cambodia</p>
-                    <p className="text-gray-500 text-sm mt-1">Visit us during office hours</p>
+                    <h4 className="font-medium text-gray-900">
+                      {t("contact.location.label")}
+                    </h4>
+                    <p className="text-gray-600">
+                      {t("contact.location.value")}
+                    </p>
                   </div>
                 </div>
               </div>

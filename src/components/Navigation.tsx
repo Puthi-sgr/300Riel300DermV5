@@ -1,43 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Globe } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
+import logo from "../assets/logo2.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
   const { language, toggleLanguage, t } = useLanguage();
-  
-  const headerHeight = useTransform(scrollY, [0, 100], ['4rem', '3.5rem']);
+
+  const headerHeight = useTransform(scrollY, [0, 100], ["4rem", "3.5rem"]);
   const headerBackground = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(242, 247, 242, 0)', 'rgba(242, 247, 242, 0.95)']
+    ["rgba(242, 247, 242, 1)", "rgba(242, 247, 242, 0.95)"]
   );
   const headerShadow = useTransform(
     scrollY,
     [0, 100],
-    ['0 0 0 transparent', '0 4px 6px -1px rgba(0, 0, 0, 0.1)']
+    ["0 0 0 transparent", "0 4px 6px -1px rgba(0, 0, 0, 0.1)"]
   );
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
   };
 
-  const navItems = ['home', 'about', 'gallery', 'donate', 'contact'];
+  const navItems = ["home", "about", "gallery", "donate", "contact"];
 
   return (
     <motion.nav
@@ -56,9 +57,9 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <span className="text-2xl font-bold text-eco-600">EcoVoice</span>
+            <img src={logo} alt="300 Riel Logo" className="w-auto h-24" />
           </motion.div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-baseline space-x-4">
@@ -77,7 +78,7 @@ const Navigation = () => {
                 </motion.button>
               ))}
             </div>
-            
+
             {/* Language Toggle */}
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -87,7 +88,7 @@ const Navigation = () => {
             >
               <Globe className="w-5 h-5" />
               <span className="sr-only">
-                {language === 'en' ? 'Switch to Khmer' : 'Switch to English'}
+                {language === "en" ? "Switch to Khmer" : "Switch to English"}
               </span>
             </motion.button>
           </div>
@@ -102,7 +103,7 @@ const Navigation = () => {
             >
               <Globe className="w-5 h-5" />
             </motion.button>
-            
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -118,7 +119,9 @@ const Navigation = () => {
       {/* Mobile Navigation */}
       <motion.div
         initial={false}
-        animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+        animate={
+          isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
+        }
         transition={{ duration: 0.3 }}
         className="md:hidden overflow-hidden bg-eco-50 shadow-lg"
       >
