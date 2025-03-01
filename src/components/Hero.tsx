@@ -1,9 +1,8 @@
 import React from "react";
-import { Facebook, Heart, Leaf } from "lucide-react";
+import { Facebook, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import heroImg from "../assets/HeroPicture.png";
-import logo from "../assets/logo2.png";
+import heroImg from "../assets/HeroPictureCompressed.jpg";
 const Hero = () => {
   const { t } = useLanguage();
 

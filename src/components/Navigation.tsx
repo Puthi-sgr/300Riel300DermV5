@@ -57,7 +57,12 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <img src={logo} alt="300 Riel Logo" className="w-auto h-24" />
+            <img
+              src={logo}
+              loading="lazy"
+              alt="300 Riel Logo"
+              className="w-auto h-24"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
