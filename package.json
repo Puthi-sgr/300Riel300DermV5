@@ -2,7 +2,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Puthi-sgr.github.io/300Riel300DermV5",
+  "homepage": "/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
