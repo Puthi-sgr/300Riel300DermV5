@@ -3,7 +3,6 @@ import { FacebookPost, FacebookPostResponse } from "../dto/Facebook.dto";
 const PAGE_ID = import.meta.env.VITE_PAGE_ID;
 const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
-
 export const fetchFacebookPosts = async (): Promise<FacebookPost[]> => {
   try {
     const response = await axios.get<FacebookPostResponse>(
