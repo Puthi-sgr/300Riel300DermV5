@@ -13,6 +13,13 @@ const Hero = () => {
     }
   };
 
+  const linkToFacebook = () => {
+    window.open(
+      "https://www.facebook.com/profile.php?id=100091407241732",
+      "_blank"
+    );
+  };
+
   return (
     <div
       id="home"
@@ -70,6 +77,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={linkToFacebook}
             className="inline-flex items-center px-6 py-3 bg-[#1877F2] hover:bg-[#1e4d8a] text-white font-semibold rounded-lg"
           >
             <Facebook className="mr-2" size={20} />

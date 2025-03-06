@@ -29,20 +29,21 @@ const translations = {
     "phases.subtitle": "Our journey towards sustainable impact",
     "phases.planning.title": "Planning",
     "phases.planning.description":
-      "Initial planning and strategy development phase",
+      "This phase ensures that our initiative has the necessary approvals and backing to move forward.",
     "phases.planning.additionalInfo": "Additional info for Planning phase",
     "phases.fundraising.title": "Fundraising",
     "phases.fundraising.description":
-      "Gathering resources and community support",
+      "This phase builds the foundation for a well-organized and impactful planting event.",
     "phases.fundraising.additionalInfo":
       "Additional info for Fundraising phase",
     "phases.implementation.title": "Implementation",
-    "phases.implementation.description": "Executing the planned initiatives",
+    "phases.implementation.description":
+      "This is the heart of our project—where planning turns into tangible change.",
     "phases.implementation.additionalInfo":
       "Additional info for Implementation phase",
     "phases.monitoring.title": "Post-planting Monitoring",
     "phases.monitoring.description":
-      "Tracking progress and ensuring sustainability",
+      "Monitor the growth and health of the newly planted mangroves.Continue engagement on social media, updating our community on the progress.By tracking results and maintaining visibility, we strengthen our commitment to sustainability and long-term environmental impact.",
     "phases.monitoring.additionalInfo": "Additional info for Monitoring phase",
 
     // Mangroves Section
@@ -55,6 +56,8 @@ const translations = {
     "mangroves.challenges.title": "Challenges & Conservation",
     "mangroves.cta.text":
       "Join us in protecting Cambodia's mangrove forests. Your support helps preserve these vital ecosystems for future generations.",
+    "mangroves.cta.description":
+      "Every 300Riels helps protect and restore mangrove forests in Kampot, Cambodia.",
     "mangroves.cta.button": "Support Mangrove Conservation",
     "mangroves.cta.learnMore.button": "Learn More",
     "mangroves.fact.naturalBarrier.title": "Natural Barrier",
@@ -178,18 +181,20 @@ const translations = {
     "phases.subtitle": "ដំណើររបស់យើងឆ្ពោះទៅរកផលប្រយោជន៍ប្រកបដោយចីរភាព",
     "phases.planning.title": "ការរៀបចំផែនការ",
     "phases.planning.description":
-      "ដំណាក់កាលនៃការរៀបចំផែនការ និងការអភិវឌ្ឍយុទ្ធសាស្ត្រដំបូង",
+      "ដំណាក់កាលនេះធានាថាគំនិតផ្តួចផ្តើមរបស់យើងមានការយល់ព្រមជាចាំបាច់ និងការគាំទ្រដើម្បីឆ្ពោះទៅមុខ។",
     "phases.planning.additionalInfo":
       "ព័ត៌មានបន្ថែមសម្រាប់ដំណាក់កាលរៀបចំផែនការ",
     "phases.fundraising.title": "ការប្រមូលមូលនិធិ",
-    "phases.fundraising.description": "ការប្រមូលធនធាន និងការគាំទ្រពីសហគមន៍",
+    "phases.fundraising.description":
+      "ដំណាក់កាលនេះបង្កើតមូលដ្ឋានគ្រឹះសម្រាប់ព្រឹត្តិការណ៍ដាំដំណាំប្រកបដោយការរៀបចំ និងមានឥទ្ធិពលល្អ។",
     "phases.fundraising.additionalInfo": "ព័ត៌មានបន្ថែមសម្រាប់ការប្រមូលនិធិ",
     "phases.implementation.title": "ការអនុវត្ត",
     "phases.implementation.description":
-      "ការអនុវត្តគំនិតផ្តួចផ្តើមដែលបានគ្រោងទុក",
+      "ដំណាក់កាលនេះគឺជាបេះដូងនៃគម្រោងរបស់យើង ដែលការធ្វើផែនការប្រែទៅជាការផ្លាស់ប្តូរពិតប្រាកដ។",
     "phases.implementation.additionalInfo": "ព័ត៌មានបន្ថែមសម្រាប់ការអនុវត្ត",
     "phases.monitoring.title": "ការតាមដានក្រោយការដាំ",
-    "phases.monitoring.description": "ការតាមដានវឌ្ឍនភាព និងការធានាចីរភាព",
+    "phases.monitoring.description":
+      "តាមដានការលូតលាស់ និងសុខភាពរបស់ដើមកោងកាងដែលបានដាំ។បន្តការចូលរួមនៅលើប្រព័ន្ធផ្សព្វផ្សាយសង្គម ធ្វើបច្ចុប្បន្នភាពសហគមន៍របស់យើង។",
     "phases.monitoring.additionalInfo": "ព័ត៌មានបន្ថែមសម្រ",
 
     // Mangroves Section
@@ -202,6 +207,8 @@ const translations = {
     "mangroves.challenges.title": "បញ្ហាប្រឈម និងការអភិរក្ស",
     "mangroves.cta.text":
       "ចូលរួមជាមួយយើងក្នុងការការពារព្រៃកោងកាងនៅកម្ពុជា។ ការគាំទ្ររបស់អ្នកជួយថែរក្សាប្រព័ន្ធអេកូឡូស៊ីដ៏សំខាន់ទាំងនេះសម្រាប់មនុស្សជំនាន់ក្រោយ។",
+    "mangroves.cta.description":
+      "រាល់​ ​​៣០០រៀល គឺជួយការពារ និងស្តារព្រៃកោងកាងក្នុងខេត្តកំពត, កម្ពុជា។",
     "mangroves.cta.button": "គាំទ្រការអភិរក្សព្រៃកោងកាង",
     "mangroves.cta.learnMore.button": "ស្វែងយល់បន្ថែម",
     "mangroves.fact.naturalBarrier.title": "ជញ្ជាំងធម្មជាតិ",
@@ -324,7 +331,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     setLanguage(newLang);
 
     //Upate url without page relaod
-    const newUrl = new URL(window.location.href/*current page url*/); //crate a new URL object
+    const newUrl = new URL(window.location.href /*current page url*/); //crate a new URL object
     newUrl.searchParams.set("lang", newLang);
     window.history.pushState({}, "", newUrl.toString());
   };

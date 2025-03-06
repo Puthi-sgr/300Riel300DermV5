@@ -245,8 +245,7 @@ const Mangroves = () => {
               </h3>
 
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Every 300Riels helps protect and restore mangrove forests in
-                Kampot
+                {t("mangroves.cta.description")}
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

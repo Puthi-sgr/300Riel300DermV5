@@ -24,7 +24,6 @@ const Gallery = () => {
   useEffect(() => {
     const getPosts = async () => {
       const data = await fetchFacebookPosts();
-      console.log(data);
       setFacebookPosts(data);
     };
 

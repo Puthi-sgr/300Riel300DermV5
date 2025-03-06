@@ -32,9 +32,21 @@ const Navigation = () => {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
+    const headerOffset = 64;
+
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
+      setTimeout(() => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+
+        setIsOpen(false);
+      }, 100);
     }
   };
 
@@ -135,7 +147,10 @@ const Navigation = () => {
             <motion.button
               key={item}
               whileHover={{ scale: 1.02, x: 5 }}
-              onClick={() => scrollToSection(item)}
+              onClick={() => {
+                scrollToSection(item);
+                setIsOpen(false);
+              }}
               className="text-earth-700 hover:text-eco-600 block px-3 py-2 rounded-md text-base font-medium capitalize w-full text-left"
             >
               {t(`nav.${item}`)}

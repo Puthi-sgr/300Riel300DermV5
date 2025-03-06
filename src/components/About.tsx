@@ -67,28 +67,32 @@ const About = () => {
 
           <motion.div
             variants={itemVariants}
-            className="bg-white p-8 rounded-lg shadow-lg"
+            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6 border-b pb-4">
               {t("about.objectives")}
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-12">
               {[
                 {
                   icon: Target,
                   text: t("about.objective1"),
                 },
-                { icon: Heart, text: t("about.objective2") },
+                // { icon: Heart, text: t("about.objective2") },
                 { icon: Users, text: t("about.objective3") },
               ].map((item, index) => (
                 <motion.li
                   key={index}
                   variants={itemVariants}
-                  className="flex items-start"
-                  whileHover={{ x: 5 }}
+                  className="flex items-start p-4 rounded-md hover:bg-gray-50 transition-colors duration-200"
+                  whileHover={{ x: 5, scale: 1.02 }}
                 >
-                  <item.icon className="flex-shrink-0 h-6 w-6 text-eco-500 mt-1" />
-                  <span className="ml-3 text-gray-600">{item.text}</span>
+                  <div className="bg-eco-50 p-2 rounded-full">
+                    <item.icon className="flex-shrink-0 h-6 w-6 text-eco-500 mt-1" />
+                  </div>
+                  <span className="ml-4 text-gray-600 text-xl leading-relaxed">
+                    {item.text}
+                  </span>
                 </motion.li>
               ))}
             </ul>

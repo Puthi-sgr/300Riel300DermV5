@@ -216,14 +216,14 @@ const Phases = () => {
                 <p className="text-gray-600 mb-4">{phase.description}</p>
 
                 {/* Placeholder Card */}
-                <motion.div
+                {/* <motion.div
                   whileHover={{ scale: 1.01 }}
                   className="p-4 bg-eco-50 rounded-lg border border-eco-100"
                 >
                   <p className="text-sm text-gray-600">
                     {phase.additionalInfo}
                   </p>
-                </motion.div>
+                </motion.div> */}
               </div>
             </motion.div>
           ))}
