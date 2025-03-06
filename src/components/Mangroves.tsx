@@ -20,6 +20,12 @@ const Mangroves = () => {
     threshold: 0.1,
   });
 
+  const scrollToDonate = () => {
+    const donationSection = document.getElementById("donate");
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const { t } = useLanguage();
 
   const facts = [
@@ -245,6 +251,7 @@ const Mangroves = () => {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <motion.button
+                  onClick={() => scrollToDonate()}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-eco-600 text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-eco-700 transition-all duration-300 group"
@@ -253,14 +260,14 @@ const Mangroves = () => {
                   {t("mangroves.cta.button")}
                 </motion.button>
 
-                <motion.button
+                {/* <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-earth-600 text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-earth-700 transition-all duration-300 group"
                 >
                   <Tree className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
                   {t("mangroves.cta.learnMore.button")}
-                </motion.button>
+                </motion.button> */}
               </div>
             </div>
           </div>

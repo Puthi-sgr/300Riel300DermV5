@@ -30,14 +30,20 @@ const translations = {
     "phases.planning.title": "Planning",
     "phases.planning.description":
       "Initial planning and strategy development phase",
+    "phases.planning.additionalInfo": "Additional info for Planning phase",
     "phases.fundraising.title": "Fundraising",
     "phases.fundraising.description":
       "Gathering resources and community support",
+    "phases.fundraising.additionalInfo":
+      "Additional info for Fundraising phase",
     "phases.implementation.title": "Implementation",
     "phases.implementation.description": "Executing the planned initiatives",
+    "phases.implementation.additionalInfo":
+      "Additional info for Implementation phase",
     "phases.monitoring.title": "Post-planting Monitoring",
     "phases.monitoring.description":
       "Tracking progress and ensuring sustainability",
+    "phases.monitoring.additionalInfo": "Additional info for Monitoring phase",
 
     // Mangroves Section
     "mangroves.title": "Why Mangroves Matter in Cambodia",
@@ -73,10 +79,11 @@ const translations = {
     // About Section
     "about.title": "About Us",
     "about.mission": "Our Mission",
-    "about.missionText": "Not yet know.",
+    "about.missionText":
+      "300 Riel, 300 Derm works to fight deforestation and protect Cambodia’s coastal ecosystems by restoring mangrove forests that are needed in Trampeng Sangkae, Kampot. We seek to empower many young people and local areas through ecological education, the physical replanting of forests, and dedicated work toward long-lasting resource protection. We plan to grow ecological responsibility, strengthen biodiversity of different forms, in addition to improving existing climate resilience. Through planting a certain amount of mangrove saplings, along with building more awareness using digital tools, we will do this. Through collaboration and activism, we intently seek to gradually fashion an even greener and more resilient Cambodia by undergoing true sustainability—one mangrove at a time",
     "about.story": "Our Story",
     "about.storyText":
-      "Our Story: Our group will travel to Kampot Province to plant 300 mangrove trees to help nature and teach young people about the environment. We are going to work with the Trapang Sangkae Community, a local group that protects nature and promotes eco-friendly actions. Mangroves are very important because they provide homes for animals, support ecosystems, and protect coastal areas from damage. By planting the trees, our group wanted to show how valuable mangroves are and encourage young people to care for the environment. This activity is not only about restoring nature but also about inspiring others to take part in similar projects. The project will show how teamwork and small steps can create a big positive impact. Through this effort, our group hopes to spread awareness and build a greener future for everyone.",
+      "Our group will travel to Kampot Province to plant 300 mangrove trees to help nature and teach young people about the environment. We are going to work with the Trapang Sangkae Community, a local group that protects nature and promotes eco-friendly actions. Mangroves are very important because they provide homes for animals, support ecosystems, and protect coastal areas from damage. By planting the trees, our group wanted to show how valuable mangroves are and encourage young people to care for the environment. This activity is not only about restoring nature but also about inspiring others to take part in similar projects. The project will show how teamwork and small steps can create a big positive impact. Through this effort, our group hopes to spread awareness and build a greener future for everyone.",
     "about.objectives": "Our Objectives",
     "about.objective1":
       "To raise awareness of Mangrove's importance to local communities, namely the Trampeng Sangkae community, to Gen Z through a social media campaign such as Facebook and TikTok within June",
@@ -162,7 +169,7 @@ const translations = {
     // Hero
     "hero.title": "300រៀល 300ដើម",
     "hero.subtitle":
-      "ចូលរួមជាមួយគម្រោងរបស់ពួកយើង ដើម្បីការពារបរិស្ថាន🌱 រៀនដាំដើមកោងកាង ដើម្បីអភិរក្សធម្មជាតិ និងការពារបរិស្ថានសម្រាប់អនាគត!នា",
+      "ចូលរួមជាមួយគម្រោងរបស់ពួកយើង ដើម្បីការពារបរិស្ថាន🌱 រៀនដាំដើមកោងកាង ដើម្បីអភិរក្សធម្មជាតិ និងការពារបរិស្ថានសម្រាប់អនាគត!",
     "hero.donate": "បរិច្ចាគឥឡូវនេះ",
     "hero.follow": "តាមដានយើង",
 
@@ -172,13 +179,18 @@ const translations = {
     "phases.planning.title": "ការរៀបចំផែនការ",
     "phases.planning.description":
       "ដំណាក់កាលនៃការរៀបចំផែនការ និងការអភិវឌ្ឍយុទ្ធសាស្ត្រដំបូង",
+    "phases.planning.additionalInfo":
+      "ព័ត៌មានបន្ថែមសម្រាប់ដំណាក់កាលរៀបចំផែនការ",
     "phases.fundraising.title": "ការប្រមូលមូលនិធិ",
     "phases.fundraising.description": "ការប្រមូលធនធាន និងការគាំទ្រពីសហគមន៍",
+    "phases.fundraising.additionalInfo": "ព័ត៌មានបន្ថែមសម្រាប់ការប្រមូលនិធិ",
     "phases.implementation.title": "ការអនុវត្ត",
     "phases.implementation.description":
       "ការអនុវត្តគំនិតផ្តួចផ្តើមដែលបានគ្រោងទុក",
+    "phases.implementation.additionalInfo": "ព័ត៌មានបន្ថែមសម្រាប់ការអនុវត្ត",
     "phases.monitoring.title": "ការតាមដានក្រោយការដាំ",
     "phases.monitoring.description": "ការតាមដានវឌ្ឍនភាព និងការធានាចីរភាព",
+    "phases.monitoring.additionalInfo": "ព័ត៌មានបន្ថែមសម្រ",
 
     // Mangroves Section
     "mangroves.title": "ហេតុអ្វីបានជាដើមកោងកាងមានសារៈសំខាន់នៅកម្ពុជា",
@@ -214,7 +226,8 @@ const translations = {
     // About Section
     "about.title": "អំពីយើង",
     "about.mission": "បេសកកម្មរបស់យើង",
-    "about.missionText": "អត់ដឹង",
+    "about.missionText":
+      "300រៀល 300ដើម ធ្វើឡើងដើម្បីការពារប្រព័ន្ធអេកូឡូស៊ីឆ្នេរសមុទ្រកម្ពុជាដោយការស្តារព្រៃកោងកាងដែលត្រូវការនៅតំបន់ត្រពាំងសង្កែ ខេត្តកំពត។ យើងព្យាយាមលើកទឹកចិត្តយុវជន និងតំបន់មូលដ្ឋានជាច្រើនតាមរយៈការអប់រំអេកូឡូស៊ី ការដាំព្រៃឈើឡើងវិញ និងការពារធនធានជីវចម្រុះ។ បន្ថែមពីលើការកែលម្អភាពធន់នឹងអាកាសធាតុដែលមានស្រាប់ តាមរយៈការដាំកូនឈើកោងកាងមួយចំនួន រួមជាមួយនឹងការពង្រឹងការយល់ដឹងដោយប្រើឧបករណ៍ឌីជីថល យើងនឹងធ្វើបែបនេះ តាមរយៈកិច្ចសហការ និងសកម្មភាពមួយចំនួន ពួកយើងព្យាយាមនាំយុវជនប្រទេសកម្ពុជាទៅកាន់អនាគតដែលកាន់តែបៃតង និងធន់ជាងមុន។",
     "about.story": "រឿងរ៉ាវរបស់យើង",
     "about.storyText":
       "ក្រុមរបស់យើងនឹងធ្វើដំណើរទៅកាន់ខេត្តកំពត ដើម្បីដាំដើមកោងកាងចំនួន ៣០០ដើម ដើម្បីជួយធម្មជាតិ និងបង្រៀនយុវជនអំពីបរិស្ថាន។ យើងនឹងធ្វើការជាមួយសហគមន៍ត្រពាំងសង្កែ ដែលជាក្រុមក្នុងស្រុកដែលការពារធម្មជាតិ​និងលើកកម្ពស់សកម្មភាពដែលមិនប៉ះពាល់ដល់បរិស្ថាន។ ព្រៃកោងកាងមានសារៈសំខាន់ណាស់ ព្រោះវាផ្តល់ផ្ទះសម្រាប់សត្វ គាំទ្រដល់ប្រព័ន្ធអេកូឡូស៊ី និងការពារតំបន់ឆ្នេរពីការខូចខាត។ តាមរយៈ​ការ​ដាំ​ដើម​ឈើ ក្រុម​យើង​ចង់​បង្ហាញ​ថា​ដើម​កោងកាង​មាន​តម្លៃ​ប៉ុណ្ណា និង​លើក​ទឹកចិត្ត​យុវជន​ក្នុង​ការ​ថែរក្សា​បរិស្ថាន។ សកម្មភាពនេះមិនត្រឹមតែជាការស្ដារឡើងវិញនូវធម្មជាតិប៉ុណ្ណោះទេ ថែមទាំងជាការលើកទឹកចិត្តអ្នកដទៃឱ្យចូលរួមក្នុងគម្រោងស្រដៀងគ្នានេះផងដែរ។ គម្រោងនេះនឹងបង្ហាញពីរបៀបដែលការធ្វើការងារជាក្រុម និងជំហានតូចៗអាចបង្កើតផលវិជ្ជមានដ៏ធំមួយ។ តាមរយៈកិច្ចខិតខំប្រឹងប្រែងនេះ ក្រុមរបស់យើងសង្ឃឹមថានឹងផ្សព្វផ្សាយការយល់ដឹង និងកសាងអនាគតដ៏បៃតងសម្រាប់អ្នករាល់គ្នា។",
@@ -270,7 +283,7 @@ const translations = {
     // Footer Section
     "footer.about": "អំពីយើង",
     "footer.about.subtitle":
-      "ពួកយើងជានិសិ្សតឆ្នាំទី៤ ដែលស្រលាញធម្មជាតិនិងជំរុញនិស្សិតជំនាន់​ក្រោយបង្កើតកម្រោងដដលផ្ដល់ប្រយោជន៍ដល់សង្គម",
+      "ពួកយើងជានិសិ្សតឆ្នាំទី៤ ដែលស្រលាញ់​ធម្មជាតិនិងជំរុញនិស្សិតជំនាន់​ក្រោយបង្កើតកម្រោងដដលផ្ដល់ប្រយោជន៍ដល់សង្គម",
     "footer.gallery": "វិចិត្រសាល",
     "footer.donate": "បរិច្ចាគ",
     "footer.contact": "ទំនាក់ទំនង",
@@ -300,10 +313,20 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const getInitialLanguage = (): Language => {
+    const params = new URLSearchParams(window.location.search);
+    return (params.get("lang") as Language) || "km"; //grab the lang param from the url
+  };
   const [language, setLanguage] = useState<Language>("km");
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "en" ? "km" : "en"));
+    const newLang = language === "en" ? "km" : "en";
+    setLanguage(newLang);
+
+    //Upate url without page relaod
+    const newUrl = new URL(window.location.href/*current page url*/); //crate a new URL object
+    newUrl.searchParams.set("lang", newLang);
+    window.history.pushState({}, "", newUrl.toString());
   };
 
   const t = (key: string): string => {

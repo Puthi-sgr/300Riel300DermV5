@@ -19,6 +19,7 @@ const Phases = () => {
       icon: ClipboardList,
       description: t("phases.planning.description"),
       color: "from-eco-400 to-eco-600",
+      additionalInfo: t("phases.planning.additionalInfo"),
     },
     {
       number: "02",
@@ -26,6 +27,7 @@ const Phases = () => {
       icon: Coins,
       description: t("phases.fundraising.description"),
       color: "from-eco-500 to-eco-700",
+      additionalInfo: t("phases.fundraising.additionalInfo"),
     },
     {
       number: "03",
@@ -33,6 +35,7 @@ const Phases = () => {
       icon: Sprout,
       description: t("phases.implementation.description"),
       color: "from-eco-600 to-eco-800",
+      additionalInfo: t("phases.implementation.additionalInfo"),
     },
     {
       number: "04",
@@ -40,6 +43,7 @@ const Phases = () => {
       icon: LineChart,
       description: t("phases.monitoring.description"),
       color: "from-eco-700 to-eco-900",
+      additionalInfo: t("phases.monitoring.additionalInfo"),
     },
   ];
 
@@ -166,15 +170,14 @@ const Phases = () => {
                   </p>
 
                   {/* Placeholder Card */}
-                  <motion.div
+                  {/* <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="mt-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-eco-100"
                   >
                     <p className="text-sm text-gray-600">
-                      Additional information about {phase.title.toLowerCase()}{" "}
-                      phase will be added here.
+                      {phase.additionalInfo}
                     </p>
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
               </motion.div>
             ))}
@@ -218,8 +221,7 @@ const Phases = () => {
                   className="p-4 bg-eco-50 rounded-lg border border-eco-100"
                 >
                   <p className="text-sm text-gray-600">
-                    Additional information about {phase.title.toLowerCase()}{" "}
-                    phase will be added here.
+                    {phase.additionalInfo}
                   </p>
                 </motion.div>
               </div>

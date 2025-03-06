@@ -22,37 +22,37 @@ const Sponsors = () => {
 
   const { t } = useLanguage();
 
-  const partners = [
-    {
-      name: "N/A1",
-      icon: TreePine,
-      description: "Ot mean2",
-    },
-    {
-      name: "N/A2",
-      icon: Leaf,
-      description: "Ot mean2",
-    },
-    {
-      name: "N/A3",
-      icon: Trees,
-      description: "Ot mean3",
-    },
-    {
-      name: "N/A4",
-      icon: Plant2,
-      description: "Ot mean4",
-    },
-    {
-      name: "N/A5",
-      icon: Flower2,
-      description: "Ot mean5",
-    },
-    {
-      name: "N/A6",
-      icon: Sprout,
-      description: "Ot mean6",
-    },
+  const partners: any = [
+    // {
+    //   name: "N/A1",
+    //   icon: TreePine,
+    //   description: "Ot mean2",
+    // },
+    // {
+    //   name: "N/A2",
+    //   icon: Leaf,
+    //   description: "Ot mean2",
+    // },
+    // {
+    //   name: "N/A3",
+    //   icon: Trees,
+    //   description: "Ot mean3",
+    // },
+    // {
+    //   name: "N/A4",
+    //   icon: Plant2,
+    //   description: "Ot mean4",
+    // },
+    // {
+    //   name: "N/A5",
+    //   icon: Flower2,
+    //   description: "Ot mean5",
+    // },
+    // {
+    //   name: "N/A6",
+    //   icon: Sprout,
+    //   description: "Ot mean6",
+    // },
   ];
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -113,7 +113,7 @@ const Sponsors = () => {
         <motion.div variants={containerVariants} className="relative mb-16">
           <div className="overflow-x-auto pb-6 -mx-4 px-4 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex flex-nowrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 min-w-max sm:min-w-0">
-              {partners.map((partner) => (
+              {partners.map((partner: any) => (
                 <motion.div
                   key={partner.name}
                   variants={itemVariants}

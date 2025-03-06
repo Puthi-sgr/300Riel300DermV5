@@ -70,7 +70,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-6 py-3 bg-earth-600 hover:bg-earth-700 text-white font-semibold rounded-lg"
+            className="inline-flex items-center px-6 py-3 bg-[#1877F2] hover:bg-[#1e4d8a] text-white font-semibold rounded-lg"
           >
             <Facebook className="mr-2" size={20} />
             {t("hero.follow")}

@@ -81,7 +81,7 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-4 text-white">
               {t("footer.mission")}
             </h3>
-            <p className="text-eco-200 mb-4">{t("footer.mission.subtitle")}</p>
+            <p className="text-eco-200 mb-4">{t("about.missionText")}</p>
           </div>
         </div>
 
