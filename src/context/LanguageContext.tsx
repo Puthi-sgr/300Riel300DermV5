@@ -131,7 +131,7 @@ const translations = {
     "donate.mobile": "Mobile Payment",
     "donate.credit": "Credit/Debit Card",
     "donate.bank": "Bank Transfer",
-    "donate.complete": "Complete Donation",
+    "donate.link": "Account link",
 
     // Footer Section
     "footer.about": "About Us",
@@ -285,7 +285,7 @@ const translations = {
     "donate.mobile": "ទូទាត់តាមទូរស័ព្ទ",
     "donate.credit": "កាតឥណទាន/ឥណពន្ធ",
     "donate.bank": "ការផ្ទេរប្រាក់តាមធនាគារ",
-    "donate.complete": "បញ្ចប់ការបរិច្ចាគ",
+    "donate.link": "តំណភ្ជាប់ទូទាត់",
 
     // Footer Section
     "footer.about": "អំពីយើង",

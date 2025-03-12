@@ -3,7 +3,7 @@ import { Heart, QrCode, Smartphone, CreditCard, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
-import ABA from "../Assets/Aba.jpg";
+import ABA from "../Assets/AbaNita.jpg";
 
 const Donate = () => {
   const [ref, inView] = useInView({
@@ -12,6 +12,10 @@ const Donate = () => {
   });
 
   const { t } = useLanguage();
+
+  const handleDonationLink = () => {
+    window.open("https://pay.ababank.com/77Lo2oCdT26yWVW98", "_blank");
+  };
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -139,7 +143,7 @@ const Donate = () => {
                   <img
                     src={ABA}
                     alt="ABA QR Code"
-                    className="w-auto h-auto mb-2 rounded-lg"
+                    className="w-auto h-auto mb-2 rounded-[32px]"
                   />
 
                   <p className="text-sm text-gray-500 text-center">
@@ -151,13 +155,13 @@ const Donate = () => {
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Account Name:</span>
                     <span className="font-medium text-gray-900">
-                      300Riel 300Derm
+                      Nita SOKHA
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Account Number:</span>
                     <span className="font-medium text-gray-900">
-                      XXXX-XXXX-XXXX
+                      009 586 614
                     </span>
                   </div>
                 </div>
@@ -193,10 +197,11 @@ const Donate = () => {
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={handleDonationLink}
               className="w-full mt-8 flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-eco-600 hover:bg-eco-700"
             >
               <Heart className="mr-2" size={20} />
-              {t("donate.complete")}
+              {t("donate.link")}
             </motion.button>
           </motion.div>
         </div>
