@@ -25,6 +25,14 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center"
     >
+      <div style={{ display: "none" }} aria-hidden="true">
+        <h1>Cambodia mangrove tree planting eco restoration project</h1>
+        <h2>environmental conservation coastal reforestation climate action</h2>
+        <h3>sustainable development community forestry biodiversity protection</h3>
+        <h4>carbon sequestration habitat revival green initiative Southeast Asia</h4>
+        <h5>renewable resources blue carbon mangrove nursery ocean safety</h5>
+        <h6>eco education nature preservation ecosystem regeneration Cambodia</h6>
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,8 +53,12 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4"
+          aria-label="Plant mangrove trees in Cambodia to restore coastal ecosystems and fight climate change"
         >
           {t("hero.title")}
+          <span className="sr-only">
+            Cambodia mangrove tree planting environmental conservation eco project climate resilience blue carbon biodiversity restoration
+          </span>
         </motion.h1>
 
         <motion.p

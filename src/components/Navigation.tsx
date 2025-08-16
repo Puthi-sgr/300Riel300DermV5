@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
@@ -6,7 +6,6 @@ import logo from "../assets/logo2.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -21,14 +20,6 @@ const Navigation = () => {
     [0, 100],
     ["0 0 0 transparent", "0 4px 6px -1px rgba(0, 0, 0, 0.1)"]
   );
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -53,7 +44,7 @@ const Navigation = () => {
   const navItems = ["home", "about", "gallery", "donate", "contact"];
 
   return (
-    <motion.nav
+    <motion.header
       style={{
         height: headerHeight,
         backgroundColor: headerBackground,
@@ -61,7 +52,10 @@ const Navigation = () => {
       }}
       className="fixed w-full z-50 transition-colors"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <nav
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full"
+        aria-label="Main navigation"
+      >
         <div className="flex items-center justify-between h-full">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -131,7 +125,7 @@ const Navigation = () => {
             </motion.button>
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Navigation */}
       <motion.div
@@ -158,7 +152,7 @@ const Navigation = () => {
           ))}
         </div>
       </motion.div>
-    </motion.nav>
+    </motion.header>
   );
 };
 
