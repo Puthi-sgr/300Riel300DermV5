@@ -10,9 +10,6 @@ export const emailService = async (
   setIsSubmitting: (isSubmitting: boolean) => void
 ) => {
   setIsSubmitting(true);
-  console.log("EmailPublicKey", EmailPublicKey);
-  console.log("EmailServiceId", EmailServiceId);
-  console.log("EmailTemplateId", EmailTemplateId);
   try {
     await emailjs.send(
       EmailServiceId,

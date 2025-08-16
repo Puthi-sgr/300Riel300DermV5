@@ -16,10 +16,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: TikTok, href: "https://tiktok.com", label: "TikTok" },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/profile.php?id=100091407241732",
+      label: "Facebook",
+    },
   ];
 
   const quickLinks = [

@@ -13,6 +13,8 @@ import {
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
+import partner1 from "../Assets/partnere1.jpg";
+import partner2 from "../Assets/GI_Logo.png";
 
 const Sponsors = () => {
   const [ref, inView] = useInView({
@@ -23,36 +25,19 @@ const Sponsors = () => {
   const { t } = useLanguage();
 
   const partners: any = [
-    // {
-    //   name: "N/A1",
-    //   icon: TreePine,
-    //   description: "Ot mean2",
-    // },
-    // {
-    //   name: "N/A2",
-    //   icon: Leaf,
-    //   description: "Ot mean2",
-    // },
-    // {
-    //   name: "N/A3",
-    //   icon: Trees,
-    //   description: "Ot mean3",
-    // },
-    // {
-    //   name: "N/A4",
-    //   icon: Plant2,
-    //   description: "Ot mean4",
-    // },
-    // {
-    //   name: "N/A5",
-    //   icon: Flower2,
-    //   description: "Ot mean5",
-    // },
-    // {
-    //   name: "N/A6",
-    //   icon: Sprout,
-    //   description: "Ot mean6",
-    // },
+    {
+      name: "Giant Ibis Transport",
+      icon: partner2,
+      description: "",
+      website: "https://www.giantibis.com/",
+    },
+    {
+      name: "De KT Villa",
+      icon: partner1,
+      description: "",
+      website:
+        "https://kampot-cambodia.com/about-kampot/kampot-hotels/de-kt-villa/",
+    },
   ];
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -112,29 +97,37 @@ const Sponsors = () => {
         {/* Partners Grid - Horizontal Scrolling on Mobile */}
         <motion.div variants={containerVariants} className="relative mb-16">
           <div className="overflow-x-auto pb-6 -mx-4 px-4 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            <div className="flex flex-nowrap sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 min-w-max sm:min-w-0">
+            <div className="flex justify-center flex-nowrap sm:flex md:flex gap-6 min-w-max sm:min-w-0">
               {partners.map((partner: any) => (
                 <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: false }}
                   key={partner.name}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02 }}
-                  className="w-72 sm:w-auto flex-shrink-0"
+                  className="w-68 sm:w-auto flex-shrink-0"
                 >
-                  <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-eco-500 to-eco-600 p-3 shadow-lg">
-                        <partner.icon className="w-full h-full text-white" />
+                  <a
+                    href={partner.website}
+                    target="_blank"
+                    className="flex justify-center align-middle rounded-xl p-6 transition-shadow duration-300 border border-gray-100 h-full"
+                  >
+                    <div className="flex flex-col items-center gap-y-3">
+                      <div className="h-24 md:h-32 rounded-xl bg-gradient-to-br shadow-lg items-center flex justify-center mb-3">
+                        <img
+                          src={partner.icon}
+                          alt={partner.name}
+                          className="h-full w-auto object-contain rounded-xl"
+                        />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-900">
+                        <h3 className="text-lg font-semibold text-gray-900">
                           {partner.name}
-                        </h4>
-                        <p className="text-sm text-gray-600">
-                          {partner.description}
-                        </p>
+                        </h3>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </motion.div>
               ))}
             </div>
