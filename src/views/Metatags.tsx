@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "../context/LanguageContext";
+import logoSlogan from "../Assets/logoxSlogan.jpg";
 
 const MetaTags = () => {
   const { language } = useLanguage();
@@ -51,7 +52,6 @@ const MetaTags = () => {
       <meta property="og:url" content="https://300riel300derm.com/" />
       <meta property="og:title" content={title[language]} />
       <meta property="og:description" content={description[language]} />
-<<<<<<< HEAD
       <meta
         property="og:image:secure_url"
         content="https://300riel300derm.com/social-preview.jpg"
@@ -63,15 +63,6 @@ const MetaTags = () => {
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-=======
-      <meta property="og:image" content={logoSlogan} />
-      <meta property="og:url" content="https://300riel300derm.com/" />
-      <meta property="og:site_name" content="300Riel 300Derm" />
-      <meta
-        property="og:locale"
-        content={language === "en" ? "en_US" : "km_KH"}
-      />
->>>>>>> 426e63c73db62d26a259d70c16578654f6ab6ef7
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -79,7 +70,6 @@ const MetaTags = () => {
       <meta name="twitter:creator" content="@300Riel300Derm" />
       <meta name="twitter:title" content={title[language]} />
       <meta name="twitter:description" content={description[language]} />
-<<<<<<< HEAD
       <meta
         name="twitter:image"
         content="https://300riel300derm.com/social-preview.jpg"
@@ -88,10 +78,6 @@ const MetaTags = () => {
         name="twitter:image:alt"
         content="300Riel 300Derm Mangrove Planting Initiative"
       />
-=======
-      <meta name="twitter:image" content={logoSlogan} />
-      <meta name="twitter:site" content="@300Riel300Derm" />
->>>>>>> 426e63c73db62d26a259d70c16578654f6ab6ef7
 
       {/* Language alternates */}
       <link

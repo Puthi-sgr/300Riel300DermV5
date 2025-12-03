@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
 import { emailService } from "../services/EmailService";
-import { Email } from "git-filter-repo";
-import { form, p } from "framer-motion/client";
 import { FormData } from "../dto/Email.dto";
 
 const Contact = () => {
@@ -15,6 +13,13 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -33,10 +38,20 @@ const Contact = () => {
     ) {
       alert("Please fill in all fields");
     } else {
-      await emailService(formData, setIsSubmitting);
+      try {
+        setIsSubmitting(true);
+        await emailService(formData);
+        if (isMountedRef.current) {
+          setFormData({ name: "", email: "", message: "" });
+        }
+      } catch (error) {
+        // alerts handled inside emailService
+      } finally {
+        if (isMountedRef.current) {
+          setIsSubmitting(false);
+        }
+      }
     }
-
-    setFormData({ name: "", email: "", message: "" });
   };
   const [ref, inView] = useInView({
     triggerOnce: true,

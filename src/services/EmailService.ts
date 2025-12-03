@@ -5,11 +5,7 @@ const EmailPublicKey = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 const EmailServiceId = import.meta.env.VITE_EMAIL_SERVICE_ID;
 const EmailTemplateId = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
 
-export const emailService = async (
-  { email, name, message }: FormData,
-  setIsSubmitting: (isSubmitting: boolean) => void
-) => {
-  setIsSubmitting(true);
+export const emailService = async ({ email, name, message }: FormData) => {
   try {
     await emailjs.send(
       EmailServiceId,
@@ -26,7 +22,6 @@ export const emailService = async (
   } catch (error) {
     alert("Failed to send message. Please try again.");
     console.error("Error sending email:", error);
-  } finally {
-    setIsSubmitting(false);
+    throw error;
   }
 };

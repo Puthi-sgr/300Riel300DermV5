@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
@@ -6,6 +7,8 @@ import logo from "../assets/logo2.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const { scrollY } = useScroll();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -22,6 +25,12 @@ const Navigation = () => {
   );
 
   const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== "/") {
+      navigate(`/#${sectionId}`);
+      setIsOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     const headerOffset = 64;
 

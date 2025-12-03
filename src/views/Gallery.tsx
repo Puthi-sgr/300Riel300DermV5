@@ -22,12 +22,18 @@ const Gallery = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const getPosts = async () => {
-      const data = await fetchFacebookPosts();
-      setFacebookPosts(data);
+      const data = await fetchFacebookPosts(controller.signal);
+      if (!controller.signal.aborted) {
+        setFacebookPosts(data);
+      }
     };
 
     getPosts();
+
+    return () => controller.abort();
   }, []);
 
   const formatDate = (dateString: string) => {

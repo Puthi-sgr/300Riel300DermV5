@@ -21,8 +21,51 @@ const translations = {
     "hero.title": "300Riel 300Derm",
     "hero.subtitle":
       "Be a part of our project to protect the environment by learning and planting mangrove trees.",
-    "hero.donate": "Donate Now",
+    "hero.viewProjects": "View our projects",
     "hero.follow": "Follow Us",
+
+    // Project shared
+    "project.status.completed": "បានបញ្ចប់",
+    "project.status.upcoming": "កំពុងរៀបចំ",
+    "project.status.inProgress": "កំពុងអនុវត្ត",
+    "project.overview": "ទិដ្ឋភាពទូទៅ",
+    "project.partners": "ដៃគូ",
+    "project.viewReport": "មើលរបាយការណ៍",
+    "project.backHome": "ត្រលប់ទៅទំព័រដើម",
+    "project.stats.seedlingsPlanted": "ដាំសំណាបកោងកាង",
+    "project.stats.volunteers": "អ្នកស្ម័គ្រចិត្តនិស្សិត",
+    "project.stats.reach": "មនុស្សឈានដល់តាមអនឡាញ",
+    "project.stats.co2Tons": "CO₂ ប៉ាន់ស្មានក្នុងរយៈពេល ២០ ឆ្នាំ",
+    "project.stats.interactions": "ការចូលរួម",
+    "project.highlights.title": "Project Highlights",
+    "project.highlights.tagline": "Restoring Mangroves, One 300 Riel Donation at a Time",
+    "project.highlights.body1":
+      "In June 2025, our student-led team carried out a mangrove restoration mission in Tapaeng Sangkae, Kampot. With community support and micro-donations, we successfully planted 300 Rhizophora seedlings, strengthened local fisheries habitat, and helped stabilize an eroding coastline.",
+    "project.highlights.body2":
+      "Our fieldwork empowered young Cambodians to practise stakeholder negotiation, safety management, GPS mapping, and citizen-science documentation — with 42% reporting increased confidence to lead eco-projects.",
+    "project.highlights.galleryPlaceholder": "Project gallery placeholder",
+    "project.gallery.title": "Planting Gallery",
+    "project.gallery.description": "Preview of our planting day. Replace these placeholders with your own shots.",
+    "project.gallery.placeholder": "Gallery placeholder",
+    "campaign.title": "Digital Awareness Campaign",
+    "campaign.subtitle": "Expanding impact on Facebook and TikTok",
+    "campaign.totalViews": "Total content views",
+    "campaign.uniqueReach": "Unique accounts reached",
+    "campaign.interactions": "Interactions (likes, comments, shares)",
+    "campaign.nonFollowerShare": "Views from non-followers",
+    "campaign.newFollowers": "New followers gained",
+    "project.sponsors.title": "Our 2025 Sponsors & Partners",
+    "project.sponsors.subtitle": "We are grateful to the partners who made this mission possible",
+    "project.sponsors.bus": "Donated a private bus (≈ USD 350)",
+    "project.sponsors.meals": "Provided meals & accommodation (≈ USD 260)",
+    "project.sponsors.guidance": "Supported with seedlings & field guidance",
+
+    // Impact strip
+    "impact.title": "Impact at a glance",
+    "impact.seedlings": "mangrove seedlings planted",
+    "impact.volunteers": "student volunteers",
+    "impact.reach": "people reached online",
+    "impact.co2": "t CO2 projected over 20 years",
 
     // Phases
     "phases.title": "Project Phases",
@@ -83,17 +126,17 @@ const translations = {
     "about.title": "About Us",
     "about.mission": "Our Mission",
     "about.missionText":
-      "300 Riel, 300 Derm works to fight deforestation and protect Cambodia’s coastal ecosystems by restoring mangrove forests that are needed in Trampeng Sangkae, Kampot. We seek to empower many young people and local areas through ecological education, the physical replanting of forests, and dedicated work toward long-lasting resource protection. We plan to grow ecological responsibility, strengthen biodiversity of different forms, in addition to improving existing climate resilience. Through planting a certain amount of mangrove saplings, along with building more awareness using digital tools, we will do this. Through collaboration and activism, we intently seek to gradually fashion an even greener and more resilient Cambodia by undergoing true sustainability—one mangrove at a time",
+      "300 Riel, 300 Derm is a youth-led movement protecting Cambodia’s coastlines by restoring mangrove ecosystems wherever they are needed. We pair environmental education, community volunteering, and long-term stewardship so blue-carbon habitats stay healthy. By nurturing young leaders and amplifying local voices, we turn small daily actions into lasting climate resilience—one mangrove at a time.",
     "about.story": "Our Story",
     "about.storyText":
-      "Our group will travel to Kampot Province to plant 300 mangrove trees to help nature and teach young people about the environment. We are going to work with the Trapang Sangkae Community, a local group that protects nature and promotes eco-friendly actions. Mangroves are very important because they provide homes for animals, support ecosystems, and protect coastal areas from damage. By planting the trees, our group wanted to show how valuable mangroves are and encourage young people to care for the environment. This activity is not only about restoring nature but also about inspiring others to take part in similar projects. The project will show how teamwork and small steps can create a big positive impact. Through this effort, our group hopes to spread awareness and build a greener future for everyone.",
+      "We began as classmates who wanted to show that small groups can drive real ecological change. Today we research coastal challenges, organize awareness events, and coordinate planting trips with schools and community partners across Cambodia. Every workshop, clean-up, and seedling reminds us that collective care can rebuild healthier coasts for everyone.",
     "about.objectives": "Our Objectives",
     "about.objective1":
-      "To raise awareness of Mangrove's importance to local communities, namely the Trampeng Sangkae community, to Gen Z through a social media campaign such as Facebook and TikTok within June",
+      "Grow nationwide awareness about mangrove benefits through storytelling, social media, and school outreach.",
     "about.objective2":
-      "To raise awareness of Mangrove's importance to local communities, namely the Trampang Sangkae community, to 50 IFL students through a workshop with invited experts in May",
+      "Equip students and community champions with practical workshops, toolkits, and mentorship so they can lead restoration activities.",
     "about.objective3":
-      "To collaborate and plant 300 mangrove saplings at Trampang Sangkae community to increase local biodiversity in Kampot province to enhance local biodiversity in June",
+      "Plant and care for new mangrove seedlings with local partners, then monitor their growth to expand living coastlines.",
     // Contact Section
     "contact.title": "Get in Touch",
     "contact.subtitle":
@@ -173,8 +216,51 @@ const translations = {
     "hero.title": "300រៀល 300ដើម",
     "hero.subtitle":
       "ចូលរួមជាមួយគម្រោងរបស់ពួកយើង ដើម្បីការពារបរិស្ថាន🌱 រៀនដាំដើមកោងកាង ដើម្បីអភិរក្សធម្មជាតិ និងការពារបរិស្ថានសម្រាប់អនាគត!",
-    "hero.donate": "បរិច្ចាគឥឡូវនេះ",
+    "hero.viewProjects": "មើលគម្រោងរបស់យើង",
     "hero.follow": "តាមដានយើង",
+
+    // Project shared
+    "project.status.completed": "Completed",
+    "project.status.upcoming": "Planned",
+    "project.status.inProgress": "In Progress",
+    "project.overview": "Overview",
+    "project.partners": "Partners",
+    "project.viewReport": "View report",
+    "project.backHome": "Back to home",
+    "project.stats.seedlingsPlanted": "Seedlings planted",
+    "project.stats.volunteers": "Student volunteers",
+    "project.stats.reach": "People reached online",
+    "project.stats.co2Tons": "CO₂ projected over 20 years",
+    "project.stats.interactions": "Engagements",
+    "project.highlights.title": "សេចក្ដីលេចធ្លោគម្រោង",
+    "project.highlights.tagline": "ស្ដារ​ដើមកោងកាង ជាដំណាក់កាល ម្ចាស់ជំនួយ 300 រៀល ម្តងៗ",
+    "project.highlights.body1":
+      "ខែមិថុនា ២០២៥ ក្រុមនិស្សិតបានធ្វើបេសកកម្មស្ដារដើមកោងកាងនៅតាបែងសង្គែ ខេត្តកំពត។ ដោយការគាំទ្រពីសហគមន៍ និងការបរិច្ចាគតូចៗ យើងបានដាំសំណាប Rhizophora ចំនួន 300 ដើម បង្កើនទីជម្រកសត្វទឹក និងជួយធ្វើឱ្យឆ្នេរខូចខាតមានស្ថេរភាពឡើងវិញ។",
+    "project.highlights.body2":
+      "ការងារក្រៅវាលបានបង្កើនសមត្ថភាពយុវជនខ្មែរ ក្នុងការចរចាដៃគូ ការគ្រប់គ្រងសុវត្ថិភាព ការកំណត់ទីតាំងដោយ GPS និងការប្រមូលទិន្នន័យវិទ្យាសាស្ត្រស៊ីវិល សរុប ៤២% មានទំនុកចិត្តកាន់តែខ្ពស់ក្នុងការដឹកនាំគម្រោងបរិស្ថាន។",
+    "project.highlights.galleryPlaceholder": "កន្លែងបង្ហាញរូបភាពគម្រោង",
+    "project.gallery.title": "វិចិត្រសាលដាំដើមកោងកាង",
+    "project.gallery.description": "មើលខ្លឹមសារថ្ងៃដាំដើម ឬជំនួសជារូបភាពផ្ទាល់ខ្លួនរបស់អ្នក។",
+    "project.gallery.placeholder": "កន្លែងបំពេញវិចិត្រសាល",
+    "campaign.title": "យុទ្ធនាការយល់ដឹងឌីជីថល",
+    "campaign.subtitle": "ពង្រីកឥទ្ធិពលតាម Facebook និង TikTok",
+    "campaign.totalViews": "ចំនួនមើលមាតិកាសរុប",
+    "campaign.uniqueReach": "គណនីដើមដែលឈានដល់",
+    "campaign.interactions": "អន្តរកម្ម (ចូលចិត្ត មតិយោបល់ ចែករំលែក)",
+    "campaign.nonFollowerShare": "ចំនួនមើលពីអ្នកមិនតាមដាន",
+    "campaign.newFollowers": "អ្នកតាមដានថ្មី",
+    "project.sponsors.title": "ដៃគូ និងអ្នកឧបត្ថម្ភ ឆ្នាំ 2025",
+    "project.sponsors.subtitle": "សូមអរគុណដល់ដៃគូដែលបានធ្វើឲ្យបេសកកម្មនេះអាចប្រព្រឹត្តបាន",
+    "project.sponsors.bus": "បរិច្ចាគរថយន្តក្រុមហ៊ុន (ប្រហាក់ប្រហែល USD 350)",
+    "project.sponsors.meals": "ផ្ដល់អាហារ និងកន្លែងស្នាក់នៅ (ប្រហាក់ប្រហែល USD 260)",
+    "project.sponsors.guidance": "គាំទ្រសំណាប និងផ្ដល់ការណែនាំកន្លែងដាំ",
+
+    // Impact strip
+    "impact.title": "Impact at a glance",
+    "impact.seedlings": "mangrove seedlings planted",
+    "impact.volunteers": "student volunteers",
+    "impact.reach": "people reached online",
+    "impact.co2": "t CO2 projected over 20 years",
 
     // Phases
     "phases.title": "ដំណាក់កាលគម្រោង",
@@ -234,18 +320,18 @@ const translations = {
     "about.title": "អំពីយើង",
     "about.mission": "បេសកកម្មរបស់យើង",
     "about.missionText":
-      "300រៀល 300ដើម ធ្វើឡើងដើម្បីការពារប្រព័ន្ធអេកូឡូស៊ីឆ្នេរសមុទ្រកម្ពុជាដោយការស្តារព្រៃកោងកាងដែលត្រូវការនៅតំបន់ត្រពាំងសង្កែ ខេត្តកំពត។ យើងព្យាយាមលើកទឹកចិត្តយុវជន និងតំបន់មូលដ្ឋានជាច្រើនតាមរយៈការអប់រំអេកូឡូស៊ី ការដាំព្រៃឈើឡើងវិញ និងការពារធនធានជីវចម្រុះ។ បន្ថែមពីលើការកែលម្អភាពធន់នឹងអាកាសធាតុដែលមានស្រាប់ តាមរយៈការដាំកូនឈើកោងកាងមួយចំនួន រួមជាមួយនឹងការពង្រឹងការយល់ដឹងដោយប្រើឧបករណ៍ឌីជីថល យើងនឹងធ្វើបែបនេះ តាមរយៈកិច្ចសហការ និងសកម្មភាពមួយចំនួន ពួកយើងព្យាយាមនាំយុវជនប្រទេសកម្ពុជាទៅកាន់អនាគតដែលកាន់តែបៃតង និងធន់ជាងមុន។",
+      "៣០០រៀល ៣០០ដើម គឺជាចលនាដឹកនាំដោយយុវជនក្នុងការការពារឆ្នេរកម្ពុជា តាមរយៈការស្តារព្រៃកោងកាងគ្រប់តំបន់ដែលត្រូវការ។ យើងរួមបញ្ចូលការអប់រំបរិស្ថាន ស្ម័គ្រចិត្តសហគមន៍ និងការថែរក្សារយៈពេលវែង ដើម្បីអោយប្រព័ន្ធ blue-carbon រស់រវើក។ ដោយដាំបណ្តុះមេដឹកនាំវ័យក្មេង និងលើកស្ទួយសម្លេងសហគមន៍ យើងបម្លែងសកម្មភាពតូចៗឲ្យក្លាយជាការការពារអាកាសធាតុយូរអង្វែង។",
     "about.story": "រឿងរ៉ាវរបស់យើង",
     "about.storyText":
-      "ក្រុមរបស់យើងនឹងធ្វើដំណើរទៅកាន់ខេត្តកំពត ដើម្បីដាំដើមកោងកាងចំនួន ៣០០ដើម ដើម្បីជួយធម្មជាតិ និងបង្រៀនយុវជនអំពីបរិស្ថាន។ យើងនឹងធ្វើការជាមួយសហគមន៍ត្រពាំងសង្កែ ដែលជាក្រុមក្នុងស្រុកដែលការពារធម្មជាតិ​និងលើកកម្ពស់សកម្មភាពដែលមិនប៉ះពាល់ដល់បរិស្ថាន។ ព្រៃកោងកាងមានសារៈសំខាន់ណាស់ ព្រោះវាផ្តល់ផ្ទះសម្រាប់សត្វ គាំទ្រដល់ប្រព័ន្ធអេកូឡូស៊ី និងការពារតំបន់ឆ្នេរពីការខូចខាត។ តាមរយៈ​ការ​ដាំ​ដើម​ឈើ ក្រុម​យើង​ចង់​បង្ហាញ​ថា​ដើម​កោងកាង​មាន​តម្លៃ​ប៉ុណ្ណា និង​លើក​ទឹកចិត្ត​យុវជន​ក្នុង​ការ​ថែរក្សា​បរិស្ថាន។ សកម្មភាពនេះមិនត្រឹមតែជាការស្ដារឡើងវិញនូវធម្មជាតិប៉ុណ្ណោះទេ ថែមទាំងជាការលើកទឹកចិត្តអ្នកដទៃឱ្យចូលរួមក្នុងគម្រោងស្រដៀងគ្នានេះផងដែរ។ គម្រោងនេះនឹងបង្ហាញពីរបៀបដែលការធ្វើការងារជាក្រុម និងជំហានតូចៗអាចបង្កើតផលវិជ្ជមានដ៏ធំមួយ។ តាមរយៈកិច្ចខិតខំប្រឹងប្រែងនេះ ក្រុមរបស់យើងសង្ឃឹមថានឹងផ្សព្វផ្សាយការយល់ដឹង និងកសាងអនាគតដ៏បៃតងសម្រាប់អ្នករាល់គ្នា។",
+      "យើងចាប់ផ្តើមជាមិត្តសហសិក្សាដែលចង់បង្ហាញថាក្រុមតូចអាចបង្កើតការផ្លាស់ប្តូរអេកូឡូស៊ីពិតប្រាកដ។ បច្ចុប្បន្ននេះយើងស្រាវជ្រាវបញ្ហាឆ្នេរ រៀបចំព្រឹត្តិការណ៍លើកទឹកចិត្ត និងសម្របសម្រួលការដាំដើមជាមួយសាលារៀន និងដៃគូសហគមន៍ទូទាំងប្រទេសកម្ពុជា។ រាល់សិក្ខាសាលា កម្មវិធីសម្អាត និងកូនឈើមួយដើម បញ្ជាក់ថាការថែទាំរួមគ្នាអាចស្ដារផ្ទៃឆ្នេរឱ្យមានសុខភាពឡើងវិញសម្រាប់មនុស្សគ្រប់រូប។",
     "about.objectives": "គោលដៅរបស់យើង",
 
     "about.objective1":
-      "ដើម្បីលើកកម្ពស់ការយល់ដឹងអំពីសារៈសំខាន់របស់ព្រៃកោងកាងចំពោះសហគមន៍មូលដ្ឋាន គឺសហគមន៍ត្រពាំងសង្កែ ដល់ Gen Z តាមរយៈយុទ្ធនាការប្រព័ន្ធផ្សព្វផ្សាយសង្គមដូចជា Facebook និង TikTok ក្នុងខែមិថុនា។",
+      "លើកកម្ពស់ការយល់ដឹងជាតិអំពីអត្ថប្រយោជន៍ដើមកោងកាង តាមរយៈការនិទានរឿង បណ្តាញសង្គម និងការចូលរួមសាលារៀន។",
     "about.objective2":
-      "ដើម្បីលើកកម្ពស់ការយល់ដឹងអំពីសារៈសំខាន់របស់ដើមកោងកាងចំពោះសហគមន៍មូលដ្ឋាន ពោលគឺសហគមន៍ត្រពាំងសង្កែ ដល់និស្សិត IFL ចំនួន ៥០នាក់ តាមរយៈសិក្ខាសាលាជាមួយអ្នកជំនាញដែលបានអញ្ជើញកាលពីខែឧសភា។",
+      "ផ្តល់ជំនាញជាក់ស្តែងដល់និស្សិត និងមេដឹកនាំសហគមន៍ តាមរយៈសិក្ខាសាលា ឧបករណ៍ និងការណែនាំ ដើម្បីអោយពួកគេដឹកនាំសកម្មភាពស្តារឡើងវិញដោយខ្លួនឯង។",
     "about.objective3":
-      "ដើម្បីសហការ និងដាំកូនឈើកោងកាងចំនួន ៣០០ដើម នៅសហគមន៍ត្រពាំងសង្កែ ដើម្បីបង្កើនជីវចម្រុះក្នុងខេត្តកំពត ដើម្បីបង្កើនជីវចម្រុះក្នុងមូលដ្ឋានក្នុងខែមិថុនា។",
+      "ដាំ និងថែរក្សាកូនឈើកោងកាងជាមួយដៃគូសហគមន៍ បន្ទាប់មកតាមដានការលូតលាស់របស់វា ដើម្បីបន្ថែមឆ្នេរសីរីរម្យ។",
     // Contact Section
     "contact.title": "ទាក់ទងមកយើង",
     "contact.subtitle": "មានសំណួរឬចង់ចូលរួម? យើងចង់ស្តាប់ពីអ្នក!",
