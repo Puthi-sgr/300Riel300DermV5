@@ -1,13 +1,65 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, MotionProps, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
-import heroImg from "../assets/HeroPictureCompressed.jpg";
 import HeroInfoCard from "./components/HeroInfoCard";
 import HeroVisualCard from "./components/HeroVisualCard";
+import BackgroundVideo from "./components/BackgroundVideo";
+import HeroLoadingScreen from "./components/HeroLoadingScreen";
 
 const Hero = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const prefersReducedMotion = useReducedMotion();
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [heroReady, setHeroReady] = useState(false);
+  const fallbackTimeoutRef = useRef<number | null>(null);
+  const heroVideoPublicId =
+    import.meta.env.VITE_CLOUDINARY_HERO_VIDEO_PUBLIC_ID || "Shockwave_vshxyk";
+
+  useEffect(() => {
+    fallbackTimeoutRef.current = window.setTimeout(
+      () => setVideoLoaded(true),
+      4500
+    );
+    return () => {
+      if (fallbackTimeoutRef.current) {
+        clearTimeout(fallbackTimeoutRef.current);
+        fallbackTimeoutRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!videoLoaded) return;
+    const timer = setTimeout(() => setHeroReady(true), 600);
+    return () => clearTimeout(timer);
+  }, [videoLoaded]);
+
+  const backgroundMotion: MotionProps = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, scale: 1.05 },
+        animate: { opacity: 1, scale: 1 },
+        transition: { duration: 1.2, ease: "easeOut" },
+      };
+
+  const overlayMotion = (delay: number): MotionProps =>
+    prefersReducedMotion
+      ? {}
+      : {
+          initial: { opacity: 0 },
+          animate: { opacity: 1 },
+          transition: { duration: 0.9, delay, ease: "easeOut" },
+        };
+
+  const contentMotion: MotionProps = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 40 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.9, delay: 0.8, ease: "easeOut" },
+      };
 
   const goToProjects = () => {
     navigate("/projects/mangrove-2025");
@@ -20,11 +72,49 @@ const Hero = () => {
     );
   };
 
+  const handleVideoLoaded = () => {
+    if (!videoLoaded) {
+      setVideoLoaded(true);
+    }
+    if (fallbackTimeoutRef.current) {
+      clearTimeout(fallbackTimeoutRef.current);
+      fallbackTimeoutRef.current = null;
+    }
+  };
+
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-eco-50 via-white to-eco-100 min-h-screen"
+      className="relative overflow-hidden min-h-screen bg-transparent"
     >
+      <motion.div
+        className="absolute inset-0 -z-7"
+        {...backgroundMotion}
+        aria-hidden="true"
+      >
+        <BackgroundVideo
+          className="h-full w-full object-cover opacity-55 blur-[900px]"
+          style={{
+            filter: "saturate(0.7) brightness(1.2) hue-rotate(85deg) contrast(0.95)",
+          }}
+          onLoadedData={handleVideoLoaded}
+        />
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-emerald-200/70 via-lime-50/60 to-emerald-300/80 mix-blend-screen pointer-events-none -z-25"
+        {...overlayMotion(0.2)}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="absolute inset-0 bg-emerald-50/80 mix-blend-screen backdrop-blur-[1100px] pointer-events-none -z-20"
+        {...overlayMotion(0.35)}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-eco-50 via-white to-eco-100 opacity-90 pointer-events-none -z-10"
+        {...overlayMotion(0.5)}
+        aria-hidden="true"
+      />
       <div style={{ display: "none" }} aria-hidden="true">
         <h1>Cambodia mangrove tree planting eco restoration project</h1>
         <h1>mangrove planting Cambodia</h1>
@@ -68,15 +158,18 @@ const Hero = () => {
       </div>
 
       <div
-        className="absolute -top-32 -right-20 w-72 h-72 bg-eco-200/30 blur-3xl rounded-full"
+        className="absolute -top-32 -right-20 w-72 h-72 bg-eco-200/30 blur-[1000px] rounded-full"
         aria-hidden="true"
       />
       <div
-        className="absolute -bottom-24 -left-16 w-80 h-80 bg-eco-300/20 blur-3xl rounded-full"
+        className="absolute -bottom-24 -left-16 w-80 h-80 bg-eco-300/20 blur-[1000px] rounded-full"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-20 lg:py-32">
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-28 lg:py-40"
+        {...contentMotion}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
           <HeroInfoCard
             t={t}
@@ -84,15 +177,14 @@ const Hero = () => {
             onFacebookClick={linkToFacebook}
           />
           <HeroVisualCard
-            imageSrc={heroImg}
             subtitle={t("hero.imageAlt") ?? "Students planting mangrove trees"}
             title="300Riel Au 300Kbal"
+            videoPublicId={heroVideoPublicId}
           />
         </div>
-      </div>
+      </motion.div>
+      <HeroLoadingScreen isVisible={!heroReady} />
     </section>
   );
 };
-
 export default Hero;
-

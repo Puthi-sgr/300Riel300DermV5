@@ -1,16 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
+import HeroVideo from "./HeroVideo";
 
 type HeroVisualCardProps = {
-  imageSrc: string;
   title: string;
   subtitle: string;
+  videoPublicId: string;
 };
 
 const HeroVisualCard: React.FC<HeroVisualCardProps> = ({
-  imageSrc,
   title,
   subtitle,
+  videoPublicId,
 }) => {
   return (
     <motion.div
@@ -20,11 +21,9 @@ const HeroVisualCard: React.FC<HeroVisualCardProps> = ({
       className="relative max-w-xl mx-auto lg:max-w-2xl"
     >
       <div className="relative rounded-[36px] bg-white p-4 shadow-2xl shadow-eco-900/10 border border-eco-100">
-        <img
-          src={imageSrc}
-          alt={subtitle}
-          className="w-full h-[520px] sm:h-[560px] object-cover rounded-[28px]"
-        />
+        <div className="relative h-[520px] sm:h-[560px] w-full rounded-[28px] overflow-hidden">
+          <HeroVideo publicId={videoPublicId} ariaLabel={subtitle} />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

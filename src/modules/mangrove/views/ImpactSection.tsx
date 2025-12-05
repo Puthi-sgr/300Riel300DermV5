@@ -31,7 +31,7 @@ const ImpactSection = () => {
         </div>
 
         {heroStat && (
-          <div className="relative rounded-[32px] bg-white text-earth-900 p-6 sm:p-8 shadow-2xl overflow-hidden">
+          <div className="relative rounded-[32px] bg-white text-earth-900 p-6 sm:p-8 shadow-md overflow-hidden">
             <div className="absolute inset-0 bg-white/5" aria-hidden="true" />
             <div className="relative flex flex-col gap-4">
               <div className="flex items-center justify-between flex-wrap gap-3">
@@ -77,8 +77,8 @@ const ImpactSection = () => {
                   className={`relative rounded-[24px] border border-white/60 bg-gradient-to-b ${accent} p-6 pt-10 shadow-lg shadow-eco-900/5`}
                 >
                   <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-                    <span className="h-12 w-12 rounded-full bg-white text-eco-600 flex items-center justify-center shadow-md">
-                      <Icon size={20} />
+                    <span className="h-20 w-20 rounded-full bg-gradient-to-br from-[#f7f7f7] to-white text-eco-600 flex items-center justify-center shadow-md">
+                      <Icon size={30} />
                     </span>
                   </div>
 

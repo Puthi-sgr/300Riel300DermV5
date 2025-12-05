@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { projects, projectBySlug, Project } from "../modules/projects";
 import MangroveProjectPage from "../modules/mangrove/views/ProjectPage";
@@ -158,6 +158,10 @@ const GenericProjectPage = ({ project }: { project: Project }) => {
 const ProjectDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projectBySlug(slug);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [slug]);
 
   if (!project) {
     return (

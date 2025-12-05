@@ -1,17 +1,79 @@
-import React from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../../../context/LanguageContext";
 import { mangroveProject } from "../data";
-import ImpactSection from "./ImpactSection";
-import HighlightsSection from "./HighlightsSection";
-import CampaignSection from "./CampaignSection";
-import SponsorsSection from "./SponsorsSection";
-import GallerySection from "./GallerySection";
-import Mangroves from "./Mangroves";
-import Phases from "./Phases";
+
+const ImpactSection = lazy(() => import("./ImpactSection"));
+const HighlightsSection = lazy(() => import("./HighlightsSection"));
+const CampaignSection = lazy(() => import("./CampaignSection"));
+const SponsorsSection = lazy(() => import("./SponsorsSection"));
+const GallerySection = lazy(() => import("./GallerySection"));
+const Mangroves = lazy(() => import("./Mangroves"));
+const Phases = lazy(() => import("./Phases"));
 
 const statusBadge =
   "inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border bg-eco-100 text-eco-700 border-eco-200";
+
+type LazySectionProps = {
+  children: React.ReactNode;
+  fallbackHeight?: number;
+  initiallyVisible?: boolean;
+};
+
+const SectionPlaceholder = ({ minHeight = 360 }: { minHeight?: number }) => (
+  <div
+    className="w-full rounded-3xl bg-eco-50/60 animate-pulse border border-eco-100"
+    style={{ minHeight }}
+    aria-hidden="true"
+  />
+);
+
+const LazySection = ({
+  children,
+  fallbackHeight,
+  initiallyVisible = false,
+}: LazySectionProps) => {
+  const [isVisible, setIsVisible] = useState(initiallyVisible);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (initiallyVisible || isVisible) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "320px 0px" }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [initiallyVisible, isVisible]);
+
+  const placeholder = (
+    <SectionPlaceholder minHeight={fallbackHeight ?? 420} />
+  );
+
+  return (
+    <div
+      ref={sentinelRef}
+      className="w-full"
+      aria-busy={!isVisible}
+      data-lazy-section
+    >
+      {isVisible ? (
+        <Suspense fallback={placeholder}>{children}</Suspense>
+      ) : (
+        placeholder
+      )}
+    </div>
+  );
+};
 
 const MangroveProjectPage = () => {
   const { t } = useLanguage();
@@ -56,19 +118,37 @@ const MangroveProjectPage = () => {
       </header>
 
       <section className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-10">
-        <ImpactSection />
-        <HighlightsSection />
-        <CampaignSection />
-        <SponsorsSection />
-        <GallerySection />
+        <LazySection initiallyVisible fallbackHeight={560}>
+          <ImpactSection />
+        </LazySection>
 
-        <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden">
-          <Mangroves />
-        </div>
+        <LazySection initiallyVisible fallbackHeight={520}>
+          <HighlightsSection />
+        </LazySection>
 
-        <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden bg-white">
-          <Phases />
-        </div>
+        <LazySection fallbackHeight={520}>
+          <CampaignSection />
+        </LazySection>
+
+        <LazySection fallbackHeight={520}>
+          <SponsorsSection />
+        </LazySection>
+
+        <LazySection fallbackHeight={520}>
+          <GallerySection />
+        </LazySection>
+
+        <LazySection fallbackHeight={520}>
+          <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden">
+            <Mangroves />
+          </div>
+        </LazySection>
+
+        <LazySection fallbackHeight={520}>
+          <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden bg-white">
+            <Phases />
+          </div>
+        </LazySection>
 
         <button
           type="button"
