@@ -19,3 +19,4 @@ export const campaignMeta = {
   subtitleKey: "campaign.subtitle",
   period: "June 2025",
 };
+

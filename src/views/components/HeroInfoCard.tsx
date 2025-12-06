@@ -18,7 +18,7 @@ const HeroInfoCard: React.FC<HeroInfoCardProps> = ({
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="rounded-[32px] bg-white/90 backdrop-blur-sm border border-eco-100 shadow-2xl shadow-eco-900/5 p-8 sm:p-10"
+      className="bg-card-foam rounded-2xl shadow-impact hover:shadow-impact-hover p-8 sm:p-10 text-earth-900 transition-shadow duration-150 ease-out"
     >
       <motion.span
         initial={{ opacity: 0, y: -10 }}

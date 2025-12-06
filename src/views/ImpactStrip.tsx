@@ -21,8 +21,7 @@ const ImpactStrip = () => {
       suffix: "+",
       detail: "Seedlings planted",
       icon: <Sprout className="w-6 h-6" />,
-      background:
-        "linear-gradient(135deg, #f4fcf7 0%, #e8f6ef 50%, #dcede6 100%)",
+      backgroundClass: "bg-card-fern",
     },
     {
       value: 48,
@@ -30,8 +29,7 @@ const ImpactStrip = () => {
       suffix: "+",
       detail: "Student volunteers",
       icon: <Users className="w-6 h-6" />,
-      background:
-        "linear-gradient(135deg, #fbfcfd 0%, #f6f6f2 50%, #eef3ed 100%)",
+      backgroundClass: "bg-card-grain",
     },
     {
       value: 47200,
@@ -39,8 +37,7 @@ const ImpactStrip = () => {
       suffix: "+",
       detail: "People reached",
       icon: <Share2 className="w-6 h-6" />,
-      background:
-        "linear-gradient(135deg, #fbfefc 0%, #ffffff 50%, #edf7f3 100%)",
+      backgroundClass: "bg-card-foam",
     },
     {
       value: 270,
@@ -48,8 +45,7 @@ const ImpactStrip = () => {
       suffix: " t",
       detail: "Projected CO2 over 20 years",
       icon: <Leaf className="w-6 h-6" />,
-      background:
-        "linear-gradient(135deg, #f3f8fd 0%, #ecf7f1 50%, #e0efe7 100%)",
+      backgroundClass: "bg-card-mist",
     },
   ] as const;
 
@@ -85,16 +81,14 @@ const ImpactStrip = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 whileHover={{
                   y: -12,
-                  boxShadow: "0 14px 24px rgba(0,0,0,0.16)",
                   transition: { duration: 0.15 },
                 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className={`relative overflow-hidden rounded-3xl shadow-[0_18px_48px_rgba(0,0,0,0.12)] border border-white/70 backdrop-blur-sm p-10 sm:p-11 min-h-[270px] w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] ${
+                className={`impact-card shadow-impact ${card.backgroundClass} p-10 sm:p-11 min-h-[270px] w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] transition-shadow duration-150 ease-out hover:shadow-impact-hover ${
                   idx === 0 ? "" : "lg:-ml-10"
                 }`}
                 style={{
-                  background: card.background,
                   zIndex: cards.length - idx,
                 }}
               >

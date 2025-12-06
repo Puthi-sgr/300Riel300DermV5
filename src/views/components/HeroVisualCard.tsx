@@ -28,21 +28,21 @@ const HeroVisualCard: React.FC<HeroVisualCardProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="absolute -bottom-8 left-6 right-6 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center justify-between"
+          className="absolute -bottom-8 left-6 right-6 glass-card rounded-2xl shadow-xl px-5 py-4 flex items-center justify-between"
         >
           <div>
-            <p className="text-xs text-eco-500 uppercase tracking-wide">
+            <p className="text-xs text-white uppercase tracking-wide">
               {"Current Fundraiser"}
             </p>
             <p className="text-2xl font-bold text-earth-900">{title}</p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-lg font-semibold text-eco-600">$100</span>
-            <span className="text-xs text-eco-500 text-left">raised</span>
+            <span className="text-lg font-semibold text-white">$100</span>
+            <span className="text-xs text-white text-left">raised</span>
           </div>
         </motion.div>
       </div>
-      <div className="absolute -top-6 -right-2 bg-white shadow-lg rounded-2xl px-4 py-3 flex items-center gap-3 border border-eco-100">
+      <div className="absolute -top-6 -right-2 glass-card shadow-lg rounded-2xl px-4 py-3 flex items-center gap-3 border border-eco-100">
         <span className="h-10 w-10 rounded-full bg-eco-50 flex items-center justify-center text-eco-600 font-semibold">
           dYOn
         </span>

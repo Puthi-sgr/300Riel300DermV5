@@ -32,6 +32,30 @@ export default {
           900: "#4c1c00",
         },
       },
+      backgroundImage: {
+        "card-fern":
+          "linear-gradient(135deg, #f0fbf4 0%, #dff3e8 48%, #cfe7d9 100%)",
+        "card-grain":
+          "linear-gradient(135deg, #f7faf7 0%, #edf2ea 48%, #dde6dc 100%)",
+        "card-foam":
+          "linear-gradient(135deg, #f5fdf9 0%, #fafcf7 45%, #e6f3ec 100%)",
+        "card-mist":
+          "linear-gradient(135deg, #eff6fc 0%, #e4f2ea 48%, #d3e6dc 100%)",
+        "card-glass":
+          "linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.14) 42%, rgba(255,255,255,0.08) 100%)",
+        "card-glass-emerald":
+          "linear-gradient(135deg, rgba(16,185,129,0.16) 0%, rgba(255,255,255,0.18) 38%, rgba(255,255,255,0.1) 100%)",
+        warn:
+          "linear-gradient(135deg, rgba(248,113,113,0.12) 0%, rgba(255,255,255,0.28) 40%, rgba(255,255,255,0.14) 100%)",
+        safe:
+          "linear-gradient(225deg, rgba(16,185,129,0.14) 0%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.14) 100%)",
+        caution:
+          "linear-gradient(135deg, rgba(234,179,8,0.16) 0%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.14) 100%)",
+      },
+      boxShadow: {
+        impact: "0 18px 48px rgba(0,0,0,0.12)",
+        "impact-hover": "0 14px 24px rgba(0,0,0,0.16)",
+      },
     },
   },
   plugins: [],

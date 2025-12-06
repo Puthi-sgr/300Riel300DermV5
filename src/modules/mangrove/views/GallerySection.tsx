@@ -19,36 +19,7 @@ const GallerySection = () => {
           "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
         subHtml: "<h4>Placeholder image</h4><p>Replace with your gallery items.</p>",
       },
-      {
-        src: "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        thumb:
-          "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        subHtml: "<h4>Placeholder image</h4><p>Add your own shots.</p>",
-      },
-      {
-        src: "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        thumb:
-          "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        subHtml: "<h4>Placeholder image</h4><p>Replace with your gallery items.</p>",
-      },
-      {
-        src: "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        thumb:
-          "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        subHtml: "<h4>Placeholder image</h4><p>Add your own shots.</p>",
-      },
-      {
-        src: "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        thumb:
-          "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        subHtml: "<h4>Placeholder image</h4><p>Replace with your gallery items.</p>",
-      },
-      {
-        src: "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        thumb:
-          "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        subHtml: "<h4>Placeholder image</h4><p>Add your own shots.</p>",
-      },
+
     ];
 
     const sizeClasses = [
@@ -83,9 +54,9 @@ const GallerySection = () => {
           // Adjust `auto-rows-[140px]` to make each mosaic row taller/shorter.
           elementClassNames="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[180px] grid-flow-row-dense"
         >
-          {galleryItems.map((item) => (
+          {galleryItems.map((item, index) => (
             <a
-              key={item.src}
+              key={`${item.src}-${index}`}
               href={item.src}
               data-lg-size="1600-1066"
               data-sub-html={item.subHtml}

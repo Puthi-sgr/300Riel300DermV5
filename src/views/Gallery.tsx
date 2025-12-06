@@ -6,18 +6,43 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
 import { FacebookPost } from "../dto/Facebook.dto";
 import { fetchFacebookPosts } from "../services/FacebookService";
 import logo from "../Assets/logo2.png";
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.2, 0.6, 0.3, 1],
+      staggerChildren: 0.05,
+      delayChildren: 0.05,
+      when: "beforeChildren",
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.2, 0.6, 0.3, 1] },
+  },
+};
+
 const Gallery = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const prefersReducedMotion = useReducedMotion();
   const [facebookPosts, setFacebookPosts] = useState<FacebookPost[]>([]);
   const { t } = useLanguage();
 
@@ -45,25 +70,6 @@ const Gallery = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -83,16 +89,24 @@ const Gallery = () => {
     >
       <motion.div
         ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={containerVariants}
+        initial={prefersReducedMotion ? false : "hidden"}
+        animate={prefersReducedMotion ? false : inView ? "visible" : undefined}
+        variants={prefersReducedMotion ? undefined : containerVariants}
+        viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.2 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <motion.div variants={itemVariants} className="text-center mb-16">
+        <motion.div
+          variants={prefersReducedMotion ? undefined : itemVariants}
+          className="text-center mb-16"
+        >
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.5 }}
             animate={
-              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }
+              prefersReducedMotion
+                ? false
+                : inView
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0.5 }
             }
             transition={{ duration: 0.5 }}
             className="flex items-center justify-center mb-4"
@@ -121,26 +135,27 @@ const Gallery = () => {
           </button>
 
           {/* Scrollable Container */}
-          <motion.div
-            ref={scrollContainerRef}
-            variants={containerVariants}
-            className="overflow-x-auto flex gap-6 pb-6 snap-x snap-mandatory scroll-smooth hide-scrollbar"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            {facebookPosts.map((post) => (
-              <motion.a
-                key={post.id}
-                href={post.permalink_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex-none w-[350px] snap-center bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-2xl group"
-              >
+        <motion.div
+          ref={scrollContainerRef}
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.15 }}
+          className="overflow-x-auto flex gap-6 pb-6 snap-x snap-mandatory scroll-smooth hide-scrollbar"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
+          {facebookPosts.map((post) => (
+            <motion.a
+              key={post.id}
+              href={post.permalink_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={prefersReducedMotion ? undefined : itemVariants}
+              whileHover={prefersReducedMotion ? undefined : { y: -8, scale: 1.02 }}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+              className="flex-none w-[350px] snap-center bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-2xl group"
+            >
                 {/* Post Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img

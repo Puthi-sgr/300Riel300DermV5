@@ -18,35 +18,25 @@ export const mangroveImpact2025: ImpactHeadline = {
     {
       value: 300,
       label: "mangrove seedlings planted at Tapaeng Sangkae, Kampot",
-      target: 500,
+      target: 300,
     },
     {
       value: 270,
       suffix: " t",
       label: "Projected CO2 sequestered over 20 years",
-      target: 400,
+      target: 270,
     },
     {
-      value: 48,
+      value: 15,
       label: "student volunteers trained in environmental leadership",
-      target: 120,
-    },
-    {
-      value: 47200,
-      label: "people reached through our digital campaign",
-      target: 60000,
-    },
-    {
-      value: 576,
-      label: "new followers gained through community engagement",
-      target: 1200,
+      target: 20,
     },
     {
       value: 610,
       prefix: "USD ",
       suffix: "+",
       label: "in-kind support from Giant Ibis & De KT Villa",
-      target: 1500,
+      target: 700,
     },
   ],
 };

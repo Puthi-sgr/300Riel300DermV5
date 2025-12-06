@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "../../../context/LanguageContext";
 import { sponsors2025, sponsorsMeta } from "../data/sponsorsData";
 import giLogo from "../../../Assets/GI_Logo.png";
@@ -6,47 +7,69 @@ import villaLogo from "../../../Assets/partner1.webp";
 
 const SponsorsSection = () => {
   const { t } = useLanguage();
+  const prefersReducedMotion = useReducedMotion();
+
+  const cardVariants = prefersReducedMotion
+    ? undefined
+    : {
+        hidden: { opacity: 0, x: -14 },
+        show: (i: number) => ({
+          opacity: 1,
+          x: 0,
+          transition: { duration: 0.32, ease: [0.25, 0.6, 0.3, 1], delay: i * 0.08 },
+        }),
+      };
 
   return (
-    <div className="rounded-2xl bg-white border border-eco-100 shadow-sm p-6 space-y-6">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-eco-700">
+    <div className="rounded-3xl border border-eco-100 bg-gradient-to-br from-white to-emerald-200/20 shadow-md p-8 space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-eco-700">
             {t(sponsorsMeta.titleKey)}
-          </h2>
-          <h3 className="text-2xl font-bold text-earth-900 leading-snug">
+          </p>
+          <h3 className="text-2xl sm:text-3xl font-bold text-earth-900 leading-snug">
             {t(sponsorsMeta.subtitleKey)}
           </h3>
+          <p className="text-sm text-earth-700">
+            {t("project.sponsors.caption") ?? "Partners who keep this work moving forward."}
+          </p>
         </div>
-        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-eco-50 border border-eco-200 text-eco-700">
+        <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-eco-50 border border-eco-200 text-eco-700">
           {sponsorsMeta.period}
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {sponsors2025.map((sponsor) => (
-          <article
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {sponsors2025.map((sponsor, idx) => (
+          <motion.article
             key={sponsor.name}
-            className="relative rounded-2xl border border-eco-100 shadow-md overflow-hidden bg-eco-50 flex flex-col h-full min-h-[260px]"
+            className="glass-card shadow-impact hover:shadow-impact-hover p-5 flex flex-col gap-5 transition-shadow duration-150 ease-out"
+            variants={cardVariants}
+            initial={prefersReducedMotion ? undefined : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "show"}
+            viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.2 }}
+            custom={idx}
           >
-            <div className="p-5 flex-1 flex flex-col gap-4 items-center text-center">
-              <h3 className="text-lg font-semibold text-earth-900">
-                {sponsor.name}
-              </h3>
-              {(sponsor.image === "gi" || sponsor.image === "villa") && (
-                <div className="rounded-xl  shadow-sm flex items-center justify-center">
-                  <img
-                    src={sponsor.image === "gi" ? giLogo : villaLogo}
-                    alt={sponsor.name}
-                    className="h-20 w-32 object-contain"
-                  />
-                </div>
-              )}
-              <p className="text-sm text-earth-700 flex-1">
-                {t(sponsor.supportKey)}
-              </p>
+            <div className="flex items-center justify-between gap-3">
+              <h4 className="text-lg font-semibold text-earth-900">{sponsor.name}</h4>
+              <span className="text-[11px] uppercase tracking-[0.22em] text-eco-700 bg-white/70 border border-white/80 px-2 py-1 rounded-full">
+                Sponsor
+              </span>
             </div>
-          </article>
+
+            {(sponsor.image === "gi" || sponsor.image === "villa") && (
+              <img
+                src={sponsor.image === "gi" ? giLogo : villaLogo}
+                alt={sponsor.name}
+                className="h-16 w-32 object-contain mx-auto"
+                loading="lazy"
+              />
+            )}
+
+            <p className="text-sm text-earth-800 leading-relaxed">
+              {t(sponsor.supportKey)}
+            </p>
+          </motion.article>
         ))}
       </div>
     </div>

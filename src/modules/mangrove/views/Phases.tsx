@@ -47,24 +47,25 @@ const Phases = () => {
     <section id="phases" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-sm font-semibold uppercase tracking-wide text-eco-700"
-          >
-            {t("phases.title")}
-          </motion.p>
-          <motion.h2
+           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="mt-2 text-2xl sm:text-3xl font-bold text-earth-900"
           >
-            {t("phases.subtitle")}
+            {t("phases.title")}
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-base font-semibold uppercase tracking-wide text-eco-700"
+          >
+            {t("phases.subtitle")}
+          </motion.p>
+         
         </div>
 
         <div className="space-y-10">
@@ -90,14 +91,16 @@ const Phases = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-5 bg-eco-50 rounded-2xl border border-eco-100 shadow-sm flex flex-col h-full"
+                className={`p-5 rounded-2xl glass-card shadow-impact ${
+                  ["bg-card-grain", "bg-card-foam", "bg-card-fern", "bg-card-mist"][index % 4]
+                } flex flex-col h-full`}
               >
                 <div className="flex items-center gap-3 mb-3 justify-center md:justify-start">
                   <phase.icon className="w-6 h-6 text-eco-700" />
                   <h2 className="text-lg font-semibold text-earth-900">{phase.title}</h2>
                 </div>
-                <p className="text-earth-700 mb-2 text-sm">{phase.description}</p>
-                <p className="text-xs text-earth-600 flex-1">{phase.additionalInfo}</p>
+                <p className="text-earth-700 mb-2 text-base">{phase.description}</p>
+                <p className="text-sm text-earth-600 flex-1">{phase.additionalInfo}</p>
               </motion.div>
             ))}
           </div>

@@ -31,7 +31,7 @@ const ImpactSection = () => {
         </div>
 
         {heroStat && (
-          <div className="relative rounded-[32px] bg-white text-earth-900 p-6 sm:p-8 shadow-md overflow-hidden">
+          <div className="relative rounded-[32px] bg-card-foam text-earth-900 p-6 sm:p-8 shadow-impact overflow-hidden border border-white/70">
             <div className="absolute inset-0 bg-white/5" aria-hidden="true" />
             <div className="relative flex flex-col gap-4">
               <div className="flex items-center justify-between flex-wrap gap-3">
@@ -46,14 +46,14 @@ const ImpactSection = () => {
                 {[heroStat, ...pillStats].map((stat, index) => (
                   <div key={stat?.label ?? index} className="space-y-1">
                     <p className="text-sm text-eco-800/80">{stat?.label}</p>
-                    <p className="text-3xl font-bold text-eco-900">
+                    <div className="text-3xl font-bold text-eco-900">
                       <CustomCounter
                         end={stat?.value ?? 0}
                         prefix={stat?.prefix}
                         suffix={stat?.suffix}
                         decimals={stat?.decimals}
                       />
-                    </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -66,18 +66,18 @@ const ImpactSection = () => {
             {miniCards.map((item, index) => {
               const Icon = iconStack[index % iconStack.length];
               const accent = [
-                "from-[#e6f8ef] to-white",
-                "from-[#f3fbe7] to-white",
-                "from-[#e0f2f1] to-white",
+                "bg-card-grain",
+                "bg-card-foam",
+                "bg-card-fern",
               ][index % 3];
 
               return (
                 <article
                   key={item.label}
-                  className={`relative rounded-[24px] border border-white/60 bg-gradient-to-b ${accent} p-6 pt-10 shadow-lg shadow-eco-900/5`}
+                  className={`relative rounded-[24px] border border-white/60 ${accent} p-6 pt-10 shadow-impact`}
                 >
                   <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-                    <span className="h-20 w-20 rounded-full bg-gradient-to-br from-[#f7f7f7] to-white text-eco-600 flex items-center justify-center shadow-md">
+                    <span className="h-20 w-20 rounded-full glass-card text-eco-600 flex items-center justify-center shadow-md">
                       <Icon size={30} />
                     </span>
                   </div>
@@ -100,9 +100,7 @@ const ImpactSection = () => {
                       target={item.target}
                     />
 
-                    <span className="block text-[10px] text-eco-500 uppercase tracking-[0.3em]">
-                      {mangroveImpact2025.title}
-                    </span>
+                   
                   </div>
                 </article>
               );

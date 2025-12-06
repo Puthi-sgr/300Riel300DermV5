@@ -1,84 +1,48 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { lazy, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "../../../context/LanguageContext";
 import { mangroveProject } from "../data";
+import ProjectPageLoading from "../components/ProjectPageLoading";
+import ProjectPageHeader from "../components/ProjectPageHeader";
+import LazyRevealSection from "../components/utils/LazyRevealSection";
 
-const ImpactSection = lazy(() => import("./ImpactSection"));
+const ImpactSection = lazy(() => import("./Impact/index"));
 const HighlightsSection = lazy(() => import("./HighlightsSection"));
 const CampaignSection = lazy(() => import("./CampaignSection"));
 const SponsorsSection = lazy(() => import("./SponsorsSection"));
 const GallerySection = lazy(() => import("./GallerySection"));
-const Mangroves = lazy(() => import("./Mangroves"));
+const Mangroves = lazy(() => import("./Mangroves/index"));
 const Phases = lazy(() => import("./Phases"));
 
-const statusBadge =
-  "inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border bg-eco-100 text-eco-700 border-eco-200";
-
-type LazySectionProps = {
-  children: React.ReactNode;
-  fallbackHeight?: number;
-  initiallyVisible?: boolean;
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
 };
 
-const SectionPlaceholder = ({ minHeight = 360 }: { minHeight?: number }) => (
-  <div
-    className="w-full rounded-3xl bg-eco-50/60 animate-pulse border border-eco-100"
-    style={{ minHeight }}
-    aria-hidden="true"
-  />
-);
-
-const LazySection = ({
-  children,
-  fallbackHeight,
-  initiallyVisible = false,
-}: LazySectionProps) => {
-  const [isVisible, setIsVisible] = useState(initiallyVisible);
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (initiallyVisible || isVisible) return;
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "320px 0px" }
-    );
-
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [initiallyVisible, isVisible]);
-
-  const placeholder = (
-    <SectionPlaceholder minHeight={fallbackHeight ?? 420} />
-  );
-
-  return (
-    <div
-      ref={sentinelRef}
-      className="w-full"
-      aria-busy={!isVisible}
-      data-lazy-section
-    >
-      {isVisible ? (
-        <Suspense fallback={placeholder}>{children}</Suspense>
-      ) : (
-        placeholder
-      )}
-    </div>
-  );
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.2, 0.6, 0.3, 1] },
+  },
 };
 
 const MangroveProjectPage = () => {
   const { t } = useLanguage();
   const project = mangroveProject;
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleBack = () => {
     if (window.history.length > 1) {
@@ -89,76 +53,80 @@ const MangroveProjectPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-eco-50">
-      <header className="relative h-64 sm:h-80 bg-earth-900 text-white overflow-hidden">
-        {project.heroImage && (
-          <img
-            src={project.heroImage}
-            alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-70"
-            loading="lazy"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/10" />
-        <div className="relative w-full px-4 sm:px-6 lg:px-10 h-full flex flex-col justify-end pb-10">
-          <div className="flex items-center gap-3 mb-3">
-            <span className={statusBadge}>{t("project.status.completed")}</span>
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 border border-white/20">
-              {project.year}
-            </span>
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 border border-white/20 capitalize">
-              {project.type}
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold">{project.title}</h1>
-          <p className="text-lg text-gray-100 mt-2 max-w-5xl">
-            {project.summary}
-          </p>
-        </div>
-      </header>
-
-      <section className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-10">
-        <LazySection initiallyVisible fallbackHeight={560}>
-          <ImpactSection />
-        </LazySection>
-
-        <LazySection initiallyVisible fallbackHeight={520}>
-          <HighlightsSection />
-        </LazySection>
-
-        <LazySection fallbackHeight={520}>
-          <CampaignSection />
-        </LazySection>
-
-        <LazySection fallbackHeight={520}>
-          <SponsorsSection />
-        </LazySection>
-
-        <LazySection fallbackHeight={520}>
-          <GallerySection />
-        </LazySection>
-
-        <LazySection fallbackHeight={520}>
-          <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden">
-            <Mangroves />
-          </div>
-        </LazySection>
-
-        <LazySection fallbackHeight={520}>
-          <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden bg-white">
-            <Phases />
-          </div>
-        </LazySection>
-
-        <button
-          type="button"
-          onClick={handleBack}
-          className="inline-flex items-center text-eco-700 font-semibold hover:text-eco-800"
+    <AnimatePresence mode="wait">
+      {isLoading ? (
+        <ProjectPageLoading key="project-loading" />
+      ) : (
+        <motion.main
+          key="project-content"
+          className="min-h-screen bg-eco-50"
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          initial={prefersReducedMotion ? false : "hidden"}
+          animate={prefersReducedMotion ? false : "show"}
+          exit={prefersReducedMotion ? false : "hidden"}
         >
-          {t("project.backHome")}
-        </button>
-      </section>
-    </main>
+          <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <ProjectPageHeader
+              project={project}
+              statusLabel={t("project.status.completed") ?? ""}
+            />
+          </motion.div>
+
+          <motion.section
+            className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-10"
+            variants={prefersReducedMotion ? undefined : containerVariants}
+          >
+            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <LazyRevealSection initiallyVisible fallbackHeight={560}>
+                <ImpactSection />
+              </LazyRevealSection>
+            </motion.div>
+
+            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <LazyRevealSection initiallyVisible fallbackHeight={520}>
+                <HighlightsSection />
+              </LazyRevealSection>
+            </motion.div>
+
+          
+
+            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <LazyRevealSection fallbackHeight={520}>
+                <SponsorsSection />
+              </LazyRevealSection>
+            </motion.div>
+
+       
+
+            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <LazyRevealSection fallbackHeight={520}>
+                <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden">
+                  <Mangroves />
+                </div>
+              </LazyRevealSection>
+            </motion.div>
+
+            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <LazyRevealSection fallbackHeight={520}>
+                <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden bg-white">
+                  <Phases />
+                </div>
+              </LazyRevealSection>
+            </motion.div>
+
+            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <button
+                type="button"
+                onClick={handleBack}
+                className="inline-flex items-center text-eco-700 font-semibold hover:text-eco-800"
+              >
+                {t("project.backHome")}
+              </button>
+            </motion.div>
+          </motion.section>
+        </motion.main>
+      )}
+    </AnimatePresence>
   );
 };
 
