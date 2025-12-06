@@ -3,10 +3,22 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Waves, Trees as Tree, Users } from "lucide-react";
 import { useLanguage } from "../../../../../context/LanguageContext";
-import trampengSangkaeImg from "../../../../../assets/trapeang-sangkae-community.jpg";
+
+import { getCldImage } from "../../../../../core/lib/getCldImage";
+
 
 const Facts: React.FC = () => {
   const { t } = useLanguage();
+  const TrapaengSangkaeImage = ()=> {
+    const {url, alt} = getCldImage("mangrove.factImage");
+    return <img
+              src={url}
+              alt={alt}
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+            />
+  }
+
+
 
   const conservationFacts = [
     {
@@ -40,11 +52,7 @@ const Facts: React.FC = () => {
           className="space-y-6"
         >
           <div className="relative overflow-hidden rounded-3xl shadow-xl bg-earth-900">
-            <img
-              src={trampengSangkaeImg}
-              alt="Trapeang Sangkae community mangrove forest"
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-            />
+            <TrapaengSangkaeImage />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">
               <h3 className="text-2xl font-semibold text-white">{t("mangroves.hero.title")}</h3>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, MotionProps, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
+import { getCldImage } from "../core/lib/getCldImage";
 import HeroInfoCard from "./components/HeroInfoCard";
 import HeroVisualCard from "./components/HeroVisualCard";
 import BackgroundVideo from "./components/BackgroundVideo";

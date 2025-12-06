@@ -5,6 +5,7 @@ import Facts from "./components/Facts";
 import AdvantageAndThreat from "./layout/AdvantageAndThreat";
 import CTA from "./components/CTA";
 
+
 const Mangroves: React.FC = () => {
   const { t } = useLanguage();
 
