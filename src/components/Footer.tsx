@@ -9,8 +9,13 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import logo from "../Assets/Monochrome.png";
+import { CldImage } from "./media/CldImage";
+import { getCldImage } from "../core/lib/getCldImage";
 
+function MonoLogoImage() {
+  const { image, alt } = getCldImage("logo.mono", { width: 1920 });
+  return <CldImage image={image} alt={alt} className="h-32" />;
+}
 const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
@@ -91,7 +96,7 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-center space-y-4">
             {/* Logo */}
             <motion.div className="h-auto">
-              <img src={logo} alt="Logo" className="h-32" />
+              <MonoLogoImage />
             </motion.div>
 
             {/* Copyright */}

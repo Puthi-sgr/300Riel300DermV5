@@ -1,20 +1,13 @@
 import React from "react";
 import {
   Users,
-  ArrowRight,
   Handshake,
-  TreePine,
-  Leaf,
-  Sprout,
-  Trees,
-  Plane as Plant2,
-  Flower2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
-import partner1 from "../Assets/partnere1.jpg";
-import partner2 from "../Assets/GI_Logo.png";
+import { CldImage } from "../components/media/CldImage";
+import { getCldImage } from "../core/lib/getCldImage";
 
 const Sponsors = () => {
   const [ref, inView] = useInView({
@@ -24,20 +17,27 @@ const Sponsors = () => {
 
   const { t } = useLanguage();
 
-  const partners: any = [
-    {
-      name: "Giant Ibis Transport",
-      icon: partner2,
-      description: "",
-      website: "https://www.giantibis.com/",
-    },
-    {
-      name: "De KT Villa",
-      icon: partner1,
-      description: "",
-      website:
-        "https://kampot-cambodia.com/about-kampot/kampot-hotels/de-kt-villa/",
-    },
+  const partners = [
+    (() => {
+      const { image, alt } = getCldImage("sponsors.ktvilla", { width: 640 });
+     
+      return {
+        name: "Giant Ibis Transport",
+        image,
+        alt,
+        website: "https://www.giantibis.com/",
+      };
+    })(),
+    (() => {
+      const { image, alt } = getCldImage("sponsors.giantibis", { width: 640 });
+      return {
+        name: "De KT Villa",
+        image,
+        alt,
+        website:
+          "https://kampot-cambodia.com/about-kampot/kampot-hotels/de-kt-villa/",
+      };
+    })(),
   ];
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -115,9 +115,9 @@ const Sponsors = () => {
                   >
                     <div className="flex flex-col items-center gap-y-3">
                       <div className="h-24 md:h-32 rounded-xl bg-gradient-to-br shadow-lg items-center flex justify-center mb-3">
-                        <img
-                          src={partner.icon}
-                          alt={partner.name}
+                        <CldImage
+                          image={partner.image}
+                          alt={partner.alt ?? partner.name}
                           className="h-full w-auto object-contain rounded-xl"
                         />
                       </div>

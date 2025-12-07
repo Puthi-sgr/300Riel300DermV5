@@ -3,7 +3,8 @@ import { Heart, QrCode, Smartphone, CreditCard, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
-import ABA from "../Assets/AbaNita.jpg";
+import { CldImage } from "../components/media/CldImage";
+import { getCldImage } from "../core/lib/getCldImage";
 
 const Donate = () => {
   const [ref, inView] = useInView({
@@ -12,6 +13,7 @@ const Donate = () => {
   });
 
   const { t } = useLanguage();
+  const { image: qrImage, alt: qrAlt } = getCldImage("qrcode.donation", { width: 720, autoQuality: true, autoFormat: true });
 
   const handleDonationLink = () => {
     window.open("https://pay.ababank.com/77Lo2oCdT26yWVW98", "_blank");
@@ -140,9 +142,9 @@ const Donate = () => {
 
                 {/* QR Code Placeholder */}
                 <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 mb-4">
-                  <img
-                    src={ABA}
-                    alt="ABA QR Code"
+                  <CldImage
+                    image={qrImage}
+                    alt={qrAlt}
                     className="w-auto h-auto mb-2 rounded-[32px]"
                   />
 

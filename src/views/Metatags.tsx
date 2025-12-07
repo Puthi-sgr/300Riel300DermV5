@@ -1,10 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "../context/LanguageContext";
-import logoSlogan from "../Assets/logoxSlogan.jpg";
+import { getCldImage } from "../core/lib/getCldImage";
 
 const MetaTags = () => {
   const { language } = useLanguage();
+  const { url: logoUrl } = getCldImage("logo.slogan", { width: 1200, autoQuality: true, autoFormat: true });
 
   const title = {
     en: "Plant Mangroves in Cambodia | 300Riel 300Derm - Restore Nature",
@@ -21,7 +22,7 @@ const MetaTags = () => {
     "@type": "NGO",
     name: "300Riel 300Derm",
     url: "https://300riel300derm.com/",
-    logo: logoSlogan,
+    logo: logoUrl,
     description: description[language],
     areaServed: "Cambodia",
     sameAs: [
@@ -54,11 +55,11 @@ const MetaTags = () => {
       <meta property="og:description" content={description[language]} />
       <meta
         property="og:image:secure_url"
-        content="https://300riel300derm.com/social-preview.jpg"
+        content={logoUrl}
       />
       <meta
         property="og:image"
-        content="https://300riel300derm.com/social-preview.jpg"
+        content={logoUrl}
       />
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1200" />
@@ -72,7 +73,7 @@ const MetaTags = () => {
       <meta name="twitter:description" content={description[language]} />
       <meta
         name="twitter:image"
-        content="https://300riel300derm.com/social-preview.jpg"
+        content={logoUrl}
       />
       <meta
         name="twitter:image:alt"

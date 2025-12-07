@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { useLocation } from "react-router-dom";
 import MetaTags from "./MetaTags";
-import Hero from "./Hero";
+import Hero from "./Hero/index";
 
 const ImpactStrip = lazy(() => import("./ImpactStrip"));
 const Sponsors = lazy(() => import("./Sponsors"));

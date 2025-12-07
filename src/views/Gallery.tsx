@@ -11,7 +11,8 @@ import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
 import { FacebookPost } from "../dto/Facebook.dto";
 import { fetchFacebookPosts } from "../services/FacebookService";
-import logo from "../Assets/logo2.png";
+import { CldImage } from "../components/media/CldImage";
+import { getCldImage } from "../core/lib/getCldImage";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 12 },
@@ -45,6 +46,7 @@ const Gallery = () => {
   const prefersReducedMotion = useReducedMotion();
   const [facebookPosts, setFacebookPosts] = useState<FacebookPost[]>([]);
   const { t } = useLanguage();
+  const { image: logoImage, alt: logoAlt } = getCldImage("logo.main", { width: 112, autoQuality: true, autoFormat: true });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -170,11 +172,11 @@ const Gallery = () => {
                 <div className="p-6">
                   {/* Header with Logo */}
                   <div className="flex items-center space-x-2 mb-4">
-                    <div className="w-14 h-14 rounded-full bg-[#ffffff] flex items-center justify-center">
-                      <img
-                        src={logo}
-                        alt="logo"
-                        className="w-auto h-14  overflow-hidden"
+                    <div className="w-14 h-14 rounded-full bg-[#ffffff] flex items-center justify-center overflow-hidden">
+                      <CldImage
+                        image={logoImage}
+                        alt={logoAlt}
+                        className="w-auto h-14"
                       />
                     </div>
                     <span className="text-sm font-medium text-gray-900">

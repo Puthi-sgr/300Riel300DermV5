@@ -9,7 +9,7 @@ import { getCldImage } from "../../../../../core/lib/getCldImage";
 
 const Facts: React.FC = () => {
   const { t } = useLanguage();
-  const TrapaengSangkaeImage = ()=> {
+  const TrapaengSangkaeImage = () => {
     const {url, alt} = getCldImage("mangrove.factImage");
     return <img
               src={url}
@@ -17,9 +17,6 @@ const Facts: React.FC = () => {
               className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
             />
   }
-
-
-
   const conservationFacts = [
     {
       title: "Community-Led Conservation",

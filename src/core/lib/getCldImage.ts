@@ -4,6 +4,7 @@ import { scale } from "@cloudinary/url-gen/actions/resize";
 import { format, quality } from "@cloudinary/url-gen/actions/delivery";
 import { auto as formatAuto } from "@cloudinary/url-gen/qualifiers/format";
 import { auto as qualityAuto } from "@cloudinary/url-gen/qualifiers/quality";
+import { CloudinaryImage } from "@cloudinary/url-gen";
 
 type GetCldImageOptions = {
     width?: number;
@@ -24,25 +25,26 @@ export const getCldImage = (key: CldAssetKey, opts: GetCldImageOptions = {}) => 
         throw new Error(`Unknown Cloudinary asset key: ${key}`);
     }
 
-    const img = cld.image(asset.publicId);
+    const image: CloudinaryImage = cld.image(asset.publicId);
 
     if (opts.width != null || opts.height != null) {
         const resize = scale();
         if (opts.width != null) resize.width(opts.width);
         if (opts.height != null) resize.height(opts.height);
-        img.resize(resize);
+        image.resize(resize);
     }
 
     if (opts.autoFormat !== false) {
-        img.delivery(format(formatAuto()));
+        image.delivery(format(formatAuto()));
     }
 
     if (opts.autoQuality !== false) {
-        img.delivery(quality(qualityAuto()));
+        image.delivery(quality(qualityAuto()));
     }
 
     return {
-        url: img.toURL(),
+        image,
+        url: image.toURL(),
         alt: asset.alt,
     };
 };

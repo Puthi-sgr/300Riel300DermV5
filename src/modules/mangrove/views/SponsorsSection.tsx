@@ -2,8 +2,8 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "../../../context/LanguageContext";
 import { sponsors2025, sponsorsMeta } from "../data/sponsorsData";
-import giLogo from "../../../Assets/GI_Logo.png";
-import villaLogo from "../../../Assets/partner1.webp";
+import { CldImage } from "../../../components/media/CldImage";
+import { getCldImage } from "../../../core/lib/getCldImage";
 
 const SponsorsSection = () => {
   const { t } = useLanguage();
@@ -57,14 +57,17 @@ const SponsorsSection = () => {
               </span>
             </div>
 
-            {(sponsor.image === "gi" || sponsor.image === "villa") && (
-              <img
-                src={sponsor.image === "gi" ? giLogo : villaLogo}
-                alt={sponsor.name}
-                className="h-16 w-32 object-contain mx-auto"
-                loading="lazy"
-              />
-            )}
+            {(sponsor.image === "gi" || sponsor.image === "villa") && (() => {
+              const assetKey = sponsor.image === "villa" ? "sponsors.giantibis" : "sponsors.ktvilla";
+              const { image, alt } = getCldImage(assetKey, { width: 320, autoQuality: true, autoFormat: true });
+              return (
+                <CldImage
+                  image={image}
+                  alt={alt ?? sponsor.name}
+                  className="h-16 w-32 object-contain mx-auto"
+                />
+              );
+            })()}
 
             <p className="text-sm text-earth-800 leading-relaxed">
               {t(sponsor.supportKey)}

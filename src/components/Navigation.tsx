@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import logo from "../assets/logo2.png";
+import { CldImage } from "./media/CldImage";
+import { getCldImage } from "../core/lib/getCldImage";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navigation = () => {
   const location = useLocation();
   const { scrollY } = useScroll();
   const { language, toggleLanguage, t } = useLanguage();
+  const { image: logoImage, alt: logoAlt } = getCldImage("logo.main", { width: 320, autoQuality: true, autoFormat: true });
 
   const headerHeight = useTransform(scrollY, [0, 100], ["4rem", "3.5rem"]);
   const headerBackground = useTransform(
@@ -72,10 +74,9 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <img
-              src={logo}
-              loading="lazy"
-              alt="300 Riel Logo"
+            <CldImage
+              image={logoImage}
+              alt={logoAlt}
               className="w-auto h-24"
             />
           </motion.div>
