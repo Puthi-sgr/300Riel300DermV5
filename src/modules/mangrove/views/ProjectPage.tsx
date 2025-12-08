@@ -9,7 +9,6 @@ import LazyRevealSection from "../components/utils/LazyRevealSection";
 
 const ImpactSection = lazy(() => import("./Impact/index"));
 const HighlightsSection = lazy(() => import("./HighlightsSection"));
-const CampaignSection = lazy(() => import("./CampaignSection"));
 const SponsorsSection = lazy(() => import("./SponsorsSection"));
 const GallerySection = lazy(() => import("./GallerySection"));
 const Mangroves = lazy(() => import("./Mangroves/index"));
@@ -88,15 +87,17 @@ const MangroveProjectPage = () => {
               </LazyRevealSection>
             </motion.div>
 
-          
+             <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+              <LazyRevealSection initiallyVisible fallbackHeight={520}>
+                <GallerySection />
+              </LazyRevealSection>
+            </motion.div>
 
             <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
               <LazyRevealSection fallbackHeight={520}>
                 <SponsorsSection />
               </LazyRevealSection>
             </motion.div>
-
-       
 
             <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
               <LazyRevealSection fallbackHeight={520}>

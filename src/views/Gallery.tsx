@@ -87,19 +87,23 @@ const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="py-20 bg-gradient-to-b from-eco-50 to-white"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] py-20"
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -left-10 w-72 h-72 rounded-full bg-eco-300/25 blur-[140px]" />
+        <div className="absolute -bottom-24 right-0 w-80 h-80 rounded-full bg-eco-200/30 blur-[160px]" />
+      </div>
       <motion.div
         ref={ref}
         initial={prefersReducedMotion ? false : "hidden"}
         animate={prefersReducedMotion ? false : inView ? "visible" : undefined}
         variants={prefersReducedMotion ? undefined : containerVariants}
         viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
       >
         <motion.div
           variants={prefersReducedMotion ? undefined : itemVariants}
-          className="text-center mb-16"
+          className="text-center space-y-3"
         >
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.5 }}
@@ -115,7 +119,10 @@ const Gallery = () => {
           >
             <Facebook className="w-12 h-12 text-[#1877F2]" />
           </motion.div>
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+          <p className="text-sm font-semibold uppercase text-eco-700 tracking-[0.28em]">
+            {t("gallery.title")}
+          </p>
+          <h2 className="text-3xl font-bold text-earth-900 sm:text-4xl">
             {t("gallery.title")}
           </h2>
         </motion.div>
@@ -156,7 +163,7 @@ const Gallery = () => {
               variants={prefersReducedMotion ? undefined : itemVariants}
               whileHover={prefersReducedMotion ? undefined : { y: -8, scale: 1.02 }}
               whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-              className="flex-none w-[350px] snap-center bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-2xl group"
+              className="flex-none w-[350px] snap-center glass-card bg-card-foam rounded-3xl shadow-md overflow-hidden border border-white/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group"
             >
                 {/* Post Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -169,28 +176,28 @@ const Gallery = () => {
                 </div>
 
                 {/* Post Content */}
-                <div className="p-6">
+                <div className="p-6 space-y-3">
                   {/* Header with Logo */}
                   <div className="flex items-center space-x-2 mb-4">
-                    <div className="w-14 h-14 rounded-full bg-[#ffffff] flex items-center justify-center overflow-hidden">
+                    <div className="w-14 h-14 rounded-full glass-card ring-1 ring-white/60 flex items-center justify-center overflow-hidden">
                       <CldImage
                         image={logoImage}
                         alt={logoAlt}
                         className="w-auto h-14"
                       />
                     </div>
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className="text-sm font-semibold text-earth-900">
                       300Riel 300Derm
                     </span>
                   </div>
 
                   {/* Caption */}
-                  <p className="text-gray-700 line-clamp-3 mb-4 group-hover:text-eco-700 transition-colors">
+                  <p className="text-earth-700 line-clamp-3 group-hover:text-eco-700 transition-colors">
                     {post.message}
                   </p>
 
                   {/* Date with Calendar Icon */}
-                  <div className="flex items-center space-x-2 text-gray-500 mb-4">
+                  <div className="flex items-center space-x-2 text-earth-600">
                     <Calendar className="w-4 h-4" />
                     <span className="text-sm">
                       {formatDate(post.created_time)}
@@ -198,7 +205,7 @@ const Gallery = () => {
                   </div>
 
                   {/* External Link Indicator */}
-                  <div className="flex justify-end pt-4 border-t border-gray-100">
+                  <div className="flex justify-end pt-4 border-t border-white/70">
                     <ExternalLink className="w-4 h-4 text-eco-600 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -215,7 +222,7 @@ const Gallery = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-8 py-3 bg-[#1877F2] hover:bg-[#1664d9] text-white font-semibold rounded-lg transition-colors group"
+            className="inline-flex items-center px-8 py-3 glass-card bg-gradient-to-r from-[#1b74e4] via-[#1877f2] to-[#1464d4] text-white font-semibold rounded-full transition-colors group shadow-md hover:shadow-lg"
           >
             <Facebook className="mr-2" size={20} />
             {t("gallery.viewMore")}

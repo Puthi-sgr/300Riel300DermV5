@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Activity } from "lucide-react";
 import { useLanguage } from "../../../../../context/LanguageContext";
 import {
@@ -11,9 +12,17 @@ import UniqueReachCard from "../components/UniqueReachCard";
 import InteractionsCard from "../components/InteractionsCard";
 import NonFollowerShareCard from "../components/NonFollowerShareCard";
 import NewFollowersCard from "../components/NewFollowersCard";
+import { useStaggeredCounters } from "../../../../../hooks/useStaggeredCounters";
 
 const SocialMediaCampaignLayout = () => {
   const { t } = useLanguage();
+  const { getMotionProps, markReady, isReady } = useStaggeredCounters([
+    "hero",
+    "uniqueReach",
+    "interactions",
+    "nonFollowerShare",
+    "newFollowers",
+  ]);
 
   const statsMap = campaignStats2025.reduce<Record<string, CampaignStat>>(
     (acc, stat) => {
@@ -30,7 +39,7 @@ const SocialMediaCampaignLayout = () => {
   const newFollowers = statsMap["campaign.newFollowers"];
 
   return (
-    <div className="rounded-3xl bg-card-foam border border-white/70 shadow-impact p-6 sm:p-8 space-y-8 text-earth-900">
+    <div className="rounded-3xl bg-gradient-to-br from-[#f3fbf6] via-white to-[#eef6ee] border border-white/70 shadow-impact p-6 sm:p-8 space-y-4 text-earth-900">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="text-xxs sm:text-xs font-semibold uppercase tracking-[0.35em] text-eco-500">
@@ -46,19 +55,52 @@ const SocialMediaCampaignLayout = () => {
         </span>
       </div>
 
-      <div className="grid gap-6">
-        <div className="grid grid-cols-1 xl:grid-cols-[1.6fr_1fr] gap-6">
-          <SocialHeroCard stat={totalViews} t={t} />
+      <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-3">
+        <div className="col-span-12 lg:col-span-8 lg:row-span-6 grid gap-3">
+          <motion.div
+            {...getMotionProps(0)}
+            className="row-span-3 h-full"
+            onAnimationComplete={() => markReady("hero")}
+          >
+            <SocialHeroCard stat={totalViews} t={t} showCounter={isReady("hero")} />
+          </motion.div>
 
-          <div className="grid gap-6">
-            <UniqueReachCard uniqueReach={uniqueReach} totalViews={totalViews} t={t} />
-            <InteractionsCard interactions={interactions} t={t} />
-          </div>
+          <motion.div
+            {...getMotionProps(0.2)}
+            className="row-span-3 h-full"
+            onAnimationComplete={() => markReady("nonFollowerShare")}
+          >
+            <NonFollowerShareCard stat={nonFollowerShare} t={t} showCounter={isReady("nonFollowerShare")} />
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <NonFollowerShareCard stat={nonFollowerShare} t={t} />
-          <NewFollowersCard stat={newFollowers} t={t} />
+        <div className="col-span-12 lg:col-span-4 lg:row-span-6 grid grid-rows-6 gap-3">
+          <motion.div
+            {...getMotionProps(0.3)}
+            className="lg:row-span-2 h-full"
+            onAnimationComplete={() => markReady("uniqueReach")}
+          >
+            <UniqueReachCard
+              uniqueReach={uniqueReach}
+              totalViews={totalViews}
+              t={t}
+              showCounter={isReady("uniqueReach")}
+            />
+          </motion.div>
+          <motion.div
+            {...getMotionProps(0.4)}
+            className="lg:row-span-2 h-full"
+            onAnimationComplete={() => markReady("interactions")}
+          >
+            <InteractionsCard interactions={interactions} t={t} showCounter={isReady("interactions")} />
+          </motion.div>
+          <motion.div
+            {...getMotionProps(0.5)}
+            className="lg:row-span-2 h-full"
+            onAnimationComplete={() => markReady("newFollowers")}
+          >
+            <NewFollowersCard stat={newFollowers} t={t} showCounter={isReady("newFollowers")} />
+          </motion.div>
         </div>
       </div>
     </div>

@@ -51,10 +51,17 @@ export default {
           "linear-gradient(225deg, rgba(16,185,129,0.14) 0%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.14) 100%)",
         caution:
           "linear-gradient(135deg, rgba(234,179,8,0.16) 0%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.14) 100%)",
+        "btn-facebook":
+          "linear-gradient(90deg, #1b74e4 0%, #1877f2 50%, #1464d4 100%)",
+        "btn-eco":
+          "linear-gradient(135deg, rgba(0,89,0,0.18) 0%, rgba(0,80,0,0.24) 45%, rgba(0,67,0,0.2) 100%)",
+        "btn-glass":
+          "linear-gradient(135deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.22) 48%, rgba(255,255,255,0.14) 100%)",
       },
       boxShadow: {
         impact: "0 18px 48px rgba(0,0,0,0.12)",
         "impact-hover": "0 14px 24px rgba(0,0,0,0.16)",
+        "btn-soft": "0 12px 24px rgba(0,0,0,0.12)",
       },
     },
   },

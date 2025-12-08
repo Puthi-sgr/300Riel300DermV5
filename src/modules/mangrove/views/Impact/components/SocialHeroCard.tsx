@@ -1,10 +1,12 @@
 import React from "react";
 import { BarChart3, Eye } from "lucide-react";
 import { CampaignStat } from "../../../data/campaignData";
+import CustomCounter from "../../../../../components/CustomCounter";
 
 type Props = {
   stat?: CampaignStat;
   t: (key: string) => string;
+  showCounter?: boolean;
 };
 
 const formatNumber = (value?: number, decimals = 0) =>
@@ -12,14 +14,18 @@ const formatNumber = (value?: number, decimals = 0) =>
     maximumFractionDigits: decimals,
   });
 
-const SocialHeroCard: React.FC<Props> = ({ stat, t }) => {
+const SocialHeroCard: React.FC<Props> = ({ stat, t, showCounter = true }) => {
   return (
-    <article className="relative overflow-hidden rounded-[28px] border border-white/70 bg-card-glass shadow-impact p-6 sm:p-8 text-earth-900">
+    <article className="relative overflow-hidden rounded-[28px] border border-white/70 bg-card-glass shadow-impact p-6 sm:p-8 text-earth-900 h-full flex flex-col">
       <div className="absolute -right-8 -bottom-10 h-32 w-32 rounded-full bg-white/30 blur-3xl" aria-hidden="true" />
       <div className="absolute inset-y-0 right-0 w-1/3 opacity-10" aria-hidden="true">
         <BarChart3 className="h-full w-full" />
       </div>
-      <div className="relative z-10 space-y-4">
+      <div
+        className={`relative z-10 space-y-4 transition-all duration-300 ${
+          showCounter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+        }`}
+      >
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="flex items-center gap-2 text-xxs sm:text-xs uppercase tracking-[0.35em] text-eco-500">
@@ -27,10 +33,13 @@ const SocialHeroCard: React.FC<Props> = ({ stat, t }) => {
               {t(stat?.labelKey ?? "campaign.totalViews")}
             </p>
             <div className="mt-3 text-4xl sm:text-5xl font-bold">
-              {formatNumber(stat?.value)}
-              {stat?.suffix && (
-                <span className="text-2xl sm:text-3xl text-eco-500">{stat.suffix}</span>
-              )}
+              {showCounter ? (
+                <CustomCounter
+                  end={stat?.value ?? 0}
+                  suffix={stat?.suffix}
+                  decimals={stat?.decimals ?? 0}
+                />
+              ) : null}
             </div>
             <p className="text-sm text-earth-700 mt-2">
               {t("campaign.totalViewsDescription") ?? "Latest verified reach"}

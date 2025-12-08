@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, QrCode, Smartphone, CreditCard, Building2 } from "lucide-react";
+import { Heart, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../context/LanguageContext";
@@ -13,11 +13,16 @@ const Donate = () => {
   });
 
   const { t } = useLanguage();
-  const { image: qrImage, alt: qrAlt } = getCldImage("qrcode.donation", { width: 720, autoQuality: true, autoFormat: true });
+  const { image: qrImage, alt: qrAlt } = getCldImage("qrcode.donation", {
+    width: 720,
+    autoQuality: true,
+    autoFormat: true,
+  });
 
   const handleDonationLink = () => {
     window.open("https://pay.ababank.com/77Lo2oCdT26yWVW98", "_blank");
   };
+
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -42,171 +47,112 @@ const Donate = () => {
   return (
     <section
       id="donate"
-      className="py-20 bg-gradient-to-b from-eco-50 via-white to-eco-50"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] py-20"
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -left-10 w-72 h-72 rounded-full bg-eco-300/25 blur-[140px]" />
+        <div className="absolute -bottom-24 right-0 w-80 h-80 rounded-full bg-eco-200/30 blur-[160px]" />
+      </div>
+
       <motion.div
         ref={ref}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={containerVariants}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
       >
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+        <motion.div variants={itemVariants} className="text-center space-y-3">
+          <p className="text-sm font-semibold uppercase text-eco-700 tracking-[0.28em]">
+            {t("donate.title")}
+          </p>
+          <h2 className="text-3xl font-bold text-earth-900 sm:text-4xl">
             {t("donate.title")}
           </h2>
-          <p className="mt-4 text-xl text-gray-600">{t("donate.subtitle")}</p>
+          <p className="text-lg text-earth-700">{t("donate.subtitle")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Column - Why Support Matters */}
-          <motion.div
-            variants={itemVariants}
-            className="bg-white rounded-2xl shadow-xl p-8"
-          >
-            <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-              {t("donate.why")}
-            </h3>
-
+        <motion.div
+          variants={itemVariants}
+          className="glass-card bg-card-glass rounded-3xl shadow-impact border border-white/70 p-6 sm:p-8 space-y-8"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-12">
             <div className="space-y-6">
-              <div className="bg-eco-50 rounded-lg p-6">
-                <ul className="space-y-4 text-gray-600">
-                  <li className="flex items-center space-x-3">
-                    <span className="text-2xl">🌱</span>
-                    <div>
-                      <h4 className="font-medium text-gray-900">
-                        {t("donate.impact.info1.header")}
-                      </h4>
-                      <p>{t("donate.impact.info1")}</p>
-                    </div>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="text-2xl">🎓</span>
-                    <div>
-                      <h4 className="font-medium text-gray-900">
-                        {t("donate.impact.info2.header")}
-                      </h4>
-                      <p>{t("donate.impact.info2")}</p>
-                    </div>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="text-2xl">🤝</span>
-                    <div>
-                      <h4 className="font-medium text-gray-900">
-                        {t("donate.impact.info3.header")}
-                      </h4>
-                      <p>{t("donate.impact.info3")}</p>
-                    </div>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="text-2xl">🌍</span>
-                    <div>
-                      <h4 className="font-medium text-gray-900">
-                        {t("donate.impact.info4.header")}
-                      </h4>
-                      <p>{t("donate.impact.info4")}</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-earth-50 rounded-lg p-6">
-                <h4 className="font-medium text-gray-900 mb-3">
-                  {t("donate.impact")}
-                </h4>
-                <p className="text-gray-600">
-                  {t("donate.impact.appreciation")}
-                </p>
+              <h3 className="text-2xl font-semibold text-earth-900">{t("donate.why")}</h3>
+              <ul className="space-y-4 text-earth-700 bg-card-foam rounded-2xl p-6 border border-white/70 shadow-sm">
+                <li className="flex items-start gap-3">
+                  <span className="text-xl">🌱</span>
+                  <div>
+                    <h4 className="font-semibold text-earth-900">{t("donate.impact.info1.header")}</h4>
+                    <p>{t("donate.impact.info1")}</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-xl">🤝</span>
+                  <div>
+                    <h4 className="font-semibold text-earth-900">{t("donate.impact.info2.header")}</h4>
+                    <p>{t("donate.impact.info2")}</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-xl">📚</span>
+                  <div>
+                    <h4 className="font-semibold text-earth-900">{t("donate.impact.info3.header")}</h4>
+                    <p>{t("donate.impact.info3")}</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-xl">🌊</span>
+                  <div>
+                    <h4 className="font-semibold text-earth-900">{t("donate.impact.info4.header")}</h4>
+                    <p>{t("donate.impact.info4")}</p>
+                  </div>
+                </li>
+              </ul>
+              <div className="rounded-2xl border border-white/70 bg-card-foam p-6 shadow-sm">
+                <h4 className="font-semibold text-earth-900 mb-3">{t("donate.impact")}</h4>
+                <p className="text-earth-700">{t("donate.impact.appreciation")}</p>
               </div>
             </div>
-          </motion.div>
-
-          {/* Right Column - Payment Methods */}
-          <motion.div
-            variants={itemVariants}
-            className="bg-white rounded-2xl shadow-xl p-8"
-          >
-            <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-              {t("donate.payment")}
-            </h3>
 
             <div className="space-y-6">
-              {/* Mobile Payment Section with QR Code */}
-              <div className="border-2 border-eco-100 rounded-xl p-6">
+              <h3 className="text-2xl font-semibold text-earth-900">{t("donate.payment")}</h3>
+              <div className="rounded-2xl border border-white/70 bg-card-grain p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <Smartphone className="w-6 h-6 text-eco-600 mr-2" />
-                  <h4 className="text-lg font-medium text-gray-900">
-                    {t("donate.mobile")}
-                  </h4>
+                  <Smartphone className="w-6 h-6 text-eco-700 mr-2" />
+                  <h4 className="text-lg font-semibold text-earth-900">{t("donate.mobile")}</h4>
                 </div>
-
-                {/* QR Code Placeholder */}
-                <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 mb-4">
+                <div className="flex flex-col items-center justify-center p-4 bg-white/70 rounded-xl border border-white/70 shadow-inner mb-4">
                   <CldImage
                     image={qrImage}
                     alt={qrAlt}
-                    className="w-auto h-auto mb-2 rounded-[32px]"
+                    className="w-auto h-auto mb-2 rounded-[32px] shadow-sm"
                   />
-
-                  <p className="text-sm text-gray-500 text-center">
-                    Scan QR code to make payment
-                  </p>
+                  <p className="text-sm text-earth-700 text-center">Scan QR code to make payment</p>
                 </div>
-
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Account Name:</span>
-                    <span className="font-medium text-gray-900">
-                      Nita SOKHA
-                    </span>
+                  <div className="flex items-center justify-between text-sm text-earth-700">
+                    <span>Account Name:</span>
+                    <span className="font-semibold text-earth-900">Nita SOKHA</span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Account Number:</span>
-                    <span className="font-medium text-gray-900">
-                      009 586 614
-                    </span>
+                  <div className="flex items-center justify-between text-sm text-earth-700">
+                    <span>Account Number:</span>
+                    <span className="font-semibold text-earth-900">009 586 614</span>
                   </div>
                 </div>
               </div>
-
-              {/* Other Payment Methods */}
-              {/* <div className="space-y-4">
-                <div className="flex items-center p-4 bg-gray-50 rounded-lg">
-                  <CreditCard className="w-6 h-6 text-eco-600 mr-3" />
-                  <div>
-                    <h5 className="font-medium text-gray-900">
-                      {t("donate.credit")}
-                    </h5>
-                    <p className="text-sm text-gray-600">Coming soon</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center p-4 bg-gray-50 rounded-lg">
-                  <Building2 className="w-6 h-6 text-eco-600 mr-3" />
-                  <div>
-                    <h5 className="font-medium text-gray-900">
-                      {t("donate.bank")}
-                    </h5>
-                    <p className="text-sm text-gray-600">
-                      Contact us for details
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-            </div>
-
             <motion.button
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleDonationLink}
-              className="w-full mt-8 flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-eco-600 hover:bg-eco-700"
+              className="w-full mt-2 flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-full text-white bg-btn-eco shadow-btn-soft"
             >
-              <Heart className="mr-2" size={20} />
-              {t("donate.link")}
-            </motion.button>
-          </motion.div>
-        </div>
+                <Heart className="mr-2" size={20} />
+                {t("donate.link")}
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

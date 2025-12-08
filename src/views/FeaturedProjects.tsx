@@ -67,55 +67,48 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       {isVisible ? (
         <Link
           to={`/projects/${project.slug}`}
-          className="group rounded-2xl border border-eco-100 shadow-sm overflow-hidden bg-eco-50/60 flex flex-col transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-eco-400"
+          className="group rounded-3xl border border-white/70 glass-card bg-card-foam shadow-impact overflow-hidden flex flex-col transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-eco-400"
         >
           <article className="flex h-full flex-col">
-            <div className="relative h-48 bg-earth-50">
+            <div className="relative h-48 bg-earth-50 overflow-hidden">
               {project.thumbnail ? (
                 <img
                   src={project.thumbnail}
                   alt={project.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               ) : (
                 <div className="h-full w-full bg-gradient-to-br from-eco-100 to-eco-200" />
               )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent" aria-hidden />
               <span
-                className={`absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full border ${statusStyles[project.status]}`}
+                className={`absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full border backdrop-blur-sm ${statusStyles[project.status]}`}
               >
                 {statusLabels[project.status]}
               </span>
             </div>
 
             <div className="p-6 flex flex-col gap-4 flex-1">
-              <div>
-                <h3 className="text-xl font-semibold text-earth-900">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-earth-700 mt-1">
-                  {buildTagline(project)}
-                </p>
+              <div className="space-y-1">
+                <h3 className="text-xl font-semibold text-earth-900">{project.title}</h3>
+                <p className="text-sm text-earth-700">{buildTagline(project)}</p>
               </div>
 
-              <p className="text-earth-800 text-sm leading-relaxed flex-1">
-                {project.summary}
-              </p>
+              <p className="text-earth-800 text-sm leading-relaxed flex-1">{project.summary}</p>
 
               <div className="flex items-center justify-between">
                 <div className="flex gap-2 text-xs text-earth-600">
-                  <span className="px-2 py-1 rounded-full bg-white border border-eco-100">
+                  <span className="px-2 py-1 rounded-full bg-white/85 border border-white/70 shadow-xs">
                     {project.year}
                   </span>
-                  <span className="px-2 py-1 rounded-full bg-white border border-eco-100 capitalize">
+                  <span className="px-2 py-1 rounded-full bg-white/85 border border-white/70 shadow-xs capitalize">
                     {project.type}
                   </span>
                 </div>
                 <span className="inline-flex items-center text-eco-700 font-semibold transition group-hover:text-eco-800">
                   View Project
-                  <span aria-hidden className="ml-1 transition group-hover:translate-x-1">
-                    ➜
-                  </span>
+                  <span aria-hidden className="ml-1 transition group-hover:translate-x-1">→</span>
                 </span>
               </div>
             </div>
@@ -134,14 +127,18 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 const FeaturedProjects = () => {
   return (
     <motion.section
-      className="bg-white py-16 sm:py-20"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] py-16 sm:py-20"
       id="featured-projects"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -left-10 w-72 h-72 rounded-full bg-eco-300/25 blur-[140px]" />
+        <div className="absolute -bottom-24 right-0 w-80 h-80 rounded-full bg-eco-200/30 blur-[160px]" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <motion.div
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -150,7 +147,7 @@ const FeaturedProjects = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div>
-            <p className="text-sm font-semibold uppercase text-eco-700 tracking-wide">
+            <p className="text-sm font-semibold uppercase text-eco-700 tracking-[0.28em]">
               Featured Projects
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-earth-900 mt-1">
@@ -162,7 +159,7 @@ const FeaturedProjects = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
           {projects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
@@ -173,3 +170,4 @@ const FeaturedProjects = () => {
 };
 
 export default FeaturedProjects;
+

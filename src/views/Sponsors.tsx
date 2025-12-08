@@ -86,7 +86,7 @@ const Sponsors = () => {
           >
             <Users className="w-12 h-12 text-eco-600" />
           </motion.div>
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4 tracking-normal normal-case">
             {t("sponsors.title")}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -149,7 +149,7 @@ const Sponsors = () => {
         {/* Partnership CTA */}
         <motion.div variants={itemVariants} className="text-center">
           <div className="bg-gradient-to-br from-eco-50 to-earth-50 rounded-2xl p-8 shadow-lg border border-eco-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 tracking-normal normal-case">
               {t("sponsors.partnerWithUs")}
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -159,7 +159,7 @@ const Sponsors = () => {
               onClick={scrollToContact}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center px-6 py-3 bg-eco-600 text-white rounded-lg font-semibold shadow-lg hover:bg-eco-700 transition-all duration-300"
+              className="inline-flex items-center px-6 py-3 bg-eco-600 text-white rounded-full font-semibold shadow-lg hover:bg-eco-700 transition-all duration-300"
             >
               <Handshake className="mr-2 w-5 h-5" />
               {t("sponsors.becomePartner")}

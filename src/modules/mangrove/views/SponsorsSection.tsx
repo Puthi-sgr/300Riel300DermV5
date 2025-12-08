@@ -21,10 +21,15 @@ const SponsorsSection = () => {
       };
 
   return (
-    <div className="rounded-3xl border border-eco-100 bg-gradient-to-br from-white to-emerald-200/20 shadow-md p-8 space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] border border-white/70 shadow-impact p-8 space-y-8">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-16 -left-8 w-60 h-60 rounded-full bg-eco-300/25 blur-[120px]" />
+        <div className="absolute -bottom-20 right-0 w-72 h-72 rounded-full bg-eco-200/30 blur-[140px]" />
+      </div>
+
+      <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-eco-700">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-eco-700">
             {t(sponsorsMeta.titleKey)}
           </p>
           <h3 className="text-2xl sm:text-3xl font-bold text-earth-900 leading-snug">
@@ -34,16 +39,16 @@ const SponsorsSection = () => {
             {t("project.sponsors.caption") ?? "Partners who keep this work moving forward."}
           </p>
         </div>
-        <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-eco-50 border border-eco-200 text-eco-700">
+        <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full glass-card bg-white/80 border border-white/70 text-eco-700 shadow-xs">
           {sponsorsMeta.period}
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6">
         {sponsors2025.map((sponsor, idx) => (
           <motion.article
             key={sponsor.name}
-            className="glass-card shadow-impact hover:shadow-impact-hover p-5 flex flex-col gap-5 transition-shadow duration-150 ease-out"
+            className="glass-card bg-card-foam rounded-3xl shadow-impact hover:shadow-impact-hover p-5 flex flex-col gap-5 transition-shadow duration-150 ease-out border border-white/70"
             variants={cardVariants}
             initial={prefersReducedMotion ? undefined : "hidden"}
             whileInView={prefersReducedMotion ? undefined : "show"}
@@ -52,7 +57,7 @@ const SponsorsSection = () => {
           >
             <div className="flex items-center justify-between gap-3">
               <h4 className="text-lg font-semibold text-earth-900">{sponsor.name}</h4>
-              <span className="text-[11px] uppercase tracking-[0.22em] text-eco-700 bg-white/70 border border-white/80 px-2 py-1 rounded-full">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-eco-700 bg-white/80 border border-white/70 px-2 py-1 rounded-full glass-card">
                 Sponsor
               </span>
             </div>

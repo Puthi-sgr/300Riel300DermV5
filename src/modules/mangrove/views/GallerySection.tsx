@@ -3,6 +3,8 @@ import LightGallery from "lightgallery/react";
 import lgZoom from "lightgallery/plugins/zoom";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import { useLanguage } from "../../../context/LanguageContext";
+import { getCldImage } from "../../../core/lib/getCldImage";
+import { CldImage } from "../../../components/media/CldImage";
 
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
@@ -12,28 +14,61 @@ const GallerySection = () => {
   const { t } = useLanguage();
 
   const galleryItems = useMemo(() => {
-    const tiles = [
-      {
-        src: "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        thumb:
-          "https://cdn.dribbble.com/userupload/6394144/file/original-8710c150db3cd4c4b6cb7727dfde7f2a.png?resize=2048x1536&vertical=center",
-        subHtml: "<h4>Placeholder image</h4><p>Replace with your gallery items.</p>",
-      },
-
+    // Fixed layout (no randomization) to match the provided mosaic style.
+    const orderedKeys: Array<
+      | "gallery.banner"
+      | "gallery.seyhaPlanting"
+      | "gallery.pichtaPlanting"
+      | "gallery.nitaPlanting"
+      | "gallery.ranger"
+      | "gallery.droneShot"
+      | "gallery.boat"
+      | "gallery.ranger2"
+      | "gallery.eating"
+      | "gallery.groupVilla"
+      | "gallery.droneShot2"
+    > = [
+      "gallery.groupVilla",
+      "gallery.banner",
+      "gallery.droneShot2",
+      "gallery.seyhaPlanting",
+      "gallery.nitaPlanting",
+       "gallery.pichtaPlanting",
+      "gallery.ranger",
+      "gallery.boat",
+      "gallery.ranger2",
+      "gallery.droneShot",
+      "gallery.eating",
+      
+       
     ];
 
     const sizeClasses = [
-      "row-span-1 col-span-1",
-      "row-span-2 col-span-1",
-      "row-span-1 col-span-2",
-      "row-span-2 col-span-3",
+      "col-span-6 row-span-3", // 1
+      "col-span-6 row-span-3", // 2
+      "col-span-8 row-span-4", // 3
+      "col-span-4 row-span-2", // 4
+      "col-span-4 row-span-2", // 5
+      "col-span-6 row-span-3", // 6
+      "col-span-6 row-span-3", // 7
+      "col-span-7 row-span-2", // 8 (mirror start)
+      "col-span-5 row-span-2", // 9
+      "col-span-8 row-span-4", // 10
+      "col-span-4 row-span-4", // 11
     ];
 
-    return tiles.map((tile) => ({
-      ...tile,
-      sizeClass:
-        sizeClasses[Math.floor(Math.random() * sizeClasses.length)],
-    }));
+    return orderedKeys.map((key, idx) => {
+      const { image, url, alt } = getCldImage(key, { width: 1400, autoQuality: true, autoFormat: true });
+      return {
+        key,
+        image,
+        src: url,
+        thumb: url,
+        alt,
+        subHtml: `<h4>${alt}</h4>`,
+        sizeClass: sizeClasses[idx] ?? "col-span-6 row-span-3",
+      };
+    });
   }, []);
 
   return (
@@ -50,23 +85,26 @@ const GallerySection = () => {
       <div className="rounded-xl bg-eco-50/60 p-4">
         <LightGallery
           plugins={[lgZoom, lgThumbnail]}
+          mode="lg-fade"
+          speed={500}
+          zoomFromOrigin={false}
           // Adjust `grid-cols-*` utilities below to change the number of columns at each breakpoint.
           // Adjust `auto-rows-[140px]` to make each mosaic row taller/shorter.
-          elementClassNames="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[180px] grid-flow-row-dense"
+          elementClassNames="grid grid-cols-12 gap-4 auto-rows-[120px] md:auto-rows-[140px] lg:auto-rows-[160px]"
         >
           {galleryItems.map((item, index) => (
             <a
               key={`${item.src}-${index}`}
               href={item.src}
-              data-lg-size="1600-1066"
+              data-lg-size="1600-900"
+                data-thumb={item.thumb}
               data-sub-html={item.subHtml}
               className={`group block h-full w-full rounded-xl overflow-hidden bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] ${item.sizeClass}`}
             >
-              <img
-                src={item.thumb}
-                alt="Gallery placeholder"
+              <CldImage
+                image={item.image}
+                alt={item.alt}
                 className="h-full w-full object-cover"
-                loading="lazy"
               />
             </a>
           ))}
