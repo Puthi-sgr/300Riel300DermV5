@@ -1,31 +1,19 @@
 import React from "react";
-import { motion } from "framer-motion";
-import SectionHeader from "../../../components/SectionHeader";
 import BackgroundBlob from "../../../components/BackgroundBlob";
 
 type SponsorPackageLayoutProps = {
-  title: string;
-  kicker?: string;
-  description: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
-const SponsorPackageLayout: React.FC<SponsorPackageLayoutProps> = ({ title, kicker, description, children }) => (
-  <section className="relative overflow-hidden bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+const SponsorPackageLayout: React.FC<SponsorPackageLayoutProps> = ({ children }) => (
+  <section className="relative w-full overflow-hidden min-h-screen bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] px-3 sm:px-5 lg:px-6 py-16 sm:py-18 flex flex-col">
     <div className="absolute inset-0 pointer-events-none">
-      <BackgroundBlob className="-top-24 -left-10 w-72 h-72" />
-      <BackgroundBlob className="-bottom-24 right-0 w-72 h-72" colorClass="bg-eco-200/28" />
+      <BackgroundBlob className="-top-24 -left-10 w-80 h-80" />
+      <BackgroundBlob className="-bottom-24 right-0 w-80 h-80" colorClass="bg-eco-200/28" />
     </div>
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.6 }}
-      className="relative max-w-6xl mx-auto space-y-6"
-    >
-      <SectionHeader kicker={kicker} title={title} subtitle={description} />
+    <div className="relative max-w-6xl mx-auto space-y-12 flex-1 min-h-[70vh] flex flex-col justify-center">
       {children}
-    </motion.div>
+    </div>
   </section>
 );
 

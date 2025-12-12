@@ -1,18 +1,53 @@
 import React from "react";
+import { Users, Eye, Leaf, BookOpenCheck, GraduationCap, Infinity } from "lucide-react";
 import WhyUsLayout from "./layout/WhyUsLayout";
+import PartnerIntro from "./components/PartnerIntro";
+import CommitmentsGrid from "./components/CommitmentsGrid";
 
-const WhyUs: React.FC = () => (
-  <WhyUsLayout
-    kicker="Why us"
-    title="Community-led, transparent, and focused"
-    description="We partner closely with local educators, track outcomes, and keep supporters informed."
-  >
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-earth-800">
-      <div className="glass-card bg-card-foam rounded-2xl border border-white/70 p-4 shadow-sm">Local partners</div>
-      <div className="glass-card bg-card-grain rounded-2xl border border-white/70 p-4 shadow-sm">Transparent updates</div>
-      <div className="glass-card bg-card-fern rounded-2xl border border-white/70 p-4 shadow-sm">Measurable outcomes</div>
-    </div>
-  </WhyUsLayout>
-);
+const WhyUs: React.FC = () => {
+  const commitments = [
+    {
+      icon: <BookOpenCheck className="w-5 h-5" />,
+      title: "Direct Impact",
+      description: "100% of proceeds go directly to purchasing educational resources, ensuring maximum benefit.",
+    },
+    {
+      icon: <Eye className="w-5 h-5" />,
+      title: "Transparency",
+      description: "Open ledger updates for all donors, so you know exactly where your money goes.",
+    },
+    {
+      icon: <Leaf className="w-5 h-5" />,
+      title: "Sustainability",
+      description: "Eco-friendly sourcing to minimize our footprint and teach environmental responsibility.",
+    },
+    {
+      icon: <Users className="w-5 h-5" />,
+      title: "Community Led",
+      description: "Our initiatives are driven by local needs and voices, adding external agencies for long-term support.",
+    },
+    {
+      icon: <GraduationCap className="w-5 h-5" />,
+      title: "Educational Focus",
+      description: "Curated books chosen for the local curriculum to enhance the learning experience.",
+    },
+    {
+      icon: <Infinity className="w-5 h-5" />,
+      title: "Long-term Vision",
+      description: "We build lasting relationships and sustainable education growth, beyond one-off donations.",
+    },
+  ];
+
+  return (
+    <WhyUsLayout>
+      <PartnerIntro />
+      <CommitmentsGrid
+        title="Our Commitments"
+        subtitle="We prioritize transparency and impact in every step of our journey. Here is how we ensure your contribution makes a difference."
+        commitments={commitments}
+      />
+    </WhyUsLayout>
+  );
+};
 
 export default WhyUs;

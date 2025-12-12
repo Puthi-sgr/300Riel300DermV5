@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { projects, Project } from "../modules/projects";
 import { motion } from "framer-motion";
+import { CldImage } from "../components/media/CldImage";
 
 const statusStyles: Record<Project["status"], string> = {
   completed: "bg-eco-100 text-eco-700 border-eco-200",
@@ -72,11 +73,10 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           <article className="flex h-full flex-col">
             <div className="relative h-48 bg-earth-50 overflow-hidden">
               {project.thumbnail ? (
-                <img
-                  src={project.thumbnail}
+                <CldImage
+                  image={project.thumbnail}
                   alt={project.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
+                  className="h-full w-full object-cover object-center"
                 />
               ) : (
                 <div className="h-full w-full bg-gradient-to-br from-eco-100 to-eco-200" />

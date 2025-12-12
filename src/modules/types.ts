@@ -1,3 +1,5 @@
+import { CloudinaryImage } from "@cloudinary/url-gen/index";
+
 export type ProjectStatus = "completed" | "in-progress" | "upcoming";
 
 export type ProjectStats = {
@@ -16,8 +18,8 @@ export type Project = {
   status: ProjectStatus;
   year: number;
   type: string;
-  heroImage?: string;
-  thumbnail?: string;
+  heroImage?: CloudinaryImage;
+  thumbnail?: CloudinaryImage;
   summary: string;
   stats?: ProjectStats;
   sponsors: string[];

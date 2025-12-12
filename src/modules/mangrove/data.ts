@@ -1,4 +1,8 @@
 import { Project } from "../types";
+import { getCldImage } from "../../core/lib/getCldImage";
+
+const heroImage = getCldImage("feature.mangrove", { width: 1200, autoQuality: true, autoFormat: true });
+const thumbnail = getCldImage("feature.mangrove", { width: 600, autoQuality: true, autoFormat: true });
 
 export const mangroveProject: Project = {
   slug: "mangrove-2025",
@@ -6,8 +10,8 @@ export const mangroveProject: Project = {
   status: "completed",
   year: 2025,
   type: "environment",
-  heroImage: "/images/mangrove-hero.jpg",
-  thumbnail: "/images/mangrove-card.jpg",
+  heroImage: heroImage.image,
+  thumbnail: heroImage.image,
   summary:
     "Student-led mangrove restoration mission with 300 seedlings and a viral awareness campaign.",
   stats: {

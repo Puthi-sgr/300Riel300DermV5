@@ -8,6 +8,7 @@ import CTAGroup from "../components/CTAGroup";
 import ProgressCard from "../components/ProgressCard";
 import ScrollIndicator from "../components/ScrollIndicator";
 import { HeartHandshake } from "lucide-react";
+import PillBadge from "../../../components/PillBadge";
 
 type Metric = {
   icon: React.ReactNode;
@@ -35,29 +36,29 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({
   metrics,
 }) => {
   return (
-    <section className="relative w-full overflow-hidden min-h-screen px-3 sm:px-5 lg:px-6 py-14 sm:py-18">
+    <section className="relative w-full overflow-hidden min-h-screen px-3 sm:px-5 lg:px-6 pt-12 pb-8 sm:pt-14 sm:pb-12 flex flex-col">
       <div className="absolute inset-0 pointer-events-none">
         <BackgroundBlob className="-top-32 -left-16 w-96 h-96" />
         <BackgroundBlob className="-bottom-36 right-10 w-96 h-96" colorClass="bg-eco-200/26" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-12 items-start">
+      <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-12 items-center flex-1 min-h-[70vh]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-6"
+          className="space-y-7 sm:space-y-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-eco-100 text-eco-500 font-semibold text-xs uppercase tracking-[0.12em] border border-eco-200 shadow-sm">
+          <PillBadge>
             <HeartHandshake className="w-4 h-4" />
             Together, we build a better future
-          </div>
+          </PillBadge>
 
-          <SectionHeader kicker={undefined} title={heading} subtitle={undefined} className="space-y-3" />
+          <SectionHeader kicker={undefined} title={heading} subtitle={undefined} className="space-y-4" />
 
           <OverviewCard>{overview}</OverviewCard>
 
-          <ObjectivesList items={objectives} className="text-base" />
+          <ObjectivesList items={objectives} className="text-base space-y-4" />
 
           <CTAGroup />
         </motion.div>
