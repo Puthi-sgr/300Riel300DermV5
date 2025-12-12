@@ -1,18 +1,18 @@
 import React, { lazy, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useLanguage } from "../../../context/LanguageContext";
-import { mangroveProject } from "../data";
-import ProjectPageLoading from "../components/ProjectPageLoading";
-import ProjectPageHeader from "../components/ProjectPageHeader";
-import LazyRevealSection from "../components/utils/LazyRevealSection";
+import { useLanguage } from "../../context/LanguageContext";
+import { mangroveProject } from "./data";
+import ProjectPageLoading from "./components/ProjectPageLoading";
+import ProjectPageHeader from "./components/ProjectPageHeader";
+import LazyRevealSection from "./components/utils/LazyRevealSection";
 
-const ImpactSection = lazy(() => import("./Impact/index"));
-const HighlightsSection = lazy(() => import("./HighlightsSection"));
-const SponsorsSection = lazy(() => import("./SponsorsSection"));
-const GallerySection = lazy(() => import("./GallerySection"));
-const Mangroves = lazy(() => import("./Mangroves/index"));
-const Phases = lazy(() => import("./Phases"));
+const ImpactSection = lazy(() => import("./views/Impact/index"));
+const HighlightsSection = lazy(() => import("./views/HighlightsSection"));
+const SponsorsSection = lazy(() => import("./views/SponsorsSection"));
+const GallerySection = lazy(() => import("./views/GallerySection"));
+const Mangroves = lazy(() => import("./views/Mangroves/index"));
+const Phases = lazy(() => import("./views/Phases"));
 
 const containerVariants = {
   hidden: { opacity: 0 },

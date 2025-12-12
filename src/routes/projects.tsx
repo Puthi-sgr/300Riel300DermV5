@@ -1,14 +1,13 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projectBySlug } from "../../modules/projects";
-import ProjectPageFallback from "./components/ProjectPageFallback";
-import ProjectNotFound from "./components/ProjectNotFound";
-import GenericProjectPage from "./layout/GenericProjectLayout";
+import { projectRegistry } from "../modules/projects/registry";
+import { projectBySlug } from "../modules/projects";
+import ProjectPageFallback from "../views/ProjectDetailPage/components/ProjectPageFallback";
+import ProjectNotFound from "../views/ProjectDetailPage/components/ProjectNotFound";
+import GenericProjectPage from "../views/ProjectDetailPage/layout/GenericProjectLayout";
 
-const MangroveProjectPage = lazy(() => import("../../modules/mangrove/views/ProjectPage"));
-
-const ProjectDetailPage = () => {
+const ProjectsRoute = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projectBySlug(slug);
 
@@ -20,7 +19,10 @@ const ProjectDetailPage = () => {
     return <ProjectNotFound currentSlug={slug} />;
   }
 
-  if (project.slug === "mangrove-2025") {
+  const loader = slug ? projectRegistry[slug] : undefined;
+
+  if (loader) {
+    const LazyPage = lazy(loader);
     return (
       <Suspense fallback={<ProjectPageFallback />}>
         <motion.div
@@ -28,7 +30,7 @@ const ProjectDetailPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <MangroveProjectPage />
+          <LazyPage />
         </motion.div>
       </Suspense>
     );
@@ -37,4 +39,4 @@ const ProjectDetailPage = () => {
   return <GenericProjectPage project={project} />;
 };
 
-export default ProjectDetailPage;
+export default ProjectsRoute;

@@ -8,16 +8,16 @@ export default {
       },
       colors: {
         eco: {
-          50: "#f2f7f2",
-          100: "#e6efe6",
-          200: "#bfd6bf",
-          300: "#99bd99",
-          400: "#4d8b4d",
-          500: "#005900",
-          600: "#005000",
-          700: "#004300",
-          800: "#003500",
-          900: "#002c00",
+          50: "#f1fcf5",
+          100: "#ddf8e7",
+          200: "#b6f0ce",
+          300: "#8be5b2",
+          400: "#4fd48a",
+          500: "#1fb96a",
+          600: "#1a9d5a",
+          700: "#167f4b",
+          800: "#115f39",
+          900: "#0c462c",
         },
         earth: {
           50: "#faf5f0",
@@ -57,6 +57,8 @@ export default {
           "linear-gradient(135deg, rgba(0,89,0,0.18) 0%, rgba(0,80,0,0.24) 45%, rgba(0,67,0,0.2) 100%)",
         "btn-glass":
           "linear-gradient(135deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.22) 48%, rgba(255,255,255,0.14) 100%)",
+        "pill-eco":
+          "linear-gradient(90deg, #d6fbe5 0%, #c9f6da 100%)",
       },
       boxShadow: {
         impact: "0 18px 48px rgba(0,0,0,0.12)",
