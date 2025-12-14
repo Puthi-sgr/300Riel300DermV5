@@ -3,38 +3,41 @@ import { Users, Eye, Leaf, BookOpenCheck, GraduationCap, Infinity } from "lucide
 import WhyUsLayout from "./layout/WhyUsLayout";
 import PartnerIntro from "./components/PartnerIntro";
 import CommitmentsGrid from "./components/CommitmentsGrid";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const WhyUs: React.FC = () => {
+  const { t } = useLanguage();
+
   const commitments = [
     {
       icon: <BookOpenCheck className="w-5 h-5" />,
-      title: "Direct Impact",
-      description: "100% of proceeds go directly to purchasing educational resources, ensuring maximum benefit.",
+      title: t("book.whyUs.commitments.0.title"),
+      description: t("book.whyUs.commitments.0.description"),
     },
     {
       icon: <Eye className="w-5 h-5" />,
-      title: "Transparency",
-      description: "Open ledger updates for all donors, so you know exactly where your money goes.",
+      title: t("book.whyUs.commitments.1.title"),
+      description: t("book.whyUs.commitments.1.description"),
     },
     {
       icon: <Leaf className="w-5 h-5" />,
-      title: "Sustainability",
-      description: "Eco-friendly sourcing to minimize our footprint and teach environmental responsibility.",
+      title: t("book.whyUs.commitments.2.title"),
+      description: t("book.whyUs.commitments.2.description"),
     },
     {
       icon: <Users className="w-5 h-5" />,
-      title: "Community Led",
-      description: "Our initiatives are driven by local needs and voices, adding external agencies for long-term support.",
+      title: t("book.whyUs.commitments.3.title"),
+      description: t("book.whyUs.commitments.3.description"),
     },
     {
       icon: <GraduationCap className="w-5 h-5" />,
-      title: "Educational Focus",
-      description: "Curated books chosen for the local curriculum to enhance the learning experience.",
+      title: t("book.whyUs.commitments.4.title"),
+      description: t("book.whyUs.commitments.4.description"),
     },
     {
       icon: <Infinity className="w-5 h-5" />,
-      title: "Long-term Vision",
-      description: "We build lasting relationships and sustainable education growth, beyond one-off donations.",
+      title: t("book.whyUs.commitments.5.title"),
+      description: t("book.whyUs.commitments.5.description"),
     },
   ];
 
@@ -42,8 +45,8 @@ const WhyUs: React.FC = () => {
     <WhyUsLayout>
       <PartnerIntro />
       <CommitmentsGrid
-        title="Our Commitments"
-        subtitle="We prioritize transparency and impact in every step of our journey. Here is how we ensure your contribution makes a difference."
+        title={t("book.whyUs.commitments.title")}
+        subtitle={t("book.whyUs.commitments.subtitle")}
         commitments={commitments}
       />
     </WhyUsLayout>

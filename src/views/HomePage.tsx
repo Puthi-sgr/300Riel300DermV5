@@ -65,12 +65,6 @@ const LazySection = ({
     return () => observer.disconnect();
   }, [isVisible]);
 
-  useEffect(() => {
-    if (isVisible && sectionRef.current?.id === id) {
-      sectionRef.current?.removeAttribute("id");
-    }
-  }, [isVisible, id]);
-
   const placeholder = (
     <SectionPlaceholder minHeight={fallbackHeight ?? 420} />
   );
@@ -104,6 +98,8 @@ const HomePage = () => {
 
     const headerOffset = 64;
 
+    let hasScrolled = false;
+
     const scrollToSection = () => {
       const target = document.getElementById(targetSectionId);
       if (!target) return false;
@@ -112,18 +108,58 @@ const HomePage = () => {
       return true;
     };
 
-    if (scrollToSection()) return;
+    const timeouts: number[] = [];
+    [0, 180, 420, 820].forEach((delay) => {
+      const id = window.setTimeout(() => {
+        if (hasScrolled) return;
+        hasScrolled = scrollToSection();
+        if (hasScrolled) {
+          timeouts.forEach((tid) => window.clearTimeout(tid));
+        }
+      }, delay);
+      timeouts.push(id);
+    });
 
-    let attempts = 0;
-    const intervalId = window.setInterval(() => {
-      attempts += 1;
-      if (scrollToSection() || attempts > 30) {
-        window.clearInterval(intervalId);
-      }
-    }, 120);
-
-    return () => window.clearInterval(intervalId);
+    return () => timeouts.forEach((id) => window.clearTimeout(id));
   }, [targetSectionId]);
+
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+
+    const registerObserver = () => {
+      const target = document.querySelector<HTMLElement>(
+        '[data-lazy-section="featured-projects"], #featured-projects'
+      );
+      if (!target) {
+        // In case the DOM isn't ready yet, try once more on the next tick.
+        window.setTimeout(registerObserver, 100);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              !entry.isIntersecting &&
+              window.location.hash === "#featured-projects"
+            ) {
+              const newUrl = window.location.pathname + window.location.search;
+              window.history.replaceState(null, "", newUrl);
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+
+      observer.observe(target);
+    };
+
+    registerObserver();
+
+    return () => {
+      if (observer) observer.disconnect();
+    };
+  }, []);
 
   return (
     <main>

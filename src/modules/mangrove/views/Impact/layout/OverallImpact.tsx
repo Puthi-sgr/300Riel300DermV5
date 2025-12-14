@@ -4,16 +4,36 @@ import { Leaf, Target, Users, Activity } from "lucide-react";
 import { SeedlingsCard } from "../components/SeedlingsCard";
 import { WideImpactCard } from "../components/WideImpactCard";
 import { CompactCard } from "../components/CompactCard";
-import { mangroveImpact2025 } from "../../../data/impactData";
 import { useStaggeredCounters } from "../../../../../hooks/useStaggeredCounters";
 import { getCldImage } from "../../../../../core/lib/getCldImage";
 import { CldImage } from "../../../../../components/media/CldImage";
 
-const ImpactSection = () => {
-  const [seedlings, reach, interactions, carbon] = mangroveImpact2025.items;
+type ImpactItem = {
+  value: number;
+  label: string;
+  suffix?: string;
+  prefix?: string;
+  decimals?: number;
+  target?: number;
+  icon?: React.ComponentType<any>;
+  accent?: string;
+  badge?: string;
+  helper?: string;
+};
+
+type Props = {
+  kicker: React.ReactNode;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
+  periodBadge?: React.ReactNode;
+  items: ImpactItem[];
+};
+
+const ImpactSection: React.FC<Props> = ({ kicker, title, subtitle, periodBadge, items }) => {
+  const [seedlings, reach, interactions, carbon] = items;
   const { getMotionProps, markReady, isReady } = useStaggeredCounters(["seedlings", "reach", "interactions", "carbon"]);
   const prefersReducedMotion = useReducedMotion();
-  const seedlingsBackground = getCldImage("mangrove.seedlings", { width: 1600 });
+  const seedlingsBackground = getCldImage("feature.mangrove", { width: 1500 });
 
   return (
     <div className="relative rounded-[32px] bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] p-6 sm:p-8 lg:p-10 shadow-2xl shadow-eco-900/10 border border-white/60 overflow-hidden">
@@ -41,12 +61,12 @@ const ImpactSection = () => {
       <div className="relative z-10 space-y-8">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-eco-500">Impact Dashboard</p>
-            <h2 className="text-3xl font-bold text-earth-900 mt-1">{mangroveImpact2025.title}</h2>
-            <p className="text-sm text-earth-700">Highlighting key environmental and community achievements.</p>
+            <p className="text-sm uppercase tracking-normal text-eco-500">{kicker}</p>
+            <h2 className="text-3xl font-bold text-earth-900 mt-1">{title}</h2>
+            <p className="text-sm text-earth-700">{subtitle}</p>
           </div>
           <span className="px-4 py-2 text-xs font-semibold rounded-full glass-card bg-white/70 border border-white/70 text-eco-700">
-            2025 Snapshot
+            {periodBadge}
           </span>
         </div>
 
@@ -57,16 +77,7 @@ const ImpactSection = () => {
               className="h-full lg:row-span-2"
               onAnimationComplete={() => markReady("seedlings")}
             >
-              <SeedlingsCard
-                data={{
-                  ...seedlings,
-                  icon: Leaf,
-                  accent: "#005900",
-                  badge: "+12%",
-                  helper: "Our reforestation efforts expand to 3 new regions.",
-                }}
-                showCounter={isReady("seedlings")}
-              />
+              <SeedlingsCard data={{ ...seedlings, icon: Leaf, accent: seedlings.accent ?? "#005900" }} showCounter={isReady("seedlings")} />
             </motion.div>
           )}
 
@@ -76,16 +87,7 @@ const ImpactSection = () => {
               className="h-full lg:col-span-2"
               onAnimationComplete={() => markReady("reach")}
             >
-              <WideImpactCard
-                data={{
-                  ...reach,
-                  icon: Users,
-                  accent: "#1d8f72",
-                  badge: "Global Reach",
-                  helper: "Engaging communities in 12+ regions this year.",
-                }}
-                showCounter={isReady("reach")}
-              />
+              <WideImpactCard data={{ ...reach, icon: Users, accent: reach.accent ?? "#1d8f72" }} showCounter={isReady("reach")} />
             </motion.div>
           )}
 
@@ -95,15 +97,7 @@ const ImpactSection = () => {
               className="h-full"
               onAnimationComplete={() => markReady("interactions")}
             >
-              <CompactCard
-                data={{
-                  ...interactions,
-                  icon: Target,
-                  accent: "#ba742d",
-                  badge: "Yearly Growth",
-                }}
-                showCounter={isReady("interactions")}
-              />
+              <CompactCard data={{ ...interactions, icon: Target, accent: interactions.accent ?? "#ba742d" }} showCounter={isReady("interactions")} />
             </motion.div>
           )}
 
@@ -113,15 +107,7 @@ const ImpactSection = () => {
               className="h-full"
               onAnimationComplete={() => markReady("carbon")}
             >
-              <CompactCard
-                data={{
-                  ...carbon,
-                  icon: Activity,
-                  accent: "#2563eb",
-                  badge: "Sequestration",
-                }}
-                showCounter={isReady("carbon")}
-              />
+              <CompactCard data={{ ...carbon, icon: Activity, accent: carbon.accent ?? "#2563eb" }} showCounter={isReady("carbon")} />
             </motion.div>
           )}
         </div>

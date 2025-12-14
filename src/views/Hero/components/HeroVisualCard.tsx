@@ -31,7 +31,7 @@ const HeroVisualCard: React.FC<HeroVisualCardProps> = ({
           className="absolute -bottom-8 left-6 right-6 glass-card rounded-2xl shadow-xl px-5 py-4 flex items-center justify-between"
         >
           <div>
-            <p className="text-xs text-white uppercase tracking-wide">
+            <p className="text-xs text-white uppercase tracking-normal">
               {"Current Fundraiser"}
             </p>
             <p className="text-2xl font-bold text-earth-900">{title}</p>
@@ -56,4 +56,3 @@ const HeroVisualCard: React.FC<HeroVisualCardProps> = ({
 };
 
 export default HeroVisualCard;
-

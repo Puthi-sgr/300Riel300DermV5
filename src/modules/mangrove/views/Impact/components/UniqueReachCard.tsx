@@ -24,9 +24,9 @@ const UniqueReachCard: React.FC<Props> = ({ uniqueReach, totalViews, t, showCoun
     <article className="rounded-[24px] bg-card-fern border border-white/70 shadow-impact p-6 space-y-4 text-earth-900 h-full flex flex-col">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xxs sm:text-xs uppercase tracking-[0.3em] text-eco-600 flex items-center gap-2">
+          <p className="text-xxs sm:text-xs uppercase tracking-normal text-eco-600 flex items-center gap-2">
             <Fingerprint size={16} />
-            {t(uniqueReach?.labelKey ?? "campaign.uniqueReach")}
+            {t(uniqueReach?.labelKey ?? "mangrove.campaign.uniqueReach")}
           </p>
           <div
             className={`mt-2 text-3xl font-bold transition-all duration-300 ${
@@ -49,7 +49,7 @@ const UniqueReachCard: React.FC<Props> = ({ uniqueReach, totalViews, t, showCoun
           <div className="h-full rounded-full bg-eco-500" style={{ width: `${progress}%` }} />
         </div>
         <p className="text-xxs sm:text-xs text-earth-700">
-          {t("campaign.uniqueReachCaption") ?? "Share of total views"}
+          {t("mangrove.campaign.uniqueReachCaption") ?? "Share of total views"}
         </p>
       </div>
     </article>

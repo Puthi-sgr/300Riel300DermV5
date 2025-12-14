@@ -58,14 +58,15 @@ const GallerySection = () => {
     ];
 
     return orderedKeys.map((key, idx) => {
-      const { image, url, alt } = getCldImage(key, { width: 1400, autoQuality: true, autoFormat: true });
+      const main = getCldImage(key, { width: 1400, autoQuality: true, autoFormat: true });
+      const thumb = getCldImage(key, { width: 480, autoQuality: true, autoFormat: true });
       return {
         key,
-        image,
-        src: url,
-        thumb: url,
-        alt,
-        subHtml: `<h4>${alt}</h4>`,
+        image: main.image,
+        src: main.url,
+        thumb: thumb.url,
+        alt: main.alt,
+        subHtml: `<h4>${main.alt}</h4>`,
         sizeClass: sizeClasses[idx] ?? "col-span-6 row-span-3",
       };
     });
@@ -75,10 +76,12 @@ const GallerySection = () => {
     <div className="rounded-2xl bg-white shadow-lg p-6 space-y-3">
       <div className="flex items-center justify-center gap-4">
         <div className="space-y-1">
-          <h2 className="text-3xl font-semibold uppercase tracking-wide text-eco-700 text-center">
-            {t("project.gallery.title")}
+          <h2 className="text-3xl font-semibold uppercase tracking-normal text-eco-700 text-center">
+            {t("mangrove.project.gallery.title")}
           </h2>
-          <p className="text-sm text-earth-700">{t("project.gallery.description")}</p>
+          <p className="text-sm text-earth-700">
+            {t("mangrove.project.gallery.description")}
+          </p>
         </div>
       </div>
 
@@ -97,13 +100,14 @@ const GallerySection = () => {
               key={`${item.src}-${index}`}
               href={item.src}
               data-lg-size="1600-900"
-                data-thumb={item.thumb}
+              data-thumb={item.thumb}
               data-sub-html={item.subHtml}
               className={`group block h-full w-full rounded-xl overflow-hidden bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] ${item.sizeClass}`}
             >
               <CldImage
                 image={item.image}
                 alt={item.alt}
+                loading={index < 4 ? "eager" : "lazy"}
                 className="h-full w-full object-cover"
               />
             </a>

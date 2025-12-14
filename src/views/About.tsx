@@ -36,7 +36,7 @@ const About = () => {
         className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10"
       >
         <motion.div variants={item} className="text-center text-earth-900 space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-eco-700">
+          <p className="text-sm font-semibold uppercase tracking-normal text-eco-700">
             {t("about.title")}
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold">{t("about.title")}</h2>
@@ -57,7 +57,7 @@ const About = () => {
           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8"
         >
           <motion.div variants={item} className="text-center space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-eco-700">
+            <p className="text-sm font-semibold uppercase tracking-normal text-eco-700">
               {t("about.objectives")}
             </p>
             <h3 className="text-2xl sm:text-3xl font-bold text-earth-900">{t("about.objectives")}</h3>

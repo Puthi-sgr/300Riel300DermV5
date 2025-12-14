@@ -1,37 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Shield, Trees as Tree, Factory, Heart } from "lucide-react";
-import { useLanguage } from "../../../../../context/LanguageContext";
 
-const Threats: React.FC = () => {
-  const { t } = useLanguage();
-  const threats = [
-    {
-      title: t("mangroves.threat.deforestation.title"),
-      description: t("mangroves.threat.deforestation.description"),
-      icon: Tree,
-    },
-    {
-      title: t("mangroves.threat.climateChange.title"),
-      description: t("mangroves.threat.climateChange.description"),
-      icon: Factory,
-    },
-    {
-      title: t("mangroves.threat.conservation.title"),
-      description: t("mangroves.threat.conservation.description"),
-      icon: Heart,
-    },
-  ];
-
+const Threats: React.FC<{
+  heading: string;
+  threats: { title: string; description: string; icon: React.ComponentType<any> }[];
+}> = ({ heading, threats }) => {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-3">
         <div className="h-10 w-10 rounded-full glass-card ring-1 ring-white/50 flex items-center justify-center shadow-sm">
-          <Shield className="w-5 h-5 text-red-600" />
+          <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="none" />
         </div>
-        <h3 className="text-3xl font-semibold text-red-800">
-          {t("mangroves.challenges.title")}
-        </h3>
+        <h3 className="text-3xl font-semibold text-red-800">{heading}</h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -39,7 +19,7 @@ const Threats: React.FC = () => {
           const Icon = threat.icon;
           return (
             <motion.div
-              key={threat.title}
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

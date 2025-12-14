@@ -1,35 +1,38 @@
 import React from "react";
 import { BookOpen, GraduationCap } from "lucide-react";
 import HeroLayout from "./layout/HeroLayout";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   const objectives = [
-    "Provide 300 quality books and learning kits.",
-    "Equip 150+ students with notebooks and pencils.",
-    "Engage local teachers with fresh materials.",
-    "Ensure long-term learning access on the island.",
+    t("book.hero.objectives.0"),
+    t("book.hero.objectives.1"),
+    t("book.hero.objectives.2"),
+    t("book.hero.objectives.3"),
   ];
 
   const metrics = [
     {
       icon: <GraduationCap className="w-5 h-5" />,
-      title: "Students Impacted",
-      description: "Direct support for 150+ children",
+      title: t("book.hero.metrics.0.title"),
+      description: t("book.hero.metrics.0.description"),
     },
     {
       icon: <BookOpen className="w-5 h-5" />,
-      title: "Resources Needed",
-      description: "Textbooks, notebooks, pencils",
+      title: t("book.hero.metrics.1.title"),
+      description: t("book.hero.metrics.1.description"),
     },
   ];
 
   return (
     <HeroLayout
-      heading="300 Riels • 300 Kbal For Avlatan Primary School"
-      overview="We are dedicated to providing books and educational resources to rural students in Cambodia, fostering a brighter tomorrow through literacy and unwavering community support."
+      heading={t("book.hero.heading")}
+      overview={t("book.hero.overview")}
       objectives={objectives}
-      statusLabel="ONGOING"
-      raisedLabel="$1,140 / $5,000"
+      statusLabel={t("book.hero.statusLabel")}
+      raisedLabel={t("book.hero.raisedLabel")}
       progressPercent={32}
       metrics={metrics}
     />

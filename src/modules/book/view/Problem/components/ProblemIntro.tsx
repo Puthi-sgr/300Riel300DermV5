@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import SectionHeader from "../../../components/SectionHeader";
 import WhyMattersCard from "./WhyMattersCard";
 import ProblemImageCard from "./ProblemImageCard";
+import { useLanguage } from "../../../../../context/LanguageContext";
 
 type ProblemIntroProps = {
   heading: string;
@@ -13,6 +14,7 @@ type ProblemIntroProps = {
 };
 
 const ProblemIntro: React.FC<ProblemIntroProps> = ({ heading, highlight, body, whyTitle, whyBody }) => {
+  const { t } = useLanguage();
   const [pre, post] = heading.split(highlight);
 
   return (
@@ -24,7 +26,7 @@ const ProblemIntro: React.FC<ProblemIntroProps> = ({ heading, highlight, body, w
         transition={{ duration: 0.6 }}
         className="space-y-5"
       >
-        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-eco-600">Background</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-eco-600">{t("book.problem.kicker")}</p>
         <SectionHeader
           kicker={undefined}
           title={

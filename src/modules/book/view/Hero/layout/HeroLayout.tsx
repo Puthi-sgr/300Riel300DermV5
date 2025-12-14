@@ -9,6 +9,7 @@ import ProgressCard from "../components/ProgressCard";
 import ScrollIndicator from "../components/ScrollIndicator";
 import { HeartHandshake } from "lucide-react";
 import PillBadge from "../../../components/PillBadge";
+import { useLanguage } from "../../../../../context/LanguageContext";
 
 type Metric = {
   icon: React.ReactNode;
@@ -35,6 +36,8 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({
   progressPercent,
   metrics,
 }) => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full overflow-hidden min-h-screen px-3 sm:px-5 lg:px-6 pt-12 pb-8 sm:pt-14 sm:pb-12 flex flex-col">
       <div className="absolute inset-0 pointer-events-none">
@@ -51,7 +54,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({
         >
           <PillBadge>
             <HeartHandshake className="w-4 h-4" />
-            Together, we build a better future
+            {t("book.hero.pillBadge")}
           </PillBadge>
 
           <SectionHeader kicker={undefined} title={heading} subtitle={undefined} className="space-y-4" />

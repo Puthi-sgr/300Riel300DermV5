@@ -1,43 +1,20 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Waves, Trees as Tree, Users } from "lucide-react";
-import { useLanguage } from "../../../../../context/LanguageContext";
 
-import { getCldImage } from "../../../../../core/lib/getCldImage";
+type FactItem = {
+  title: string;
+  value: string;
+  description: string;
+  icon: React.ComponentType<any>;
+};
 
-
-const Facts: React.FC = () => {
-  const { t } = useLanguage();
-  const TrapaengSangkaeImage = () => {
-    const {url, alt} = getCldImage("mangrove.factImage");
-    return <img
-              src={url}
-              alt={alt}
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-            />
-  }
-  const conservationFacts = [
-    {
-      title: "Community-Led Conservation",
-      value: "15+ years",
-      description: "Local efforts protecting Trapeang Sangkae mangrove forest",
-      icon: Users,
-    },
-    {
-      title: "Coastal Protection",
-      value: "66%",
-      description: "Wave energy reduced in first 100m of mangrove forest",
-      icon: Waves,
-    },
-    {
-      title: "Carbon Storage",
-      value: "3-5x",
-      description: "More carbon stored than tropical forests per hectare",
-      icon: Tree,
-    },
-  ];
-
+const Facts: React.FC<{
+  image: { url: string; alt: string };
+  heroTitle: string;
+  heroSubtitle: string;
+  facts: FactItem[];
+}> = ({ image, heroTitle, heroSubtitle, facts }) => {
   return (
     <div className="glass-card shadow-sm ring-1 ring-white/40 p-6 sm:p-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -49,19 +26,23 @@ const Facts: React.FC = () => {
           className="space-y-6"
         >
           <div className="relative overflow-hidden rounded-3xl shadow-xl bg-earth-900">
-            <TrapaengSangkaeImage />
+            <img
+              src={image.url}
+              alt={image.alt}
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className="text-2xl font-semibold text-white">{t("mangroves.hero.title")}</h3>
-              <p className="text-gray-100">{t("mangroves.hero.subtitle")}</p>
+              <h3 className="text-2xl font-semibold text-white">{heroTitle}</h3>
+              <p className="text-gray-100">{heroSubtitle}</p>
             </div>
           </div>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-4">
-          {conservationFacts.map((fact, index) => (
+          {facts.map((fact, index) => (
             <motion.div
-              key={fact.title}
+              key={index}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}

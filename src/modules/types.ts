@@ -15,12 +15,18 @@ export type ProjectStats = {
 export type Project = {
   slug: string;
   title: string;
+  titleKey?: string;
+  tagline?: string;
+  taglineKey?: string;
   status: ProjectStatus;
+  statusLabelKey?: string;
   year: number;
   type: string;
+  typeLabelKey?: string;
   heroImage?: CloudinaryImage;
   thumbnail?: CloudinaryImage;
   summary: string;
+  summaryKey?: string;
   stats?: ProjectStats;
   sponsors: string[];
   reportUrl?: string | null;

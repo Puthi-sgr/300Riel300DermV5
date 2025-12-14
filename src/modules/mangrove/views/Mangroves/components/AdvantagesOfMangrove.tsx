@@ -1,43 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Shield, Fish, ThermometerSun, Star } from "lucide-react";
-import { useLanguage } from "../../../../../context/LanguageContext";
+import { Star } from "lucide-react";
 
-const AdvantagesOfMangrove: React.FC = () => {
-  const { t } = useLanguage();
-  const impactData = [
-    {
-      title: t("mangroves.fact.naturalBarrier.title"),
-      description: t("mangroves.fact.naturalBarrier.description"),
-      icon: Shield,
-    },
-    {
-      title: t("mangroves.fact.marineNursery.title"),
-      description: t("mangroves.fact.marineNursery.description"),
-      icon: Fish,
-    },
-    {
-      title: t("mangroves.fact.carbonStorage.title"),
-      description: t("mangroves.fact.carbonStorage.description"),
-      icon: ThermometerSun,
-    },
-  ];
-
+const AdvantagesOfMangrove: React.FC<{
+  heading: string;
+  impactData: { title: string; description: string; icon: React.ComponentType<any> }[];
+}> = ({ heading, impactData }) => {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <div className="h-10 w-10 rounded-full glass-card ring-1 ring-white/50 flex items-center justify-center shadow-sm">
           <Star className="w-5 h-5 text-eco-700" />
         </div>
-        <h3 className="text-3xl font-semibold text-emerald-700">
-          {t("mangroves.impact.title")}
-        </h3>
+        <h3 className="text-3xl font-semibold text-emerald-700">{heading}</h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {impactData.map((item, index) => (
           <motion.div
-            key={item.title}
+            key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

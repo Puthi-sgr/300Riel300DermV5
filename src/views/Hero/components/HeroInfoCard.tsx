@@ -97,7 +97,7 @@ const HeroInfoCard: React.FC<HeroInfoCardProps> = ({
           ))}
         </div>
         <div>
-          <p className="text-xs uppercase tracking-wide text-eco-500">
+          <p className="text-xs uppercase tracking-normal text-eco-500">
             {t("hero.supportersLabel") ?? "Active Supporters"}
           </p>
           <p className="text-2xl font-bold text-earth-900">1.5K+</p>

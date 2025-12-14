@@ -15,31 +15,31 @@ const Phases = () => {
   const phases = [
     {
       number: "01",
-      title: t("phases.planning.title"),
+      title: t("mangrove.phases.planning.title"),
       icon: ClipboardList,
-      description: t("phases.planning.description"),
-      additionalInfo: t("phases.planning.additionalInfo"),
+      description: t("mangrove.phases.planning.description"),
+      additionalInfo: t("mangrove.phases.planning.additionalInfo"),
     },
     {
       number: "02",
-      title: t("phases.fundraising.title"),
+      title: t("mangrove.phases.fundraising.title"),
       icon: Coins,
-      description: t("phases.fundraising.description"),
-      additionalInfo: t("phases.fundraising.additionalInfo"),
+      description: t("mangrove.phases.fundraising.description"),
+      additionalInfo: t("mangrove.phases.fundraising.additionalInfo"),
     },
     {
       number: "03",
-      title: t("phases.implementation.title"),
+      title: t("mangrove.phases.implementation.title"),
       icon: Sprout,
-      description: t("phases.implementation.description"),
-      additionalInfo: t("phases.implementation.additionalInfo"),
+      description: t("mangrove.phases.implementation.description"),
+      additionalInfo: t("mangrove.phases.implementation.additionalInfo"),
     },
     {
       number: "04",
-      title: t("phases.monitoring.title"),
+      title: t("mangrove.phases.monitoring.title"),
       icon: LineChart,
-      description: t("phases.monitoring.description"),
-      additionalInfo: t("phases.monitoring.additionalInfo"),
+      description: t("mangrove.phases.monitoring.description"),
+      additionalInfo: t("mangrove.phases.monitoring.additionalInfo"),
     },
   ];
 
@@ -54,16 +54,16 @@ const Phases = () => {
             transition={{ duration: 0.6 }}
             className="mt-2 text-2xl sm:text-3xl font-bold text-earth-900"
           >
-            {t("phases.title")}
+            {t("mangrove.phases.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-base font-semibold uppercase tracking-wide text-eco-700"
+            className="text-base font-semibold uppercase tracking-normal text-eco-700"
           >
-            {t("phases.subtitle")}
+            {t("mangrove.phases.subtitle")}
           </motion.p>
          
         </div>

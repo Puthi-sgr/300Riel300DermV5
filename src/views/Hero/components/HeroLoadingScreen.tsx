@@ -1,11 +1,14 @@
-import React from "react";
+﻿import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "../../../context/LanguageContext";
 
 export type HeroLoadingScreenProps = {
   isVisible: boolean;
 };
 
 const HeroLoadingScreen: React.FC<HeroLoadingScreenProps> = ({ isVisible }) => {
+  const { t } = useLanguage();
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -26,11 +29,11 @@ const HeroLoadingScreen: React.FC<HeroLoadingScreenProps> = ({ isVisible }) => {
           >
             <div className="h-12 w-12 rounded-full border-4 border-eco-500/40 border-t-emerald-500 animate-spin" />
             <div>
-              <p className="text-sm uppercase tracking-[0.4em] text-eco-400">
-                Preparing Hero
+              <p className="text-sm uppercase tracking-normal text-eco-400">
+                {t("common.loading.hero.kicker")}
               </p>
               <p className="text-xl font-semibold text-eco-800">
-                Planting an immersive moment…
+                {t("common.loading.hero.title")}
               </p>
             </div>
           </motion.div>

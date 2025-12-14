@@ -29,14 +29,15 @@ const SponsorsSection = () => {
 
       <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-eco-700">
+          <p className="text-xs font-semibold uppercase tracking-normal text-eco-700">
             {t(sponsorsMeta.titleKey)}
           </p>
           <h3 className="text-2xl sm:text-3xl font-bold text-earth-900 leading-snug">
             {t(sponsorsMeta.subtitleKey)}
           </h3>
           <p className="text-sm text-earth-700">
-            {t("project.sponsors.caption") ?? "Partners who keep this work moving forward."}
+            {t("mangrove.project.sponsors.caption") ??
+              "Partners who keep this work moving forward."}
           </p>
         </div>
         <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full glass-card bg-white/80 border border-white/70 text-eco-700 shadow-xs">
@@ -57,7 +58,7 @@ const SponsorsSection = () => {
           >
             <div className="flex items-center justify-between gap-3">
               <h4 className="text-lg font-semibold text-earth-900">{sponsor.name}</h4>
-              <span className="text-[11px] uppercase tracking-[0.22em] text-eco-700 bg-white/80 border border-white/70 px-2 py-1 rounded-full glass-card">
+              <span className="text-[11px] uppercase tracking-normal text-eco-700 bg-white/80 border border-white/70 px-2 py-1 rounded-full glass-card">
                 Sponsor
               </span>
             </div>

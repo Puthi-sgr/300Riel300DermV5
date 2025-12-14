@@ -1,0 +1,51 @@
+﻿import type { StringsByLanguage } from "../../../../lang/types";
+export const expectedImpactStrings: StringsByLanguage = {
+  en: {
+    "book.expectedImpact.badge": "Project Forecast",
+    "book.expectedImpact.header.title": "Expected Impact",
+    "book.expectedImpact.header.subtitle":
+      "Transforming futures through education and sustainable giving at Avlatan Primary School.",
+    "book.expectedImpact.metrics.0.value": "2,000+",
+    "book.expectedImpact.metrics.0.title": "In-Person Engagement",
+    "book.expectedImpact.metrics.0.description":
+      "Direct community involvement through workshops and reading sessions.",
+    "book.expectedImpact.metrics.0.badge": "+20% Growth",
+    "book.expectedImpact.metrics.1.value": "1M+",
+    "book.expectedImpact.metrics.1.title": "Social Media Reach",
+    "book.expectedImpact.metrics.1.description":
+      "Raising global awareness for education equality via digital campaigns.",
+    "book.expectedImpact.metrics.1.badge": "+150% Reach",
+    "book.expectedImpact.supporting.0.title": "500+",
+    "book.expectedImpact.supporting.0.description": "Books donated",
+    "book.expectedImpact.supporting.1.title": "300",
+    "book.expectedImpact.supporting.1.description": "Students impacted",
+    "book.expectedImpact.supporting.2.title": "100%",
+    "book.expectedImpact.supporting.2.description": "Eco-friendly",
+    "book.expectedImpact.supporting.3.title": "Lifetime",
+    "book.expectedImpact.supporting.3.description": "Community support",
+    "book.expectedImpact.closingQuote":
+      "Together, we are planting the seeds of knowledge.",
+  },
+  km: {
+    "book.expectedImpact.badge": "k",
+    "book.expectedImpact.header.title": "k",
+    "book.expectedImpact.header.subtitle": "k",
+    "book.expectedImpact.metrics.0.value": "k",
+    "book.expectedImpact.metrics.0.title": "k",
+    "book.expectedImpact.metrics.0.description": "k",
+    "book.expectedImpact.metrics.0.badge": "k",
+    "book.expectedImpact.metrics.1.value": "k",
+    "book.expectedImpact.metrics.1.title": "k",
+    "book.expectedImpact.metrics.1.description": "k",
+    "book.expectedImpact.metrics.1.badge": "k",
+    "book.expectedImpact.supporting.0.title": "k",
+    "book.expectedImpact.supporting.0.description": "k",
+    "book.expectedImpact.supporting.1.title": "k",
+    "book.expectedImpact.supporting.1.description": "k",
+    "book.expectedImpact.supporting.2.title": "k",
+    "book.expectedImpact.supporting.2.description": "k",
+    "book.expectedImpact.supporting.3.title": "k",
+    "book.expectedImpact.supporting.3.description": "k",
+    "book.expectedImpact.closingQuote": "k",
+  },
+};

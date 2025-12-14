@@ -1,5 +1,6 @@
 import React from "react";
 import { AdvancedVideo } from "@cloudinary/react";
+import type { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { cld } from "../../../core/lib/cld";
 
@@ -11,7 +12,7 @@ export interface HeroVideoProps {
 	height?: number;
 }
 
-const DEFAULT_DIMENSIONS = { width: 1280, height: 720 };
+const DEFAULT_DIMENSIONS = { width: 1080, height: 1280 };
 
 const HeroVideo: React.FC<HeroVideoProps> = ({
 	publicId,
@@ -22,8 +23,9 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
 }) => {
 	const videoRef = React.useRef<HTMLVideoElement | null>(null);
 	const videoAsset = React.useMemo(() => {
-		return cld
-			.video(publicId)
+		const cloudinary = cld as Cloudinary;
+		return cloudinary
+			.video(publicId) 
 			.format("mp4")
 			.quality("auto")
 			.resize(fill().width(width).height(height));

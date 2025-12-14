@@ -62,7 +62,7 @@ const Donate = () => {
         className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
       >
         <motion.div variants={itemVariants} className="text-center space-y-3">
-          <p className="text-sm font-semibold uppercase text-eco-700 tracking-[0.28em]">
+          <p className="text-sm font-semibold uppercase text-eco-700 tracking-normal">
             {t("donate.title")}
           </p>
           <h2 className="text-3xl font-bold text-earth-900 sm:text-4xl">

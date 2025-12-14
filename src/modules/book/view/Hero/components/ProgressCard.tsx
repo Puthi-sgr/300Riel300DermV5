@@ -2,6 +2,7 @@ import React from "react";
 import GlassCard from "../../../components/GlassCard";
 import TranslucentCirclePill from "../../../components/TranslucentCirclePill";
 import StatusPill from "../../../components/StatusPill";
+import { useLanguage } from "../../../../../context/LanguageContext";
 
 type Metric = {
   icon: React.ReactNode;
@@ -22,17 +23,18 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
   progressPercent,
   metrics,
 }) => {
+  const { t } = useLanguage();
   const clampedPercent = Math.max(0, Math.min(progressPercent, 100));
 
   return (
     <GlassCard className="p-5 sm:p-6 space-y-3 bg-white shadow-2xl shadow-eco-900/8 border border-eco-100 rounded-[24px]">
       <div className="flex items-center justify-between">
-        <div className="text-earth-900 font-semibold">Current Progress</div>
+        <div className="text-earth-900 font-semibold">{t("book.hero.progress.title")}</div>
         <StatusPill>{statusLabel}</StatusPill>
       </div>
 
       <div className="space-y-2">
-        <p className="text-sm text-earth-700">Raised</p>
+        <p className="text-sm text-earth-700">{t("book.hero.progress.raised")}</p>
         <p className="text-2xl font-bold text-earth-900">{raisedLabel}</p>
         <div className="h-3 rounded-full bg-white/90 border border-eco-100 overflow-hidden">
           <div
@@ -43,9 +45,9 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
       </div>
 
       <div className="grid grid-cols-1 gap-3">
-        {metrics.map((metric) => (
+        {metrics.map((metric, index) => (
           <div
-            key={metric.title}
+            key={index}
             className="flex items-start gap-3 bg-white/85 rounded-2xl border border-white/70 p-4 shadow-sm"
           >
             <div className="flex items-center justify-center">

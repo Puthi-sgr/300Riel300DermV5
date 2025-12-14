@@ -1,12 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Activity } from "lucide-react";
-import { useLanguage } from "../../../../../context/LanguageContext";
-import {
-  campaignMeta,
-  campaignStats2025,
-  CampaignStat,
-} from "../../../data/campaignData";
+import type { CampaignStat } from "../../../data/campaignData";
 import SocialHeroCard from "../components/SocialHeroCard";
 import UniqueReachCard from "../components/UniqueReachCard";
 import InteractionsCard from "../components/InteractionsCard";
@@ -14,8 +9,13 @@ import NonFollowerShareCard from "../components/NonFollowerShareCard";
 import NewFollowersCard from "../components/NewFollowersCard";
 import { useStaggeredCounters } from "../../../../../hooks/useStaggeredCounters";
 
-const SocialMediaCampaignLayout = () => {
-  const { t } = useLanguage();
+type Props = {
+  campaignMeta: { title: string; subtitle: string; period: string };
+  campaignStats: CampaignStat[];
+  t: (key: string) => string; // passed through to child components which still use labelKey
+};
+
+const SocialMediaCampaignLayout: React.FC<Props> = ({ campaignMeta, campaignStats, t }) => {
   const { getMotionProps, markReady, isReady } = useStaggeredCounters([
     "hero",
     "uniqueReach",
@@ -24,30 +24,23 @@ const SocialMediaCampaignLayout = () => {
     "newFollowers",
   ]);
 
-  const statsMap = campaignStats2025.reduce<Record<string, CampaignStat>>(
-    (acc, stat) => {
-      acc[stat.labelKey] = stat;
-      return acc;
-    },
-    {}
-  );
+  const statsMap = campaignStats.reduce<Record<string, CampaignStat>>((acc, stat) => {
+    acc[stat.labelKey] = stat;
+    return acc;
+  }, {} as Record<string, CampaignStat>);
 
-  const totalViews = statsMap["campaign.totalViews"];
-  const uniqueReach = statsMap["campaign.uniqueReach"];
-  const interactions = statsMap["campaign.interactions"];
-  const nonFollowerShare = statsMap["campaign.nonFollowerShare"];
-  const newFollowers = statsMap["campaign.newFollowers"];
+  const totalViews = statsMap["mangrove.campaign.totalViews"];
+  const uniqueReach = statsMap["mangrove.campaign.uniqueReach"];
+  const interactions = statsMap["mangrove.campaign.interactions"];
+  const nonFollowerShare = statsMap["mangrove.campaign.nonFollowerShare"];
+  const newFollowers = statsMap["mangrove.campaign.newFollowers"];
 
   return (
     <div className="rounded-3xl bg-gradient-to-br from-[#f3fbf6] via-white to-[#eef6ee] border border-white/70 shadow-impact p-6 sm:p-8 space-y-4 text-earth-900">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-xxs sm:text-xs font-semibold uppercase tracking-[0.35em] text-eco-500">
-            {t(campaignMeta.titleKey)}
-          </p>
-          <h3 className="text-2xl sm:text-3xl font-bold text-earth-900 leading-tight">
-            {t(campaignMeta.subtitleKey)}
-          </h3>
+          <p className="text-xxs sm:text-xs font-semibold uppercase tracking-normal text-eco-500">{campaignMeta.title}</p>
+          <h3 className="text-2xl sm:text-3xl font-bold text-earth-900 leading-tight">{campaignMeta.subtitle}</h3>
         </div>
         <span className="flex items-center gap-2 px-4 py-1.5 text-xxs sm:text-xs font-semibold rounded-full bg-white/80 border border-white/70 text-eco-700 shadow-sm">
           <Activity size={14} />
@@ -80,12 +73,7 @@ const SocialMediaCampaignLayout = () => {
             className="lg:row-span-2 h-full"
             onAnimationComplete={() => markReady("uniqueReach")}
           >
-            <UniqueReachCard
-              uniqueReach={uniqueReach}
-              totalViews={totalViews}
-              t={t}
-              showCounter={isReady("uniqueReach")}
-            />
+            <UniqueReachCard uniqueReach={uniqueReach} totalViews={totalViews} t={t} showCounter={isReady("uniqueReach")} />
           </motion.div>
           <motion.div
             {...getMotionProps(0.4)}

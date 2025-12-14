@@ -36,12 +36,13 @@ const NonFollowerShareCard: React.FC<Props> = ({ stat, t, showCounter = true }) 
           showCounter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
         }`}
       >
-        <p className="text-xxs sm:text-xs uppercase tracking-[0.3em] text-eco-600 flex items-center gap-2">
+        <p className="text-xxs sm:text-xs uppercase tracking-normal text-eco-600 flex items-center gap-2">
           <Share2 size={16} />
-          {t(stat?.labelKey ?? "campaign.nonFollowerShare")}
+          {t(stat?.labelKey ?? "mangrove.campaign.nonFollowerShare")}
         </p>
         <p className="text-sm text-earth-700 mt-2">
-          {t("campaign.nonFollowerShareCaption") ?? "Share of reach outside followers"}
+          {t("mangrove.campaign.nonFollowerShareCaption") ??
+            "Share of reach outside followers"}
         </p>
       </div>
     </article>

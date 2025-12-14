@@ -12,18 +12,22 @@ const Navigation = () => {
   const location = useLocation();
   const { scrollY } = useScroll();
   const { language, toggleLanguage, t } = useLanguage();
-  const { image: logoImage, alt: logoAlt } = getCldImage("logo.main", { width: 320, autoQuality: true, autoFormat: true });
+  const { image: logoImage, alt: logoAlt } = getCldImage("logo.main", {
+    width: 320,
+    autoQuality: true,
+    autoFormat: true,
+  });
 
   const headerHeight = useTransform(scrollY, [0, 100], ["4rem", "3.5rem"]);
   const headerBackground = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(242, 247, 242, 1)", "rgba(242, 247, 242, 0.95)"]
+    ["rgba(242, 247, 242, 1)", "rgba(242, 247, 242, 0.95)"],
   );
   const headerShadow = useTransform(
     scrollY,
     [0, 100],
-    ["0 0 0 transparent", "0 4px 6px -1px rgba(0, 0, 0, 0.1)"]
+    ["0 0 0 transparent", "0 4px 6px -1px rgba(0, 0, 0, 0.1)"],
   );
 
   const scrollToSection = (sectionId: string) => {
@@ -74,11 +78,7 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <CldImage
-              image={logoImage}
-              alt={logoAlt}
-              className="w-auto h-24"
-            />
+            <CldImage image={logoImage} alt={logoAlt} className="w-auto h-24" />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -109,7 +109,9 @@ const Navigation = () => {
             >
               <Globe className="w-5 h-5" />
               <span className="sr-only">
-                {language === "en" ? "Switch to Khmer" : "Switch to English"}
+                {language === "en"
+                  ? t("nav.toggle.toKhmer")
+                  : t("nav.toggle.toEnglish")}
               </span>
             </motion.button>
           </div>

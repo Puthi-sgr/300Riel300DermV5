@@ -2,44 +2,99 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../../../context/LanguageContext";
 import Facts from "./components/Facts";
-import AdvantageAndThreat from "./layout/AdvantageAndThreat";
+import AdvantagesOfMangrove from "./components/AdvantagesOfMangrove";
+import Threats from "./components/Threats";
 import CTA from "./components/CTA";
+import MangrovesLayout from "./layout/MangrovesLayout";
+import { getCldImage } from "../../../../core/lib/getCldImage";
+import { Users, Waves, Trees as TreeIcon, Shield, Fish, ThermometerSun, Factory, Heart } from "lucide-react";
 
 
 const Mangroves: React.FC = () => {
   const { t } = useLanguage();
+  // Prepare all page data here so this index acts as the single source of truth
+  const factImage = getCldImage("mangrove.factImage");
+
+  const conservationFacts = [
+    {
+      title: t("mangrove.mangroves.fact.communityTitle"),
+      value: "15+ years",
+      description: t("mangrove.mangroves.fact.communityDescription"),
+      icon: Users,
+    },
+    {
+      title: t("mangrove.mangroves.fact.coastalTitle"),
+      value: "66%",
+      description: t("mangrove.mangroves.fact.coastalDescription"),
+      icon: Waves,
+    },
+    {
+      title: t("mangrove.mangroves.fact.carbonTitle"),
+      value:  "3-5x",
+      description: t("mangrove.mangroves.fact.carbonDescription"),
+      icon: TreeIcon,
+    },
+  ];
+
+  const impactData = [
+    {
+      title: t("mangrove.mangroves.fact.naturalBarrier.title"),
+      description: t("mangrove.mangroves.fact.naturalBarrier.description"),
+      icon: Shield,
+    },
+    {
+      title: t("mangrove.mangroves.fact.marineNursery.title"),
+      description: t("mangrove.mangroves.fact.marineNursery.description"),
+      icon: Fish,
+    },
+    {
+      title: t("mangrove.mangroves.fact.carbonStorage.title"),
+      description: t("mangrove.mangroves.fact.carbonStorage.description"),
+      icon: ThermometerSun,
+    },
+  ];
+
+  const threatsData = [
+    {
+      title: t("mangrove.mangroves.threat.deforestation.title"),
+      description: t("mangrove.mangroves.threat.deforestation.description"),
+      icon: TreeIcon,
+    },
+    {
+      title: t("mangrove.mangroves.threat.climateChange.title"),
+      description: t("mangrove.mangroves.threat.climateChange.description"),
+      icon: Factory,
+    },
+    {
+      title: t("mangrove.mangroves.threat.conservation.title"),
+      description: t("mangrove.mangroves.threat.conservation.description"),
+      icon: Heart,
+    },
+  ];
+
+  const cta = {
+    title: t("mangrove.mangroves.cta.text"),
+    description: t("mangrove.mangroves.cta.description"),
+    primary: t("mangrove.mangroves.cta.button"),
+    secondary: t("mangrove.mangroves.cta.learnMore.button"),
+  };
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-16">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,89,0,0.03)_0%,rgba(0,89,0,0.04)_50%,rgba(0,89,0,0.02)_100%)]" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative space-y-12">
-        <div className="text-center max-w-3xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold text-earth-900 mb-4"
-          >
-            {t("mangroves.title")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-earth-700"
-          >
-            {t("mangroves.subtitle")}
-          </motion.p>
-        </div>
-
-        <Facts />
-        <AdvantageAndThreat />
-        <CTA />
-      </div>
-    </section>
+    <MangrovesLayout
+      title={t("mangrove.mangroves.title")}
+      subtitle={t("mangrove.mangroves.subtitle")}
+      factsNode={
+        <Facts
+          image={factImage}
+          heroTitle={t("mangrove.mangroves.hero.title")}
+          heroSubtitle={t("mangrove.mangroves.hero.subtitle")}
+          facts={conservationFacts}
+        />
+      }
+      advantageTop={<AdvantagesOfMangrove heading={t("mangrove.mangroves.impact.title")} impactData={impactData} />}
+      threatsBottom={<Threats heading={t("mangrove.mangroves.challenges.title")} threats={threatsData} />}
+      ctaNode={<CTA title={cta.title} description={cta.description} primaryLabel={cta.primary} secondaryLabel={cta.secondary} />}
+    />
   );
 };
 

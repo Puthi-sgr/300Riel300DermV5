@@ -18,9 +18,9 @@ const InteractionsCard: React.FC<Props> = ({ interactions, t, showCounter = true
   return (
     <article className="rounded-[24px] bg-card-foam border border-white/70 shadow-impact p-6 space-y-3 text-earth-900 h-full flex flex-col">
       <div className="flex items-center justify-between">
-        <p className="text-xxs sm:text-xs uppercase tracking-[0.3em] text-eco-600 flex items-center gap-2">
+        <p className="text-xxs sm:text-xs uppercase tracking-normal text-eco-600 flex items-center gap-2">
           <BarChart3 size={16} />
-          {t(interactions?.labelKey ?? "campaign.interactions")}
+          {t(interactions?.labelKey ?? "mangrove.campaign.interactions")}
         </p>
         <span
           className={`text-lg font-semibold text-earth-900 transition-all duration-300 ${
@@ -37,7 +37,8 @@ const InteractionsCard: React.FC<Props> = ({ interactions, t, showCounter = true
           showCounter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
         }`}
       >
-        {t("campaign.interactionsCaption") ?? "Total reactions, comments, and shares"}
+        {t("mangrove.campaign.interactionsCaption") ??
+          "Total reactions, comments, and shares"}
       </p>
     </article>
   );

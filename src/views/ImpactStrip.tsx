@@ -96,7 +96,7 @@ const ImpactStrip = () => {
                   <div className="h-6 w-6 rounded-full bg-white/70 text-eco-800 flex items-center justify-center shadow-lg shadow-emerald-900/10 border border-white/70">
                     {card.icon}
                   </div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-eco-800">
+                  <p className="text-xs font-semibold uppercase tracking-normal text-eco-800">
                     {t(card.labelKey)}
                   </p>
                 </div>
@@ -113,7 +113,7 @@ const ImpactStrip = () => {
                       <>0{card.suffix}</>
                     )}
                   </p>
-                  <p className="text-xs uppercase tracking-[0.14em] text-eco-800/80">
+                  <p className="text-xs uppercase tracking-normal text-eco-800/80">
                     {card.detail}
                   </p>
                 </div>

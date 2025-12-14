@@ -14,9 +14,9 @@ const NewFollowersCard: React.FC<Props> = ({ stat, t, showCounter = true }) => {
     <article className="rounded-[24px] bg-card-foam border border-white/70 shadow-impact p-6 text-earth-900 h-full flex flex-col">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xxs sm:text-xs uppercase tracking-[0.3em] text-eco-600 flex items-center gap-2">
+          <p className="text-xxs sm:text-xs uppercase tracking-normal text-eco-600 flex items-center gap-2">
             <UserPlus size={16} />
-            {t(stat?.labelKey ?? "campaign.newFollowers")}
+            {t(stat?.labelKey ?? "mangrove.campaign.newFollowers")}
           </p>
           <div
             className={`mt-2 text-3xl font-bold transition-all duration-300 ${
@@ -38,7 +38,7 @@ const NewFollowersCard: React.FC<Props> = ({ stat, t, showCounter = true }) => {
           }`}
         >
           <TrendingUp size={14} />
-          {t("campaign.newFollowersCaption") ?? "Net gain from campaign"}
+          {t("mangrove.campaign.newFollowersCaption") ?? "Net gain from campaign"}
         </span>
       </div>
     </article>

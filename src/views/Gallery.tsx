@@ -119,7 +119,7 @@ const Gallery = () => {
           >
             <Facebook className="w-12 h-12 text-[#1877F2]" />
           </motion.div>
-          <p className="text-sm font-semibold uppercase text-eco-700 tracking-[0.28em]">
+          <p className="text-sm font-semibold uppercase text-eco-700 tracking-normal">
             {t("gallery.title")}
           </p>
           <h2 className="text-3xl font-bold text-earth-900 sm:text-4xl">

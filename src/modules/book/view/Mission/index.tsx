@@ -4,37 +4,37 @@ import MissionLayout from "./layout/MissionLayout";
 import MissionIntro from "./components/MissionIntro";
 import ObjectiveGrid from "./components/ObjectiveGrid";
 import MissionCTA from "./components/MissionCTA";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const Mission: React.FC = () => {
+  const { t } = useLanguage();
+
   const objectives = [
     {
-      number: "01",
+      number: t("book.mission.objectives.0.number"),
       icon: <BookOpenCheck className="w-5 h-5" />,
-      title: "Educational Resources",
-      description:
-        "Providing a curated library of books, digital learning tools, and essential school supplies to foster a lifelong love for reading and discovery.",
+      title: t("book.mission.objectives.0.title"),
+      description: t("book.mission.objectives.0.description"),
     },
     {
-      number: "02",
+      number: t("book.mission.objectives.1.number"),
       icon: <Users className="w-5 h-5" />,
-      title: "Community Empowerment",
-      description:
-        "Engaging local teachers with comprehensive training programs and connecting international volunteers for rich cultural exchange.",
+      title: t("book.mission.objectives.1.title"),
+      description: t("book.mission.objectives.1.description"),
     },
     {
-      number: "03",
+      number: t("book.mission.objectives.2.number"),
       icon: <Leaf className="w-5 h-5" />,
-      title: "Sustainable Growth",
-      description:
-        "Investing in eco-friendly infrastructure and implementing long-term maintenance plans to ensure the school thrives for years to come.",
+      title: t("book.mission.objectives.2.title"),
+      description: t("book.mission.objectives.2.description"),
     },
   ];
 
   return (
     <MissionLayout>
       <MissionIntro
-        quote="Empowering minds, one book at a time."
-        intro="We are on a mission to transform education at Avlatan Primary School in Cambodia. Through literacy, sustainable resources, and community support, we are building a brighter future for every child."
+        quote={t("book.mission.quote")}
+        intro={t("book.mission.intro")}
       />
 
       <ObjectiveGrid objectives={objectives} />

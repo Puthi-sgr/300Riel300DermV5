@@ -21,7 +21,7 @@ const TierGrid: React.FC<TierGridProps> = ({ tiers }) => (
   >
     {tiers.map((tier, idx) => (
       <motion.div
-        key={tier.name}
+        key={idx}
         variants={{
           hidden: { opacity: 0, y: 16 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: idx * 0.04 } },

@@ -8,7 +8,6 @@ import ProjectPageHeader from "./components/ProjectPageHeader";
 import LazyRevealSection from "./components/utils/LazyRevealSection";
 
 const ImpactSection = lazy(() => import("./views/Impact/index"));
-const HighlightsSection = lazy(() => import("./views/HighlightsSection"));
 const SponsorsSection = lazy(() => import("./views/SponsorsSection"));
 const GallerySection = lazy(() => import("./views/GallerySection"));
 const Mangroves = lazy(() => import("./views/Mangroves/index"));
@@ -64,10 +63,14 @@ const MangroveProjectPage = () => {
           animate={prefersReducedMotion ? false : "show"}
           exit={prefersReducedMotion ? false : "hidden"}
         >
-          <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+          <motion.div
+            variants={prefersReducedMotion ? undefined : itemVariants}
+          >
             <ProjectPageHeader
               project={project}
-              statusLabel={t("project.status.completed") ?? ""}
+              statusLabel={
+                project.statusLabelKey ? t(project.statusLabelKey) : ""
+              }
             />
           </motion.div>
 
@@ -75,31 +78,33 @@ const MangroveProjectPage = () => {
             className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-10"
             variants={prefersReducedMotion ? undefined : containerVariants}
           >
-            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <motion.div
+              variants={prefersReducedMotion ? undefined : itemVariants}
+            >
               <LazyRevealSection initiallyVisible fallbackHeight={560}>
                 <ImpactSection />
               </LazyRevealSection>
             </motion.div>
 
-            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
-              <LazyRevealSection initiallyVisible fallbackHeight={520}>
-                <HighlightsSection />
-              </LazyRevealSection>
-            </motion.div>
-
-             <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <motion.div
+              variants={prefersReducedMotion ? undefined : itemVariants}
+            >
               <LazyRevealSection initiallyVisible fallbackHeight={520}>
                 <GallerySection />
               </LazyRevealSection>
             </motion.div>
 
-            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <motion.div
+              variants={prefersReducedMotion ? undefined : itemVariants}
+            >
               <LazyRevealSection fallbackHeight={520}>
                 <SponsorsSection />
               </LazyRevealSection>
             </motion.div>
 
-            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <motion.div
+              variants={prefersReducedMotion ? undefined : itemVariants}
+            >
               <LazyRevealSection fallbackHeight={520}>
                 <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden">
                   <Mangroves />
@@ -107,7 +112,9 @@ const MangroveProjectPage = () => {
               </LazyRevealSection>
             </motion.div>
 
-            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <motion.div
+              variants={prefersReducedMotion ? undefined : itemVariants}
+            >
               <LazyRevealSection fallbackHeight={520}>
                 <div className="rounded-3xl border border-eco-100 shadow-sm overflow-hidden bg-white">
                   <Phases />
@@ -115,13 +122,15 @@ const MangroveProjectPage = () => {
               </LazyRevealSection>
             </motion.div>
 
-            <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <motion.div
+              variants={prefersReducedMotion ? undefined : itemVariants}
+            >
               <button
                 type="button"
                 onClick={handleBack}
                 className="inline-flex items-center text-eco-700 font-semibold hover:text-eco-800"
               >
-                {t("project.backHome")}
+                {t("mangrove.project.backHome")}
               </button>
             </motion.div>
           </motion.section>

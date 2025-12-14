@@ -33,7 +33,7 @@ const CommitmentsGrid: React.FC<CommitmentsGridProps> = ({ title, subtitle, comm
     >
       {commitments.map((item, idx) => (
         <motion.div
-          key={item.title}
+          key={idx}
           variants={{
             hidden: { opacity: 0, y: 14 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.45, delay: idx * 0.03 } },

@@ -4,79 +4,82 @@ import SponsorPackageLayout from "./layout/SponsorPackageLayout";
 import SponsorHeader from "./components/SponsorHeader";
 import TierGrid from "./components/TierGrid";
 import TrustIndicators from "./components/TrustIndicators";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const SponsorPackage: React.FC = () => {
+  const { t } = useLanguage();
+
   const tiers = [
     {
-      name: "The Learner",
-      tierLabel: "Bronze",
-      price: "$25",
-      period: "one-time",
+      name: t("book.sponsorPackage.tiers.0.name"),
+      tierLabel: t("book.sponsorPackage.tiers.0.tierLabel"),
+      price: t("book.sponsorPackage.tiers.0.price"),
+      period: t("book.sponsorPackage.tiers.0.period"),
       benefits: [
-        "Provides 5 new textbooks",
-        "Name on website donor list",
-        "Monthly email newsletter",
+        t("book.sponsorPackage.tiers.0.benefits.0"),
+        t("book.sponsorPackage.tiers.0.benefits.1"),
+        t("book.sponsorPackage.tiers.0.benefits.2"),
       ],
       icon: <BookOpen className="w-5 h-5" />,
       accentClass: "bg-card-foam",
       badgeClass: "bg-eco-50 text-eco-700",
       pillClass: "bg-eco-50 text-eco-700",
-      glowClass: "shadow-[0_18px_50px_rgba(31,185,106,0.18)]",
+      glowClass: "shadow-[0_18px_50px_rgba(31,185,106,0.4)]",
       glowBackdropClass: "",
       ctaClass: "bg-eco-600 hover:bg-eco-700 text-white",
       bulletClass: "text-eco-700",
-      ctaLabel: "Become a learner",
+      ctaLabel: t("book.sponsorPackage.tiers.0.ctaLabel"),
     },
     {
-      name: "The Builder",
-      tierLabel: "Gold Tier",
-      price: "$500",
-      period: "one-time",
+      name: t("book.sponsorPackage.tiers.1.name"),
+      tierLabel: t("book.sponsorPackage.tiers.1.tierLabel"),
+      price: t("book.sponsorPackage.tiers.1.price"),
+      period: t("book.sponsorPackage.tiers.1.period"),
       benefits: [
-        "Renovates a full classroom",
-        "Personal video from students",
-        "VIP project updates",
-        "Bronze plaque at the school",
+        t("book.sponsorPackage.tiers.1.benefits.0"),
+        t("book.sponsorPackage.tiers.1.benefits.1"),
+        t("book.sponsorPackage.tiers.1.benefits.2"),
+        t("book.sponsorPackage.tiers.1.benefits.3"),
       ],
       icon: <Hammer className="w-5 h-5" />,
       accentClass: "bg-card-fern",
       popular: true,
       badgeClass: "bg-amber-100 text-amber-800",
       pillClass: "bg-amber-100 text-amber-800",
-      glowClass: "shadow-[0_24px_70px_rgba(255,193,7,0.35)]",
+      glowClass: "shadow-[0_24px_100px_rgba(255,193,7,0.65)]",
       glowBackdropClass: "bg-amber-200/35 blur-3xl animate-pulse",
-      ctaClass: "bg-amber-500 hover:bg-amber-600 text-white",
-      bulletClass: "text-amber-700",
-      ctaLabel: "Become a Builder",
+      ctaClass: "bg-yellow-500 hover:bg-yellow-600 text-white",
+      bulletClass: "text-yellow-700",
+      ctaLabel: t("book.sponsorPackage.tiers.1.ctaLabel"),
     },
     {
-      name: "The Scholar",
-      tierLabel: "Silver",
-      price: "$100",
-      period: "one-time",
+      name: t("book.sponsorPackage.tiers.2.name"),
+      tierLabel: t("book.sponsorPackage.tiers.2.tierLabel"),
+      price: t("book.sponsorPackage.tiers.2.price"),
+      period: t("book.sponsorPackage.tiers.2.period"),
       benefits: [
-        "Provides classroom supplies",
-        "Personal thank you letter",
-        "Name on donor wall",
-        "Quarterly impact report",
+        t("book.sponsorPackage.tiers.2.benefits.0"),
+        t("book.sponsorPackage.tiers.2.benefits.1"),
+        t("book.sponsorPackage.tiers.2.benefits.2"),
+        t("book.sponsorPackage.tiers.2.benefits.3"),
       ],
       icon: <Backpack className="w-5 h-5" />,
       accentClass: "bg-white/90",
       badgeClass: "bg-sky-50 text-sky-700",
       pillClass: "bg-sky-50 text-sky-700",
-      glowClass: "shadow-[0_22px_60px_rgba(125,211,252,0.3)]",
+      glowClass: "shadow-[0_22px_80px_rgba(125,211,252,0.5)]",
       glowBackdropClass: "bg-sky-200/35 blur-3xl animate-pulse",
       ctaClass: "bg-sky-500 hover:bg-sky-600 text-white",
       bulletClass: "text-sky-700",
-      ctaLabel: "Become a Scholar",
+      ctaLabel: t("book.sponsorPackage.tiers.2.ctaLabel"),
     },
   ];
 
   return (
     <SponsorPackageLayout>
       <SponsorHeader
-        title="Make a Lasting Impact"
-        subtitle="Choose a sponsorship tier to help provide books and educational resources to the students of Avlatan Primary School. 100% of proceeds go directly to the school."
+        title={t("book.sponsorPackage.header.title")}
+        subtitle={t("book.sponsorPackage.header.subtitle")}
       />
 
       <TierGrid tiers={tiers as any} />

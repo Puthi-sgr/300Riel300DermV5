@@ -28,9 +28,9 @@ const SocialHeroCard: React.FC<Props> = ({ stat, t, showCounter = true }) => {
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="flex items-center gap-2 text-xxs sm:text-xs uppercase tracking-[0.35em] text-eco-500">
+            <p className="flex items-center gap-2 text-xxs sm:text-xs uppercase tracking-normal text-eco-500">
               <Eye size={16} />
-              {t(stat?.labelKey ?? "campaign.totalViews")}
+              {t(stat?.labelKey ?? "mangrove.campaign.totalViews")}
             </p>
             <div className="mt-3 text-4xl sm:text-5xl font-bold">
               {showCounter ? (
@@ -42,15 +42,15 @@ const SocialHeroCard: React.FC<Props> = ({ stat, t, showCounter = true }) => {
               ) : null}
             </div>
             <p className="text-sm text-earth-700 mt-2">
-              {t("campaign.totalViewsDescription") ?? "Latest verified reach"}
+              {t("mangrove.campaign.totalViewsDescription") ?? "Latest verified reach"}
             </p>
           </div>
           <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xxs sm:text-xs font-semibold text-eco-700 border border-white/70 shadow-sm">
-            {t("campaign.metricVerified") ?? "Verified"}
+            {t("mangrove.campaign.metricVerified") ?? "Verified"}
           </span>
         </div>
         <p className="text-xxs sm:text-xs text-earth-700">
-          {t("campaign.dataSource") ?? "Data source: Organic campaign telemetry"}
+          {t("mangrove.campaign.dataSource") ?? "Data source: Organic campaign telemetry"}
         </p>
       </div>
     </article>

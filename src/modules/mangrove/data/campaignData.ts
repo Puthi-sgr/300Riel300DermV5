@@ -7,16 +7,15 @@ export type CampaignStat = {
 };
 
 export const campaignStats2025: CampaignStat[] = [
-  { labelKey: "campaign.totalViews", value: 201400 },
-  { labelKey: "campaign.uniqueReach", value: 47200 },
-  { labelKey: "campaign.interactions", value: 8100 },
-  { labelKey: "campaign.nonFollowerShare", value: 86, suffix: "%", progress: 86 },
-  { labelKey: "campaign.newFollowers", value: 576 },
+  { labelKey: "mangrove.campaign.totalViews", value: 201400 },
+  { labelKey: "mangrove.campaign.uniqueReach", value: 47200 },
+  { labelKey: "mangrove.campaign.interactions", value: 8100 },
+  { labelKey: "mangrove.campaign.nonFollowerShare", value: 86, suffix: "%", progress: 86 },
+  { labelKey: "mangrove.campaign.newFollowers", value: 576 },
 ];
 
 export const campaignMeta = {
-  titleKey: "campaign.title",
-  subtitleKey: "campaign.subtitle",
+  titleKey: "mangrove.campaign.title",
+  subtitleKey: "mangrove.campaign.subtitle",
   period: "June 2025",
 };
-

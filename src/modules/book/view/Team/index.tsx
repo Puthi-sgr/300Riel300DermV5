@@ -4,6 +4,7 @@ import TeamHeader from "./components/TeamHeader";
 import TeamGrid from "./components/TeamGrid";
 import FullRoundedGradientButton from "../../components/FullRoundedGradientButton";
 import { getCldImage } from "../../../../core/lib/getCldImage";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const memberImages = [
   getCldImage("gallery.boat", { width: 160 }),
@@ -14,59 +15,63 @@ const memberImages = [
   getCldImage("gallery.groupVilla", { width: 160 }),
 ];
 
-const members = [
-  {
-    name: "Sophea Chan",
-    role: "Project Lead",
-    quote: "Believer in equal education access for every child in Cambodia.",
-    image: memberImages[0].image,
-    alt: memberImages[0].alt,
-  },
-  {
-    name: "Dara Ly",
-    role: "Logistics Coordinator",
-    quote: "Ensuring every book arrives safely to the hands that need them.",
-    image: memberImages[1].image,
-    alt: memberImages[1].alt,
-  },
-  {
-    name: "Bopha Kem",
-    role: "Community Outreach",
-    quote: "Connecting hearts across borders and sharing our vision.",
-    image: memberImages[2].image,
-    alt: memberImages[2].alt,
-  },
-  {
-    name: "Visal Sok",
-    role: "Fundraising Manager",
-    quote: "Turning small gifts into big impact for the next generation.",
-    image: memberImages[3].image,
-    alt: memberImages[3].alt,
-  },
-  {
-    name: "Neary Meng",
-    role: "Content Creator",
-    quote: "Sharing our story with the world to inspire positive change.",
-    image: memberImages[4].image,
-    alt: memberImages[4].alt,
-  },
-  {
-    name: "Rithy Pan",
-    role: "School Liaison",
-    quote: "Building bridges with the community to ensure sustainable growth.",
-    image: memberImages[5].image,
-    alt: memberImages[5].alt,
-  },
-];
+const Team: React.FC = () => {
+  const { t } = useLanguage();
 
-const Team: React.FC = () => (
-  <TeamLayout>
-    <TeamHeader />
-    <TeamGrid members={members} />
-    <div className="flex justify-center pt-6">
-      <FullRoundedGradientButton className="px-6 rounded-full">Support Student-Led Impact →</FullRoundedGradientButton>
-    </div>
-  </TeamLayout>
-);
+  const members = [
+    {
+      name: t("book.team.members.0.name"),
+      role: t("book.team.members.0.role"),
+      quote: t("book.team.members.0.quote"),
+      image: memberImages[0].image,
+      alt: memberImages[0].alt,
+    },
+    {
+      name: t("book.team.members.1.name"),
+      role: t("book.team.members.1.role"),
+      quote: t("book.team.members.1.quote"),
+      image: memberImages[1].image,
+      alt: memberImages[1].alt,
+    },
+    {
+      name: t("book.team.members.2.name"),
+      role: t("book.team.members.2.role"),
+      quote: t("book.team.members.2.quote"),
+      image: memberImages[2].image,
+      alt: memberImages[2].alt,
+    },
+    {
+      name: t("book.team.members.3.name"),
+      role: t("book.team.members.3.role"),
+      quote: t("book.team.members.3.quote"),
+      image: memberImages[3].image,
+      alt: memberImages[3].alt,
+    },
+    {
+      name: t("book.team.members.4.name"),
+      role: t("book.team.members.4.role"),
+      quote: t("book.team.members.4.quote"),
+      image: memberImages[4].image,
+      alt: memberImages[4].alt,
+    },
+    {
+      name: t("book.team.members.5.name"),
+      role: t("book.team.members.5.role"),
+      quote: t("book.team.members.5.quote"),
+      image: memberImages[5].image,
+      alt: memberImages[5].alt,
+    },
+  ];
+
+  return (
+    <TeamLayout>
+      <TeamHeader />
+      <TeamGrid members={members} />
+      <div className="flex justify-center pt-6">
+        <FullRoundedGradientButton className="px-6 rounded-full">{t("book.team.footerCta")}</FullRoundedGradientButton>
+      </div>
+    </TeamLayout>
+  );
+};
 
 export default Team;

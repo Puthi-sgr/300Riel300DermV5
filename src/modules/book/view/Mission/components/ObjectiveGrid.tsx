@@ -26,7 +26,7 @@ const ObjectiveGrid: React.FC<ObjectiveGridProps> = ({ objectives }) => (
   >
     {objectives.map((objective, idx) => (
       <motion.div
-        key={objective.title}
+        key={idx}
         variants={{
           hidden: { opacity: 0, y: 16 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: idx * 0.04 } },

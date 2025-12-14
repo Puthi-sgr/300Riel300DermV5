@@ -21,7 +21,7 @@ const TeamGrid: React.FC<TeamGridProps> = ({ members }) => (
   >
     {members.map((member, idx) => (
       <motion.div
-        key={member.name}
+        key={idx}
         variants={{
           hidden: { opacity: 0, y: 14 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: idx * 0.03 } },
