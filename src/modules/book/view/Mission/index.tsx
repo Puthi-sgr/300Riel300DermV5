@@ -30,17 +30,19 @@ const Mission: React.FC = () => {
     },
   ];
 
+  const introNode = (
+    <MissionIntro
+      quote={t("book.mission.quote")}
+      intro={t("book.mission.intro")}
+    />
+  );
+
+  const objectivesNode = <ObjectiveGrid objectives={objectives} />;
+
+  const ctaNode = <MissionCTA />;
+
   return (
-    <MissionLayout>
-      <MissionIntro
-        quote={t("book.mission.quote")}
-        intro={t("book.mission.intro")}
-      />
-
-      <ObjectiveGrid objectives={objectives} />
-
-      <MissionCTA />
-    </MissionLayout>
+    <MissionLayout introNode={introNode} objectivesNode={objectivesNode} ctaNode={ctaNode} />
   );
 };
 

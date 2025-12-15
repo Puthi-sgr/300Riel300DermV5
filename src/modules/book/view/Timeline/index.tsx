@@ -37,33 +37,41 @@ const Timeline: React.FC = () => {
     },
   ];
 
-  return (
-    <TimelineLayout>
-      <TimelineHeader
-        title={t("book.timeline.header.title")}
-        subtitle={t("book.timeline.header.subtitle")}
-      />
-
-      <div className="relative mt-10">
-        <TimelineTrack nodes={phases.length} />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-y-14">
-          {phases.map((phase, idx) => (
-            <div key={idx} className={idx % 2 === 0 ? "lg:pr-10" : "lg:pl-10"}>
-              <TimelineCard
-                phaseLabel={phase.phase}
-                icon={phase.icon}
-                title={phase.title}
-                description={phase.description}
-                align={idx % 2 === 0 ? "left" : "right"}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <TimelineCTA />
-    </TimelineLayout>
+  const headerNode = (
+    <TimelineHeader
+      title={t("book.timeline.header.title")}
+      subtitle={t("book.timeline.header.subtitle")}
+    />
   );
+
+  const trackNode = (
+    <div className="relative mt-10">
+      <TimelineTrack nodes={phases.length} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-y-14">
+        {phases.map((phase, idx) => (
+          <div
+            key={idx}
+            className={[
+              "transform-gpu",
+              idx % 2 === 0 ? "-translate-x-2 sm:translate-x-0 lg:pr-10" : "translate-x-2 sm:translate-x-0 lg:pl-10",
+            ].join(" ")}
+          >
+            <TimelineCard
+              phaseLabel={phase.phase}
+              icon={phase.icon}
+              title={phase.title}
+              description={phase.description}
+              align={idx % 2 === 0 ? "left" : "right"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const ctaNode = <TimelineCTA />;
+
+  return <TimelineLayout headerNode={headerNode} trackNode={trackNode} ctaNode={ctaNode} />;
 };
 
 export default Timeline;

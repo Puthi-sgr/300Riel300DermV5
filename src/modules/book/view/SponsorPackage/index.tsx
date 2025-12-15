@@ -75,20 +75,18 @@ const SponsorPackage: React.FC = () => {
     },
   ];
 
-  return (
-    <SponsorPackageLayout>
-      <SponsorHeader
-        title={t("book.sponsorPackage.header.title")}
-        subtitle={t("book.sponsorPackage.header.subtitle")}
-      />
-
-      <TierGrid tiers={tiers as any} />
-
-      <div className="pt-6">
-        <TrustIndicators />
-      </div>
-    </SponsorPackageLayout>
+  const headerNode = (
+    <SponsorHeader
+      title={t("book.sponsorPackage.header.title")}
+      subtitle={t("book.sponsorPackage.header.subtitle")}
+    />
   );
+
+  const tiersNode = <TierGrid tiers={tiers as any} />;
+
+  const trustNode = <TrustIndicators />;
+
+  return <SponsorPackageLayout headerNode={headerNode} tiersNode={tiersNode} trustNode={trustNode} />;
 };
 
 export default SponsorPackage;

@@ -79,21 +79,46 @@ const Mangroves: React.FC = () => {
     secondary: t("mangrove.mangroves.cta.learnMore.button"),
   };
 
+  const factsNode = (
+    <Facts
+      image={factImage}
+      heroTitle={t("mangrove.mangroves.hero.title")}
+      heroSubtitle={t("mangrove.mangroves.hero.subtitle")}
+      facts={conservationFacts}
+    />
+  );
+
+  const advantageTop = (
+    <AdvantagesOfMangrove
+      heading={t("mangrove.mangroves.impact.title")}
+      impactData={impactData}
+    />
+  );
+
+  const threatsBottom = (
+    <Threats
+      heading={t("mangrove.mangroves.challenges.title")}
+      threats={threatsData}
+    />
+  );
+
+  const ctaNode = (
+    <CTA
+      title={cta.title}
+      description={cta.description}
+      primaryLabel={cta.primary}
+      secondaryLabel={cta.secondary}
+    />
+  );
+
   return (
     <MangrovesLayout
       title={t("mangrove.mangroves.title")}
       subtitle={t("mangrove.mangroves.subtitle")}
-      factsNode={
-        <Facts
-          image={factImage}
-          heroTitle={t("mangrove.mangroves.hero.title")}
-          heroSubtitle={t("mangrove.mangroves.hero.subtitle")}
-          facts={conservationFacts}
-        />
-      }
-      advantageTop={<AdvantagesOfMangrove heading={t("mangrove.mangroves.impact.title")} impactData={impactData} />}
-      threatsBottom={<Threats heading={t("mangrove.mangroves.challenges.title")} threats={threatsData} />}
-      ctaNode={<CTA title={cta.title} description={cta.description} primaryLabel={cta.primary} secondaryLabel={cta.secondary} />}
+      factsNode={factsNode}
+      advantageTop={advantageTop}
+      threatsBottom={threatsBottom}
+      ctaNode={ctaNode}
     />
   );
 };

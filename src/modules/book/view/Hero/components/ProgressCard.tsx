@@ -44,11 +44,11 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
         {metrics.map((metric, index) => (
           <div
             key={index}
-            className="flex items-start gap-3 bg-white/85 rounded-2xl border border-white/70 p-4 shadow-sm"
+            className="h-full flex items-start gap-3 bg-white/85 rounded-2xl border border-white/70 p-4 shadow-sm"
           >
             <div className="flex items-center justify-center">
               <TranslucentCirclePill className="h-12 w-12 bg-eco-100 text-eco-700 glass-card border border-white/70">

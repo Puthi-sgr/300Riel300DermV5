@@ -7,15 +7,44 @@ type ObjectiveCardProps = {
   icon: React.ReactNode;
   title: string;
   description: string;
+  className?: string;
+  iconWrapperClassName?: string;
+  numberClassName?: string;
 };
 
-const ObjectiveCard: React.FC<ObjectiveCardProps> = ({ number, icon, title, description }) => {
+const ObjectiveCard: React.FC<ObjectiveCardProps> = ({
+  number,
+  icon,
+  title,
+  description,
+  className,
+  iconWrapperClassName,
+  numberClassName,
+}) => {
   const { t } = useLanguage();
 
   return (
-    <div className="relative glass-card bg-white rounded-[22px] border border-white/70 shadow-impact p-6 space-y-3">
-      <div className="absolute top-4 right-5 text-3xl font-extrabold text-eco-200 select-none">{number}</div>
-      <div className="h-12 w-12 rounded-full bg-eco-50 text-eco-700 flex items-center justify-center shadow-sm border border-eco-100">
+    <div
+      className={[
+        "relative glass-card rounded-[22px] border border-white/70 shadow-impact p-6 space-y-3",
+        "bg-gradient-to-br from-white/75 via-white/70 to-white/60",
+        className ?? "",
+      ].join(" ")}
+    >
+      <div
+        className={[
+          "absolute top-4 right-5 text-3xl font-extrabold select-none pt-1",
+          numberClassName ?? "text-eco-200",
+        ].join(" ")}
+      >
+        {number}
+      </div>
+      <div
+        className={[
+          "h-12 w-12 rounded-full flex items-center justify-center shadow-sm border",
+          iconWrapperClassName ?? "bg-eco-50 text-eco-700 border-eco-100",
+        ].join(" ")}
+      >
         {icon}
       </div>
       <div className="space-y-2">

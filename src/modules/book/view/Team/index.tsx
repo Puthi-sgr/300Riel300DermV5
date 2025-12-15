@@ -64,13 +64,11 @@ const Team: React.FC = () => {
   ];
 
   return (
-    <TeamLayout>
-      <TeamHeader />
-      <TeamGrid members={members} />
-      <div className="flex justify-center pt-6">
-        <FullRoundedGradientButton className="px-6 rounded-full">{t("book.team.footerCta")}</FullRoundedGradientButton>
-      </div>
-    </TeamLayout>
+    <TeamLayout
+      headerNode={<TeamHeader />}
+      gridNode={<TeamGrid members={members} />}
+      footerNode={<FullRoundedGradientButton className="px-6 rounded-full">{t("book.team.footerCta")}</FullRoundedGradientButton>}
+    />
   );
 };
 

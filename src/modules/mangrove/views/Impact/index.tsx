@@ -66,12 +66,10 @@ const ImpactPage: React.FC = () => {
         t,
     };
 
-    return (
-        <ImpactLayout>
-            <OverallImpact {...impactProps} />
-            <SocialMediaCampaign {...campaignProps} />
-        </ImpactLayout>
-    );
+    const overallNode = <OverallImpact {...impactProps} />;
+    const socialNode = <SocialMediaCampaign {...campaignProps} />;
+
+    return <ImpactLayout overallNode={overallNode} socialNode={socialNode} />;
 };
 
 export default ImpactPage;

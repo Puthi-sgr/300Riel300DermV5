@@ -50,28 +50,32 @@ const ExpectedImpact: React.FC = () => {
     },
   ];
 
-  return (
-    <ExpectedImpactLayout>
-      <ImpactHeader
-        title={t("book.expectedImpact.header.title")}
-        subtitle={t("book.expectedImpact.header.subtitle")}
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {metrics.map((m, index) => (
-          <MetricCard key={index} {...m} />
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {supporting.map((s, index) => (
-          <ImpactStatCard key={index} {...s} />
-        ))}
-      </div>
-
-      <ClosingQuote />
-    </ExpectedImpactLayout>
+  const headerNode = (
+    <ImpactHeader
+      title={t("book.expectedImpact.header.title")}
+      subtitle={t("book.expectedImpact.header.subtitle")}
+    />
   );
+
+  const metricsNode = (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {metrics.map((m, index) => (
+        <MetricCard key={index} {...m} />
+      ))}
+    </div>
+  );
+
+  const supportingNode = (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {supporting.map((s, index) => (
+        <ImpactStatCard key={index} {...s} />
+      ))}
+    </div>
+  );
+
+  const quoteNode = <ClosingQuote />;
+
+  return <ExpectedImpactLayout headerNode={headerNode} metricsNode={metricsNode} supportingNode={supportingNode} quoteNode={quoteNode} />;
 };
 
 export default ExpectedImpact;

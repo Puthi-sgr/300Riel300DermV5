@@ -11,7 +11,7 @@ type TimelineCardProps = {
 
 const TimelineCard: React.FC<TimelineCardProps> = ({ phaseLabel, icon, title, description, align = "left" }) => (
   <GlassCard
-    className={`relative bg-white rounded-[22px] border border-white/70 shadow-impact p-5 sm:p-6 space-y-3 ${
+    className={`relative bg-white rounded-[22px] border border-white/70 shadow-impact p-4 sm:p-6 space-y-3 ${
       align === "left" ? "lg:ml-auto" : "lg:mr-auto"
     }`}
   >
@@ -23,7 +23,7 @@ const TimelineCard: React.FC<TimelineCardProps> = ({ phaseLabel, icon, title, de
     </div>
     <div className="space-y-1">
       <p className="text-lg font-semibold text-earth-900">{title}</p>
-      <p className="text-sm text-earth-700 leading-relaxed">{description}</p>
+      <p className="hidden sm:block text-sm text-earth-700 leading-relaxed">{description}</p>
     </div>
   </GlassCard>
 );

@@ -9,7 +9,7 @@ import LazyRevealSection from "./components/utils/LazyRevealSection";
 
 const ImpactSection = lazy(() => import("./views/Impact/index"));
 const SponsorsSection = lazy(() => import("./views/SponsorsSection"));
-const GallerySection = lazy(() => import("./views/GallerySection"));
+const GallerySection = lazy(() => import("./views/Gallery/index"));
 const Mangroves = lazy(() => import("./views/Mangroves/index"));
 const Phases = lazy(() => import("./views/Phases"));
 

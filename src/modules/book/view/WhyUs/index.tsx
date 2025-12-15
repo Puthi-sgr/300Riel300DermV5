@@ -41,16 +41,19 @@ const WhyUs: React.FC = () => {
     },
   ];
 
-  return (
-    <WhyUsLayout>
-      <PartnerIntro />
-      <CommitmentsGrid
-        title={t("book.whyUs.commitments.title")}
-        subtitle={t("book.whyUs.commitments.subtitle")}
-        commitments={commitments}
-      />
-    </WhyUsLayout>
+
+  const introNode = <PartnerIntro />;
+
+  const commitmentsNode = (
+    <CommitmentsGrid
+      title={t("book.whyUs.commitments.title")}
+      subtitle={t("book.whyUs.commitments.subtitle")}
+      commitments={commitments}
+    />
   );
+
+  return <WhyUsLayout introNode={introNode} commitmentsNode={commitmentsNode} />;
+
 };
 
 export default WhyUs;

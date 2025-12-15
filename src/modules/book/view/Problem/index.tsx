@@ -31,23 +31,25 @@ const Problem: React.FC = () => {
     },
   ];
 
-  return (
-    <ProblemLayout>
-      <ProblemIntro
-        heading={t("book.problem.heading")}
-        highlight={t("book.problem.highlight")}
-        body={t("book.problem.body")}
-        whyTitle={t("book.problem.whyTitle")}
-        whyBody={t("book.problem.whyBody")}
-      />
-
-      <KeyChallenges
-        title={t("book.problem.challenges.title")}
-        subtitle={t("book.problem.challenges.subtitle")}
-        challenges={challenges}
-      />
-    </ProblemLayout>
+  const introNode = (
+    <ProblemIntro
+      heading={t("book.problem.heading")}
+      highlight={t("book.problem.highlight")}
+      body={t("book.problem.body")}
+      whyTitle={t("book.problem.whyTitle")}
+      whyBody={t("book.problem.whyBody")}
+    />
   );
+
+  const keyChallengesNode = (
+    <KeyChallenges
+      title={t("book.problem.challenges.title")}
+      subtitle={t("book.problem.challenges.subtitle")}
+      challenges={challenges}
+    />
+  );
+
+  return <ProblemLayout introNode={introNode} keyChallengesNode={keyChallengesNode} />;
 };
 
 export default Problem;
