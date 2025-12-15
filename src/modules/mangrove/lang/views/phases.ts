@@ -30,23 +30,31 @@ export const phasesStrings: StringsByLanguage = {
             "Additional info for Monitoring phase",
     },
     km: {
-        "mangrove.phases.title": "k",
-        "mangrove.phases.subtitle": "k",
+        "mangrove.phases.title": "ដំណាក់កាលគម្រោង",
+        "mangrove.phases.subtitle": "ដំណើររបស់យើងឆ្ពោះទៅរកផលប្រយោជន៍ប្រកបដោយចីរភាព",
 
-        "mangrove.phases.planning.title": "k",
-        "mangrove.phases.planning.description": "k",
-        "mangrove.phases.planning.additionalInfo": "k",
+        "mangrove.phases.planning.title": "ការរៀបចំផែនការ",
+        "mangrove.phases.planning.description":
+            "ដំណាក់កាលនេះធានាថាគំនិតផ្តួចផ្តើមរបស់យើងមានការយល់ព្រមជាចាំបាច់ និងការគាំទ្រដើម្បីឆ្ពោះទៅមុខ។",
+        "mangrove.phases.planning.additionalInfo":
+            "ព័ត៌មានបន្ថែមសម្រាប់ដំណាក់កាលរៀបចំផែនការ",
 
-        "mangrove.phases.fundraising.title": "k",
-        "mangrove.phases.fundraising.description": "k",
-        "mangrove.phases.fundraising.additionalInfo": "k",
+        "mangrove.phases.fundraising.title": "ការប្រមូលមូលនិធិ",
+        "mangrove.phases.fundraising.description":
+            "ដំណាក់កាលនេះបង្កើតមូលដ្ឋានគ្រឹះសម្រាប់ព្រឹត្តិការណ៍ដាំដំណាំប្រកបដោយការរៀបចំ និងមានឥទ្ធិពលល្អ។",
+        "mangrove.phases.fundraising.additionalInfo":
+            "ព័ត៌មានបន្ថែមសម្រាប់ការប្រមូលនិធិ",
 
-        "mangrove.phases.implementation.title": "k",
-        "mangrove.phases.implementation.description": "k",
-        "mangrove.phases.implementation.additionalInfo": "k",
+        "mangrove.phases.implementation.title": "ការអនុវត្ត",
+        "mangrove.phases.implementation.description":
+            "ដំណាក់កាលនេះគឺជាបេះដូងនៃគម្រោងរបស់យើង ដែលការធ្វើផែនការប្រែទៅជាការផ្លាស់ប្តូរពិតប្រាកដ។",
+        "mangrove.phases.implementation.additionalInfo":
+            "ព័ត៌មានបន្ថែមសម្រាប់ការអនុវត្ត",
 
-        "mangrove.phases.monitoring.title": "k",
-        "mangrove.phases.monitoring.description": "k",
-        "mangrove.phases.monitoring.additionalInfo": "k",
+        "mangrove.phases.monitoring.title": "ការតាមដានក្រោយការដាំ",
+        "mangrove.phases.monitoring.description":
+            "តាមដានការលូតលាស់ និងសុខភាពរបស់ដើមកោងកាងដែលបានដាំ។បន្តការចូលរួមនៅលើប្រព័ន្ធផ្សព្វផ្សាយសង្គម ធ្វើបច្ចុប្បន្នភាពសហគមន៍របស់យើង។",
+        "mangrove.phases.monitoring.additionalInfo":
+            "ព័ត៌មានបន្ថែមសម្រ",
     },
 };

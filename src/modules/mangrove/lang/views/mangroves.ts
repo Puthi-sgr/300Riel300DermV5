@@ -44,36 +44,45 @@ export const mangrovesStrings: StringsByLanguage = {
             "Local initiatives work to protect and restore mangrove forests.",
     },
     km: {
-        "mangrove.mangroves.title": "k",
-        "mangrove.mangroves.subtitle": "k",
-        "mangrove.mangroves.hero.title": "k",
-        "mangrove.mangroves.hero.subtitle": "k",
-        "mangrove.mangroves.impact.title": "k",
-        "mangrove.mangroves.challenges.title": "k",
+        "mangrove.mangroves.title": "ហេតុអ្វីបានជាដើមកោងកាងមានសារៈសំខាន់នៅកម្ពុជា",
+        "mangrove.mangroves.subtitle": "ការពារធម្មជាតិ ថែរក្សាសហគមន៍",
+        "mangrove.mangroves.hero.title": "ព្រៃកោងកាងត្រពាំងសង្កែ",
+        "mangrove.mangroves.hero.subtitle":
+            "ប្រព័ន្ធអេកូឡូស៊ីដ៏សំខាន់គាំទ្រសហគមន៍មូលដ្ឋាននិងជីវិតសមុទ្រ",
+        "mangrove.mangroves.impact.title": "ផលប្រយោជន៍នៃដើមកោងកាង",
+        "mangrove.mangroves.challenges.title": "បញ្ហាប្រឈម និងការអភិរក្ស",
 
-        "mangrove.mangroves.cta.text": "k",
-        "mangrove.mangroves.cta.description": "k",
-        "mangrove.mangroves.cta.button": "k",
-        "mangrove.mangroves.cta.learnMore.button": "k",
+        "mangrove.mangroves.cta.text":
+            "ចូលរួមជាមួយយើងក្នុងការការពារព្រៃកោងកាងនៅកម្ពុជា។ ការគាំទ្ររបស់អ្នកជួយថែរក្សាប្រព័ន្ធអេកូឡូស៊ីដ៏សំខាន់ទាំងនេះសម្រាប់មនុស្សជំនាន់ក្រោយ។",
+        "mangrove.mangroves.cta.description":
+            "រាល់​ ​​៣០០រៀល គឺជួយការពារ និងស្តារព្រៃកោងកាងក្នុងខេត្តកំពត, កម្ពុជា។",
+        "mangrove.mangroves.cta.button": "គាំទ្រការអភិរក្សព្រៃកោងកាង",
+        "mangrove.mangroves.cta.learnMore.button": "ស្វែងយល់បន្ថែម",
 
-        "mangrove.mangroves.fact.naturalBarrier.title": "k",
-        "mangrove.mangroves.fact.naturalBarrier.description": "k",
+        "mangrove.mangroves.fact.naturalBarrier.title": "ជញ្ជាំងធម្មជាតិ",
+        "mangrove.mangroves.fact.naturalBarrier.description":
+            "ដើមកោងកាងបន្ថយថាមពលរលកបានដល់ទៅ 66% ក្នុង 100 ម៉ែត្រដំបូងនៃទទឹងព្រៃ។",
         "mangrove.mangroves.fact.communityTitle": "k",
         "mangrove.mangroves.fact.communityDescription": "k",
         "mangrove.mangroves.fact.coastalTitle": "k",
         "mangrove.mangroves.fact.coastalDescription": "k",
         "mangrove.mangroves.fact.carbonTitle": "k",
         "mangrove.mangroves.fact.carbonDescription": "k",
-        "mangrove.mangroves.fact.marineNursery.title": "k",
-        "mangrove.mangroves.fact.marineNursery.description": "k",
-        "mangrove.mangroves.fact.carbonStorage.title": "k",
-        "mangrove.mangroves.fact.carbonStorage.description": "k",
+        "mangrove.mangroves.fact.marineNursery.title": "កន្លែងចិញ្ចឹមត្រីសមុទ្រ",
+        "mangrove.mangroves.fact.marineNursery.description":
+            "គាំទ្រដល់ជម្រកត្រីសមុទ្រដែលមានជាង 70% នៅក្នុងដំណាក់កាលក្មេង។",
+        "mangrove.mangroves.fact.carbonStorage.title": "ការផ្ទុកកាបូន",
+        "mangrove.mangroves.fact.carbonStorage.description":
+            "ផ្ទុកកាបូនបានច្រើនដល់ទៅ 3-5 ដងក្នុងមួយហិកតាជាងព្រៃត្រូពិច។",
 
-        "mangrove.mangroves.threat.deforestation.title": "k",
-        "mangrove.mangroves.threat.deforestation.description": "k",
-        "mangrove.mangroves.threat.climateChange.title": "k",
-        "mangrove.mangroves.threat.climateChange.description": "k",
-        "mangrove.mangroves.threat.conservation.title": "k",
-        "mangrove.mangroves.threat.conservation.description": "k",
+        "mangrove.mangroves.threat.deforestation.title": "ការកាប់បំផ្លាញព្រៃ",
+        "mangrove.mangroves.threat.deforestation.description":
+            "ការអភិវឌ្ឍតំបន់ឆ្នេរ និងការចិញ្ចឹមត្រីបង្កគ្រោះថ្នាក់ដល់ប្រព័ន្ធអេកូឡូស៊ីដើមកោងកាង។",
+        "mangrove.mangroves.threat.climateChange.title": "ការផ្លាស់ប្តូរអាកាសធាតុ",
+        "mangrove.mangroves.threat.climateChange.description":
+            "កម្រិតទឹកសមុទ្រកើនឡើង និងសីតុណ្ហភាពផ្លាស់ប្តូរប៉ះពាល់ដល់ការរស់រាននៃដើមកោងកាង។",
+        "mangrove.mangroves.threat.conservation.title": "ការអភិរក្ស",
+        "mangrove.mangroves.threat.conservation.description":
+            "គម្រោងមូលដ្ឋានធ្វើការការពារ និងស្តារព្រៃក.sparkអង់កាង។",
     },
 };
