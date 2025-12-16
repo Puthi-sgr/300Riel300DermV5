@@ -47,14 +47,11 @@ const Timeline: React.FC = () => {
   const trackNode = (
     <div className="relative mt-10">
       <TimelineTrack nodes={phases.length} />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-y-14">
+      <div className="grid grid-cols-1 gap-y-10 md:gap-y-12">
         {phases.map((phase, idx) => (
           <div
             key={idx}
-            className={[
-              "transform-gpu",
-              idx % 2 === 0 ? "-translate-x-2 sm:translate-x-0 lg:pr-10" : "translate-x-2 sm:translate-x-0 lg:pl-10",
-            ].join(" ")}
+            className={idx % 2 === 0 ? "flex justify-start md:block" : "flex justify-end md:block"}
           >
             <TimelineCard
               phaseLabel={phase.phase}

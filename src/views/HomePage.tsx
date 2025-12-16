@@ -10,13 +10,13 @@ import { useLocation } from "react-router-dom";
 import MetaTags from "./MetaTags";
 import Hero from "./Hero/index";
 
-const ImpactStrip = lazy(() => import("./ImpactStrip"));
-const Sponsors = lazy(() => import("./Sponsors"));
-const FeaturedProjects = lazy(() => import("./FeaturedProjects"));
-const About = lazy(() => import("./About"));
-const Gallery = lazy(() => import("./Gallery"));
-const Donate = lazy(() => import("./Donate"));
-const Contact = lazy(() => import("./Contact"));
+const ImpactStrip = lazy(() => import("./ImpactStrip/index"));
+const Sponsors = lazy(() => import("./Sponsors/index"));
+const FeaturedProjects = lazy(() => import("./FeaturedProject/index"));
+const About = lazy(() => import("./About/index"));
+const Gallery = lazy(() => import("./Gallery/index"));
+const Donate = lazy(() => import("./Donate/index"));
+const Contact = lazy(() => import("./Contact/index"));
 
 type LazySectionProps = {
   id?: string;

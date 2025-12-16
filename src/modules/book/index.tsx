@@ -67,12 +67,16 @@ const BookProjectPage = () => {
             <Suspense fallback={<div className="h-32" />}>
               <Problem />
             </Suspense>
-            <Suspense fallback={<div className="h-32" />}>
-              <Mission />
-            </Suspense>
-            <Suspense fallback={<div className="h-32" />}>
-              <Timeline />
-            </Suspense>
+            <div id="mission" className="scroll-mt-24">
+              <Suspense fallback={<div className="h-32" />}>
+                <Mission />
+              </Suspense>
+            </div>
+            <div id="timeline" className="scroll-mt-24">
+              <Suspense fallback={<div className="h-32" />}>
+                <Timeline />
+              </Suspense>
+            </div>
             <Suspense fallback={<div className="h-32" />}>
               <ExpectedImpact />
             </Suspense>

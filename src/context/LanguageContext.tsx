@@ -13,11 +13,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const getInitialLanguage = (): Language => {
-    const params = new URLSearchParams(window.location.search);
-    return (params.get("lang") as Language) || "km"; //grab the lang param from the url
-  };
-  const [language, setLanguage] = useState<Language>("km");
+  const [language, setLanguage] = useState<Language>("en");
 
   const toggleLanguage = () => {
     const newLang = language === "en" ? "km" : "en";

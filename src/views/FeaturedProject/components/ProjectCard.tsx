@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { projects, Project } from "../modules/projects";
 import { motion } from "framer-motion";
-import { CldImage } from "../components/media/CldImage";
-import { useLanguage } from "../context/LanguageContext";
+import { Project } from "../../../modules/projects";
+import { CldImage } from "../../../components/media/CldImage";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const statusStyles: Record<Project["status"], string> = {
   completed: "bg-eco-100 text-eco-700 border-eco-200",
@@ -17,13 +17,12 @@ const statusLabels: Record<Project["status"], string> = {
   upcoming: "Planned",
 };
 
-const ProjectCard = ({
-  project,
-  index,
-}: {
+type Props = {
   project: Project;
   index: number;
-}) => {
+};
+
+const ProjectCard: React.FC<Props> = ({ project, index }) => {
   const { t } = useLanguage();
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -143,51 +142,4 @@ const ProjectCard = ({
   );
 };
 
-const FeaturedProjects = () => {
-  const { t } = useLanguage();
-
-  return (
-    <motion.section
-      className="relative overflow-hidden bg-gradient-to-br from-[#f5fdf9] via-white to-[#eef6ee] py-16 sm:py-20"
-      id="featured-projects"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 -left-10 w-72 h-72 rounded-full bg-eco-300/25 blur-[140px]" />
-        <div className="absolute -bottom-24 right-0 w-80 h-80 rounded-full bg-eco-200/30 blur-[160px]" />
-      </div>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <motion.div
-          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div>
-            <p className="text-sm font-semibold uppercase text-eco-700 tracking-normal">
-              {t("home.featuredProjects.kicker")}
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-earth-900 mt-1">
-              {t("home.featuredProjects.title")}
-            </h2>
-            <p className="text-earth-700 mt-2">
-              {t("home.featuredProjects.subtitle")}
-            </p>
-          </div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
-          ))}
-        </div>
-      </div>
-    </motion.section>
-  );
-};
-
-export default FeaturedProjects;
+export default ProjectCard;

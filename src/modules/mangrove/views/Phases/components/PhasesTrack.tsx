@@ -1,17 +1,21 @@
 import React from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
-type TimelineTrackProps = {
-  nodes: number;
+type PhaseMarker = {
+  number: string;
+};
+
+type Props = {
+  phases: PhaseMarker[];
 };
 
 const buildZigZagPath = (nodes: number) => {
   const count = Math.max(nodes, 2);
-  const topPad = 14;
-  const bottomPad = 14;
+  const topPad = 10;
+  const bottomPad = 10;
   const usable = 100 - topPad - bottomPad;
-  const leftX = 36;
-  const rightX = 64;
+  const leftX = 30;
+  const rightX = 70;
 
   const points = Array.from({ length: count }).map((_, idx) => {
     const t = idx / (count - 1);
@@ -25,22 +29,18 @@ const buildZigZagPath = (nodes: number) => {
     const prev = points[idx - 1];
     const next = points[idx];
     const midY = (prev.y + next.y) / 2;
-    const c1x = prev.x;
-    const c1y = midY;
-    const c2x = next.x;
-    const c2y = midY;
-    d += ` C ${c1x} ${c1y}, ${c2x} ${c2y}, ${next.x} ${next.y}`;
+    d += ` C ${prev.x} ${midY}, ${next.x} ${midY}, ${next.x} ${next.y}`;
   }
 
   return { d, points };
 };
 
-const TimelineTrack: React.FC<TimelineTrackProps> = ({ nodes }) => {
+const PhasesTrack: React.FC<Props> = ({ phases }) => {
   const reduceMotion = useReducedMotion();
   const ref = React.useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
 
-  const { d, points } = React.useMemo(() => buildZigZagPath(nodes), [nodes]);
+  const { d, points } = React.useMemo(() => buildZigZagPath(phases.length), [phases.length]);
 
   return (
     <div ref={ref} className="absolute inset-0 pointer-events-none">
@@ -50,36 +50,36 @@ const TimelineTrack: React.FC<TimelineTrackProps> = ({ nodes }) => {
         className="absolute inset-0 h-full w-full"
       >
         <defs>
-          <linearGradient id="timelinePathGradient" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="mangrovePhasesPath" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="rgba(16, 185, 129, 0.10)" />
-            <stop offset="40%" stopColor="rgba(16, 185, 129, 0.40)" />
-            <stop offset="100%" stopColor="rgba(16, 185, 129, 0.15)" />
+            <stop offset="40%" stopColor="rgba(16, 185, 129, 0.35)" />
+            <stop offset="100%" stopColor="rgba(16, 185, 129, 0.12)" />
           </linearGradient>
         </defs>
 
         <motion.path
           d={d}
           fill="none"
-          stroke="url(#timelinePathGradient)"
-          strokeWidth="1.4"
+          stroke="url(#mangrovePhasesPath)"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeDasharray="3 4"
-          initial={reduceMotion ? false : { pathLength: 0, opacity: 0.65 }}
-          animate={reduceMotion ? false : inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.65 }}
-          transition={reduceMotion ? undefined : { duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          strokeDasharray="4 6"
+          initial={reduceMotion ? false : { pathLength: 0, opacity: 0.7 }}
+          animate={reduceMotion ? false : inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.7 }}
+          transition={reduceMotion ? undefined : { duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
         />
 
         {points.map((point, idx) => (
           <motion.circle
-            key={idx}
+            key={phases[idx]?.number ?? idx}
             cx={point.x}
             cy={point.y}
-            r="1.5"
+            r="1.8"
             fill="rgba(16, 185, 129, 0.95)"
             initial={reduceMotion ? false : { scale: 0.6, opacity: 0 }}
             animate={reduceMotion ? false : inView ? { scale: 1, opacity: 1 } : { scale: 0.6, opacity: 0 }}
-            transition={reduceMotion ? undefined : { delay: 0.15 + idx * 0.06, duration: 0.35 }}
+            transition={reduceMotion ? undefined : { delay: 0.18 + idx * 0.07, duration: 0.35 }}
           />
         ))}
       </motion.svg>
@@ -87,4 +87,4 @@ const TimelineTrack: React.FC<TimelineTrackProps> = ({ nodes }) => {
   );
 };
 
-export default TimelineTrack;
+export default PhasesTrack;
