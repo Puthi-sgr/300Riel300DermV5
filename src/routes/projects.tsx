@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projectRegistry } from "../modules/projects/registry";
 import { projectBySlug } from "../modules/projects";
-import ProjectPageFallback from "../views/ProjectDetailPage/components/ProjectPageFallback";
-import ProjectNotFound from "../views/ProjectDetailPage/components/ProjectNotFound";
-import GenericProjectPage from "../views/ProjectDetailPage/layout/GenericProjectLayout";
-
+import ProjectPageFallback from "../modules/home/views/ProjectDetailPage/components/ProjectPageFallback";
+import ProjectNotFound from "../modules/home/views/ProjectDetailPage/components/ProjectNotFound";
+import GenericProjectPage
+ from "../modules/home/views/ProjectDetailPage/layout/GenericProjectLayout";
 const ProjectsRoute = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projectBySlug(slug);

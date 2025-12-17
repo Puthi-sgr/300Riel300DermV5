@@ -59,9 +59,9 @@ const MangroveProjectPage = () => {
           key="project-content"
           className="min-h-screen bg-eco-50"
           variants={prefersReducedMotion ? undefined : containerVariants}
-          initial={prefersReducedMotion ? false : "hidden"}
-          animate={prefersReducedMotion ? false : "show"}
-          exit={prefersReducedMotion ? false : "hidden"}
+          initial={prefersReducedMotion ? undefined : "hidden"}
+          animate={prefersReducedMotion ? undefined : "show"}
+          exit={prefersReducedMotion ? undefined : "hidden"}
         >
           <motion.div
             variants={prefersReducedMotion ? undefined : itemVariants}
