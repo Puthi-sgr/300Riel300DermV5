@@ -1,5 +1,5 @@
 import React from "react";
-import { useLanguage } from "../../../../../context/LanguageContext";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const ContactHeader: React.FC = () => {
   const { t } = useLanguage();

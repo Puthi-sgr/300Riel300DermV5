@@ -7,9 +7,24 @@ import { useLanguage } from "../../../../../context/LanguageContext";
 const CTAGroup: React.FC = () => {
   const { t } = useLanguage();
 
+  const handleScrollToMission = () => {
+    const target = document.getElementById("mission");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}#mission`
+      );
+      return;
+    }
+
+    window.location.hash = "mission";
+  };
+
   return (
     <div className="flex flex-wrap gap-3 items-center">
-      <FullRoundedGradientButton href="#mission" className="px-6 rounded-xl">
+      <FullRoundedGradientButton onClick={handleScrollToMission} className="px-6 rounded-xl">
         <span className="flex items-center gap-2">
           {t("book.hero.cta.learnMore")}
           <ArrowRight className="w-4 h-4" />

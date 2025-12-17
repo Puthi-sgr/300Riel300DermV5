@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useLanguage } from "../../../../../context/LanguageContext";
-import { FormData } from "../../../../../dto/Email.dto";
+import { useLanguage } from "../../../context/LanguageContext";
+import { FormData } from "../../../dto/Email.dto";
 
 type Props = {
   formData: FormData;
